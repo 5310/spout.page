@@ -29,14 +29,6 @@
     "serve": "npx concurrently 'npx serve src -l 5000' 'npx lt -p 5000'",
     "dev": "npm run build && npx concurrently 'npm run watch' 'npm run serve'"
   },
-  "jest": {
-    "preset": "ts-jest",
-    "testMatch": [
-      "**/__tests__/**/*.[jt]s?(x)",
-      "**/?(*.)+(spec|test).[jt]s?(x)"
-    ],
-    "verbose": true
-  },
   "devDependencies": {
     "@types/jest": "^25.2.1",
     "concurrently": "^5.1.0",
