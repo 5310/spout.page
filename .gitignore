@@ -3,5 +3,6 @@ node_modules/
 scratch/
 src/**/*.css
 src/**/*.js
-.fuse_hidden*
+web_modules/
 .cache/
+.fuse_hidden*
