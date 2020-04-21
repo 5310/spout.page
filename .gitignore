@@ -1,0 +1,5 @@
+scratch/
+dist/
+node_modules/
+.fuse_hidden*
+.cache/
