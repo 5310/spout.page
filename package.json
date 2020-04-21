@@ -1,0 +1,19 @@
+{
+  "name": "spout.page",
+  "version": "0.0.0",
+  "description": "the Spout website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/5310/spout.page.git"
+  },
+  "author": "Sayantan Chaudhuri",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/5310/spout.page/issues"
+  },
+  "homepage": "https://github.com/5310/spout.page#readme",
+}
