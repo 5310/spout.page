@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "plugins": [
+      {
+        "name": "typescript-tslint-plugin"
+      }
+    ],
+    "paths": {
+        "/web_modules/*.js": [
+            "node_modules/@types/*",
+            "node_modules/*",
+            "web_modules/*.js"
+        ]
+    },
+  },
+  "include": [
+    "src/index.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/__tests__/*"
+  ]
+}

@@ -1,11 +1,8 @@
 {
   "name": "spout.page",
+  "private": true,
   "version": "0.0.0",
   "description": "the Spout website",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/5310/spout.page.git"
@@ -15,5 +12,38 @@
   "bugs": {
     "url": "https://github.com/5310/spout.page/issues"
   },
-  "homepage": "https://github.com/5310/spout.page#readme"
+  "homepage": "https://github.com/5310/spout.page#readme",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "npx snowpack",
+    "lint:script": "npx tslint -p .",
+    "lint": "npm run lint:script",
+    "test:script": "npx jest --passWithNoTests",
+    "test": "npm run test:script",
+    "build:script": "npx tsc",
+    "build": "npm run test && npm run build:script",
+    "watch:script": "npx tsc -w",
+    "watch": "npm run watch:script",
+    "serve": "npx concurrently 'npx serve src -l 5000' 'npx lt -p 5000'",
+    "dev": "npm run build && npx concurrently 'npm run watch' 'npm run serve'"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testMatch": [
+      "**/__tests__/**/*.[jt]s?(x)",
+      "**/?(*.)+(spec|test).[jt]s?(x)"
+    ],
+    "verbose": true
+  },
+  "devDependencies": {
+    "@types/jest": "^25.2.1",
+    "concurrently": "^5.1.0",
+    "jest": "^25.4.0",
+    "localtunnel": "^2.0.0",
+    "serve": "^11.3.0",
+    "snowpack": "^1.7.0",
+    "ts-jest": "^25.4.0",
+    "typescript": "^3.8.3",
+    "typescript-tslint-plugin": "^0.5.5"
+  }
 }
