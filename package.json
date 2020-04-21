@@ -17,6 +17,7 @@
   "scripts": {
     "postinstall": "npx snowpack",
     "lint:script": "npx tslint -p .",
+    "lint:style": "npx stylelint src/**/*.pcss",
     "lint": "npm run lint:script",
     "test:script": "npx jest --passWithNoTests",
     "test": "npm run test:script",
@@ -49,6 +50,8 @@
     "postcss-nested": "^4.2.1",
     "serve": "^11.3.0",
     "snowpack": "^1.7.0",
+    "stylelint": "^13.3.2",
+    "stylelint-config-standard": "^20.0.0",
     "ts-jest": "^25.4.0",
     "typescript": "^3.8.3",
     "typescript-tslint-plugin": "^0.5.5"
