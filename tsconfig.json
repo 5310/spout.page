@@ -21,10 +21,11 @@
     },
   },
   "include": [
-    "src/**/*.ts"
+    "**/*.ts"
   ],
   "exclude": [
     "node_modules",
+    "web_modules",
     "**/__tests__/*"
   ]
 }
