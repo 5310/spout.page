@@ -22,14 +22,14 @@
     "test": "npm run test:script",
     "build": "npm run test && npm run build:script && npm run build:style",
     "watch": "npx concurrently 'npm run watch:script' 'npm run watch:style'",
-    "serve": "npx concurrently 'npx serve src -l 5000' 'npx lt -p 5000'",
+    "serve": "npx concurrently 'npx serve . -l 5000' 'npx lt -p 5000'",
     "watch:script": "npx tsc -w",
-    "watch:style": "npx postcss src/**/*.pcss --base src --dir src --ext css --watch",
+    "watch:style": "npx postcss ./**/*.pcss --base . --dir . --ext css --watch",
     "lint:script": "npx tslint -p .",
-    "lint:style": "npx stylelint src/**/*.pcss",
+    "lint:style": "npx stylelint ./**/*.pcss",
     "test:script": "npx jest --passWithNoTests",
     "build:script": "npx tsc",
-    "build:style": "npx postcss src/**/*.pcss --base src --dir src --ext css",
+    "build:style": "npx postcss ./**/*.pcss --base . --dir . --ext css",
     "postinstall": "npx snowpack"
   },
   "devDependencies": {
