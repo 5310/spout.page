@@ -3,11 +3,11 @@
   "builds": [
     {
       "src": "./index.html",
-      "use": "@now/static-static",
+      "use": "@now/static-static"
     },
     {
       "src": "./web_modules/*",
-      "use": "@now/static-static",
+      "use": "@now/static-static"
     },
     {
       "src": "package.json",
