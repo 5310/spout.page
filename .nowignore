@@ -3,3 +3,4 @@ node_modules/
 scratch/
 .cache/
 .fuse_hidden*
+_gibberish
