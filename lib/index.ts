@@ -1,0 +1,1 @@
+import '/lib/components/spout-simple-greeting/index.js'
