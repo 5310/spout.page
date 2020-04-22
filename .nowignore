@@ -1,0 +1,7 @@
+**/*.pcss
+**/*.ts
+dist/
+node_modules/
+scratch/
+.cache/
+.fuse_hidden*
