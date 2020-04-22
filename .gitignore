@@ -1,8 +1,8 @@
+**/*.css
+**/*.js
 dist/
 node_modules/
 scratch/
-src/**/*.css
-src/**/*.js
 web_modules/
 .cache/
 .fuse_hidden*
