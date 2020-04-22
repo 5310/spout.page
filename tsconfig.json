@@ -5,6 +5,7 @@
     "moduleResolution": "node",
     "baseUrl": ".",
     "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
     "strict": true,
     "plugins": [
       {
@@ -12,11 +13,11 @@
       }
     ],
     "paths": {
-        "/web_modules/*.js": [
-            "node_modules/@types/*",
-            "node_modules/*",
-            "web_modules/*.js"
-        ]
+      "/web_modules/*.js": [
+        "node_modules/@types/*",
+        "node_modules/*",
+        "web_modules/*.js"
+      ]
     },
   },
   "include": [
