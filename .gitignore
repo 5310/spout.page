@@ -5,4 +5,4 @@ node_modules/
 scratch/
 web_modules/
 .cache/
-.fuse_hidden*
+.now/
