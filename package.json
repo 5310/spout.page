@@ -20,7 +20,7 @@
     "develop": "npx concurrently -s -k true -n 'watch,now,localtunnel' 'npm run watch' 'npx now dev' 'npx lt -p 3000'",
     "lint": "npm run lint:script && npm run lint:style",
     "test": "npm run test:script",
-    "build": "npm run lint && npm run test && npm run build:script && npm run build:style",
+    "build": "npm run test && npm run build:script && npm run build:style",
     "watch": "npx concurrently -s -k true -n 'script,style' 'npm run watch:script' 'npm run watch:style'",
     "watch:script": "npx tsc -w --preserveWatchOutput",
     "watch:style": "npx postcss './**/*.pcss' --base . --dir . --ext css --watch",
