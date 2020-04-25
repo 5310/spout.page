@@ -13,7 +13,6 @@
     "url": "https://github.com/5310/spout.page/issues"
   },
   "homepage": "https://github.com/5310/spout.page#readme",
-  "main": "index.js",
   "scripts": {
     "deploy": "echo 'run `$ npx now --prod`'",
     "preview": "npx now",
