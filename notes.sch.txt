@@ -259,6 +259,7 @@
       My current config only has the routes, and no build configs; they're pulled from the dashboard
       And to preview a deployment, we can always just push to GitHub repo and trigger one automatically or run `vercel` to do a deploy of the local repo
         GitHub integration only triggers on commit
+          @ https://spoutpage-git-dev20.scio.now.sh/
           It is nice for when we integrate a CMS
           But it's too annoying to trigger while developing
         `vercel` doesn't bother building things, and just pushes them to the deployment
