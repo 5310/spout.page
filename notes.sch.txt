@@ -1,0 +1,267 @@
+* Tasks
+  ! Tooling
+    ! Snowpack and TypeScript
+      ! Dependency management
+        Had to resort to absolute paths to make links eaier for web-components
+      ! TypeScript linting and compilation
+      ! TypeScript watching
+        Annoyingly, `tsc -w` clears screen at every update by default, had to use `--preserveWatchOutput` to multiplex with `concurrently`
+    ? PostCSS and StyleLint
+      ! PostCSS with plugins
+        ! VSCode integration
+        ! Basics such as nesting, etc
+        ! Convenient custom-properties and calculations
+        ! CSS4 media queries
+      ? Stylelint
+        ! VSCode integration
+          Lints, can't fix
+        ? Fix Crash inside Vercel
+  ! Development
+    ! Trial Vercel-specific routing and static serving
+    ! Trial web-component-driven workflow
+    ! Responsive unit of scale
+    ! Reset stylesheet
+      Needs to be reusable for components
+    ! Components
+      ? book
+        ? block s-scale layout
+        ? extend with m-scale
+        ? extend with l-scale
+        ? extend with xl-scale
+      ? app
+        ? routing
+          ? parse route
+          ? manage history
+          ? dynamically load components
+          ? solve animation hooks
+          ? fallback routing with URLParameters
+    ? Learn how to handle JSON schemas with TypeScript
+    ? Learn how to preload important bits of CSS to avoid FOUC
+    ? Serviceworker
+    ? Lighthouse audit
+
+
+* Architecture
+
+  * Components
+
+    - app
+    
+    - header
+    - main
+    - footer
+
+    - about
+    - book
+      - content
+        - cover
+        - listing
+          - title
+          - subtitle
+          - author
+          - brief
+        - store
+        - blurb
+        - gallery
+      - attrs
+        cover::boolean
+        listing::boolean
+        buy::boolean
+          buy && !full -> show's just the buy button
+        full::boolean
+          renders the rest of the content
+          includes anything specific that isn't set true
+        jitter::boolean
+          randomly rotates cover in a willful way
+      - style
+        there's no container-queries, ofc, so we have to expose different resnponsive layouts through host classes
+          https://developer.mozilla.org/en-US/docs/Web/CSS/:host()
+          https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties#Custom_property_fallback_values 
+        we're back to the problem that external stylesheet urls are relative to the document and not the custom element script
+          https://lit-element.polymer-project.org/guide/styles#external-stylesheet
+          instead, let's move back to an SPA architecture
+            https://vercel.com/docs/configuration#project/routes
+    - collection
+    - 404
+
+    - input
+    - button
+      - content
+        - primary
+          the most important value
+          for smaller rupee sign etc use custom css
+        - secondary
+          the label of the action
+      - styles
+        - clear
+        - solid
+
+    - cover
+      does circle-fitting with images
+      does random rotation
+        preferably with hashes of the image srcset[0]
+        if we're going to rotate something randomly, it's going to look wabisabi af
+          ±ceil(random()*5)±(random()**2*7)
+    - image
+      manages src-set
+        feel free to use <img>
+      enforces aspect-ratio
+      renders blurhash
+      will eventually support bleeds
+    - carousel
+    - logo
+      inline box
+      - attr
+        if either mark or type is set, then only the set one will be rendered
+        - mark
+        - type
+      to use the text properties of the inline host, this element can't be shadow-dommed
+        https://stackoverflow.com/questions/55126694/how-to-create-litelement-without-shadow-dom
+    - motif
+    
+  * Types
+
+    - Content
+    
+      - About
+        ? Not quite sure if this should be have a content file/type at all
+          Surely this wouldnwon't be edited very often, if at all
+          Which means writing this in HTML/CSS would offer more one-off flourish
+
+      - Book
+        - cover :: Image
+        - title :: Markdown.Span
+        - subtitle? :: Markdown.Span
+        - author? :: Markdown.Span
+        - brief :: Markdown.Span
+        - price :: Number
+        - discount :: Number
+        - pages :: Number
+        - size :: { width :: Number, height :: Number, pages :: Number }
+        - tags :: String[]
+        - blurb :: Markdown.Block
+        - pages :: Image[]
+
+      - Collection
+        - title :: Markdown.Span
+        - brief :: Markdown.Span
+        - books :: Book[]
+        - blurb :: Markdown.Block
+
+    - Image
+      - srcset :: SrcSet
+      - aspectratio :: Number
+      - blurhash? :: String
+      - bleed? :: { top :: Number, left :: Number, bottom :: Number, right :: Number }
+
+    - SrcSet
+      @ https://stackoverflow.com/questions/49910889/typescript-array-with-minimum-length
+
+    - Markdown
+      Some of the copy fields shouldn't accept more than a span of text
+        ? Not sure how I'd represent this other than just aliases
+      - Span
+      - Block
+
+
+  * Routing
+    The filesystem takes precedence
+    - /api
+      - /api/books
+        List of all the books
+        Will be unused for now
+        - /api/books/:book
+          Given the book listing's ID, return its content _as JSON_
+          Should also return a sensible not-gound error
+      - /api/collections
+        - /api/collections/:collection
+    - /about
+    - /books
+      should redirect to `/collections` for now
+      - /books/:book
+        will display that specific book
+    - /collections
+      - /collections/:collection
+
+
+* Structure
+  - README.md
+  - *
+    config files
+  - index.html
+    the only HTML file, the SPA that also handles all virtual routing 
+  - content/
+    Actual content and associated assets
+      They're written in YAML for convenience, but will be served as JSON through
+    - about/
+      - index.yaml
+      - *
+    - books/
+      - */
+        - index.yaml
+        - *
+    - collections/
+      - */
+        - index.yaml
+        - *
+  - app/
+    - components/
+      - spout-*/
+        - index.ts
+        - index.pcss
+        - *
+    - routes/
+      - *.ts/
+    - utils/
+      - *
+    - index.pcss
+    - index.ts
+    - reset.pcss
+  - web_modules/
+  - node_modules/
+  - scratch/
+
+
+* Notes
+  
+  * Content format
+    Our data should be flat files
+      That is, all books under `books/` as individual files, all collections under `collections`, etc
+      Given Titun is expected to edit them, we can't go technical
+      We've picked YAML with Markdown content as it's easier to edit by hand
+      Textual copy will be Markdown
+    These flat files will be served over an API to the app
+      While decoupled this way, we still would colocate the content with the app for now
+    Eventually we might move to one of the many serverless CMS tools
+      They would still likely edit the content directly in the repo
+
+  * Vercel troubles
+    Vercel 2 is supposedly "zero configuration"
+      What this actually means is that there are a set of extremely basic defaults that it uses to serve static or serverless stuff
+        @ https://vercel.com/blog/zero-config
+        So basic, that they also have settings in the dashboard to override the build command and directory
+          ! I have these set
+      This is apparently better than having a `now.json` (soon to be `vercel.json`)
+    ! Yet I need `now.json` anyway, as there's no way to do routes without one
+      @ https://github.com/zeit/now/discussions/4052
+    ! The real problem is that if I have a `now.json` I can't also define the build in there because then Vercel will try to push the downloaded `node_modules` to the deployment and hit the max files limit
+      @ https://vercel.com/docs/v2/platform/limits#files
+      This isn't a problem if I just don't use `static-build` in the json
+        You'd think `.nowignore` would fix this shit, but it has no effect in this particular case
+          @ https://vercel.com/guides/prevent-uploading-sourcepaths-with-nowignore
+          As in, even with `node_modules` ignored, it still hits the limit
+        It's retroactively undocumented anyway
+          and the zero config pipeline can build it without any build instructions
+      But doing so means `vercel dev` will no longer work
+        Because right now, the dumb thing doesn't pull the deployment path from the dashboard despite needing to be linked to a deployment to run
+          @ https://github.com/zeit/now/issues/3767#issuecomment-611074321
+    ! So right now, I have no choice but to wait for `now dev` to get fixed and use preview deployments to develop, and keep using `now.json`
+      My current config only has the routes, and no build configs; they're pulled from the dashboard
+      And to preview a deployment, we can always just push to GitHub repo and trigger one automatically or run `vercel` to do a deploy of the local repo
+        GitHub integration only triggers on commit
+          It is nice for when we integrate a CMS
+          But it's too annoying to trigger while developing
+        `vercel` doesn't bother building things, and just pushes them to the deployment
+          @ https://spoutpage.scio.now.sh/
+          This is faster than building locally
+          But not as fast as `npm watch` when working
