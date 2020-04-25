@@ -1,6 +1,4 @@
-dist/
-node_modules/
-scratch/
-.cache/
-.fuse_hidden*
-_gibberish
+*
+!index.html
+!lib
+!lib/*
