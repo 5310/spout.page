@@ -13,6 +13,12 @@
         ! Convenient custom-properties and calculations
         ! CSS4 media queries
       ? Stylelint
+  ? Research
+    ! Learn how to do SPA routing for components
+    ? Learn how to handle JSON schemas with TypeScript
+    ! Learn how to preload important bits of CSS to avoid FOUC
+      `preload` is the only real solution, and Firefox doesn't support it for some reason
+      aside from the service worker ofc, which is always good for subsequent loads
         ! VSCode integration
           Lints, can't fix
         ? Fix Crash inside Vercel
@@ -35,10 +41,8 @@
           ? dynamically load components
           ? solve animation hooks
           ? fallback routing with URLParameters
-    ? Learn how to handle JSON schemas with TypeScript
-    ? Learn how to preload important bits of CSS to avoid FOUC
-    ? Serviceworker
-    ? Lighthouse audit
+      ? Serviceworker
+      ? Lighthouse audit
 
 
 * Architecture
@@ -257,10 +261,8 @@
       My current config only has the routes, and no build configs; they're pulled from the dashboard
       And to preview a deployment, we can always just push to GitHub repo and trigger one automatically or run `vercel` to do a deploy of the local repo
         GitHub integration only triggers on commit
+          @ https://spoutpage.scio.now.sh/
           @ https://spoutpage-git-dev20.scio.now.sh/
           It is nice for when we integrate a CMS
           But it's too annoying to trigger while developing
-        `vercel` doesn't bother building things, and just pushes them to the deployment
-          @ https://spoutpage.scio.now.sh/
-          This is faster than building locally
-          But not as fast as `npm watch` when working
+        `vercel` also builds on preview without any instructions in the json, but at least we don't have to push
