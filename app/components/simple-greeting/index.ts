@@ -8,7 +8,7 @@ export class SpoutSimpleGreeting extends LitElement {
 
   render() {
     return html`
-      <link rel="stylesheet" href="/lib/components/spout-simple-greeting/index.css" />
+      <link rel="stylesheet" href="/app/components/simple-greeting/index.css" />
       <p>Hullo, ${this.name}!!</p>
     `
   }

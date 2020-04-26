@@ -206,12 +206,10 @@
         - *
   - app/
     - components/
-      - spout-*/
+      - */
         - index.ts
         - index.pcss
         - *
-    - routes/
-      - *.ts/
     - utils/
       - *
     - index.pcss
