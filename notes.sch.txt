@@ -35,7 +35,7 @@
         ? extend with l-scale
         ? extend with xl-scale
       ? app
-        ? routing
+        ? local routing
           ? parse route
           ? manage history
           ? dynamically load components
@@ -208,6 +208,14 @@
       - */
         - index.yaml
         - *
+  -? api/
+    ? still considering whether to use Vercel's serverless functions or be as portable as possible and parse it clientside
+    - books/
+      index.ts
+      [book].ts
+    - collections/
+      index.ts
+      [collection].ts
   - app/
     - components/
       - */
