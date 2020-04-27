@@ -2,7 +2,6 @@ import { LitElement, html, css, property, customElement } from '/web_modules/lit
 
 @customElement('spout-simple-greeting')
 export class SpoutSimpleGreeting extends LitElement {
-
   @property()
   name = 'World'
 
@@ -12,5 +11,4 @@ export class SpoutSimpleGreeting extends LitElement {
       <p>Hullo, ${this.name}!!</p>
     `
   }
-
 }
