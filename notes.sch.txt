@@ -13,6 +13,8 @@
         ! Convenient custom-properties and calculations
         ! CSS4 media queries
       ? Stylelint
+        ! Configuration
+        ? Fix linting on Vercel
   ? Research
     ! Learn how to do SPA routing for components
     ? Learn how to handle JSON schemas with TypeScript
@@ -25,15 +27,18 @@
   ! Development
     ! Trial Vercel-specific routing and static serving
     ! Trial web-component-driven workflow
+    ! Create demo pages for each component for easier testing
     ! Responsive unit of scale
     ! Reset stylesheet
       Needs to be reusable for components
     ! Components
       ? book
-        ? block s-scale layout
-        ? extend with m-scale
-        ? extend with l-scale
-        ? extend with xl-scale
+        ! block s-scale layout
+        ! extend with m-scale
+        ! extend with l-scale
+        ! extend with xl-scale
+        ? block with placeholder content
+        ? generate from data
       ? app
         ? local routing
           ? parse route
@@ -106,6 +111,11 @@
         preferably with hashes of the image srcset[0]
         if we're going to rotate something randomly, it's going to look wabisabi af
           ±ceil(random()*5)±(random()**2*7)
+      @ https://dev.to/tchaflich/a-width-responsive-perfect-square-in-pure-css-3dao
+      - attr
+        - data
+        - fit
+          sizes the cover to the image inside rather than the square with the circle
     - image
       manages src-set
         feel free to use <img>
@@ -140,11 +150,10 @@
         - brief :: Markdown.Span
         - price :: Number
         - discount :: Number
-        - pages :: Number
         - size :: { width :: Number, height :: Number, pages :: Number }
         - tags :: String[]
         - blurb :: Markdown.Block
-        - pages :: Image[]
+        - gallery :: Image[]
 
       - Collection
         - title :: Markdown.Span
@@ -227,12 +236,23 @@
     - index.pcss
     - index.ts
     - reset.pcss
+    - scale.pcss
+    - debug.pcss
+    - types.ts
   - web_modules/
   - node_modules/
   - scratch/
 
 
 * Notes
+
+  * Lit-Element
+    @ https://lit-element.polymer-project.org/guide/properties
+
+  * CSS
+    @ https://css-tricks.com/snippets/css/complete-guide-grid/
+    @ https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Scroll_Snap
+
   
   * Content format
     Our data should be flat files
