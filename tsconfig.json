@@ -17,6 +17,9 @@
         "node_modules/@types/*",
         "node_modules/*",
         "web_modules/*.js"
+      ],
+      "/app/*": [
+        "app/*"
       ]
     },
   },
