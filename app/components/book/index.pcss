@@ -1,0 +1,60 @@
+@import url("/app/reset.css");
+@import url("/app/debug.css"); /* DEBUG: */
+
+:host {
+  width: 100%;
+  min-height: 100%;
+  scroll-snap-type: y mandatory;
+
+  main {
+    margin-top: --u12;
+    display: grid;
+    align-items: center;
+
+    @media (640px < width <= 1024px) {
+      grid-template-columns: 2fr 3fr;
+    }
+
+    @media (width > 1024px) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media (width > 640px) {
+      @media (min-aspect-ratio: 1/1) {
+        margin-top: 0;
+        grid-auto-rows: minmax(100vh, auto);
+      }
+    }
+
+    &.partial {
+      margin-top: 0;
+    }
+
+    & > * {
+      grid-column-start: 2;
+      grid-column-end: -1;
+      scroll-snap-align: center;
+    }
+
+    & > .cover {
+      grid-column-start: 1;
+      grid-column-end: span 1;
+      justify-self: stretch;
+      padding-bottom: 100%;
+      position: relative;
+
+      & > * {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    & > .gallery {
+      grid-column-start: 1;
+      grid-column-end: -1;
+    }
+  }
+}
