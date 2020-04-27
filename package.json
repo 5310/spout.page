@@ -17,7 +17,7 @@
   "scripts": {
     "deploy": "echo 'run `$ npx now --prod`'",
     "preview": "npx now",
-    "develop": "npx concurrently -s -k true -n 'watch,now,localtunnel' 'npm run watch' 'npx now dev' 'npx lt -p 3000'",
+    "develop": "npx concurrently -s -k true -n 'watch,serve,localtunnel' 'npm run watch' 'npx serve .' 'npx lt -p 5000'",
     "lint": "npm run lint:script && npm run lint:style",
     "test": "npm run test:script",
     "build": "npm run test && npm run build:script && npm run build:style",
