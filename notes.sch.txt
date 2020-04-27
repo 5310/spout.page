@@ -248,6 +248,7 @@
 
   * Lit-Element
     @ https://lit-element.polymer-project.org/guide/properties
+    @ https://lit-html.polymer-project.org/guide/template-reference
 
   * CSS
     @ https://css-tricks.com/snippets/css/complete-guide-grid/
