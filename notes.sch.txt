@@ -38,6 +38,10 @@
         ! extend with l-scale
         ! extend with xl-scale
         ? block with placeholder content
+          ! listing
+          ? blurb
+          ? cover
+          ? gallery
         ? generate from data
       ? app
         ? local routing
