@@ -265,6 +265,7 @@
   * CSS
     @ https://css-tricks.com/snippets/css/complete-guide-grid/
     @ https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Scroll_Snap
+    @ http://open-type.surge.sh/
 
   
   * Content format
