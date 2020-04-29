@@ -24,13 +24,20 @@
         ! VSCode integration
           Lints, can't fix
         ? Fix Crash inside Vercel
+    ? Dynamically fitting/sizing components
   ! Development
     ! Trial Vercel-specific routing and static serving
     ! Trial web-component-driven workflow
     ! Create demo pages for each component for easier testing
-    ! Responsive unit of scale
-    ! Reset stylesheet
-      Needs to be reusable for components
+    ? Common stylesheets
+      ! Responsive unit of scale
+      ! Reset stylesheet
+      ! Debug rendering sheet
+      ! @font-faces sheet
+      ? Color palette
+    ? Favicons
+      ? SVG Favicons
+      ? fallback ICO
     ! Components
       ? book
         ! block s-scale layout
@@ -42,7 +49,8 @@
           ? blurb
           ? cover
           ? gallery
-        ? generate from data
+        ? fix medium scale scroll-snaps from clipping
+
       ? app
         ? local routing
           ? parse route
