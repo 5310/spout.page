@@ -59,6 +59,7 @@
           ? gallery
         ! Fix medium-scale scroll-snaps from clipping
           Isn't actually a bug. What did you actually see?
+          Actually, while there was no _bug_, I did make changes to make the vertical fit neater
       ? app
         ? local routing
           ? parse route
