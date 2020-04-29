@@ -1,4 +1,5 @@
-import { LitElement, html, css, property, customElement } from '/web_modules/lit-element.js'
+import { LitElement, html, property, customElement } from '/web_modules/lit-element.js'
+import { unsafeHTML } from '/web_modules/lit-html/directives/unsafe-html.js'
 import { Book } from '../../types'
 
 @customElement('spout-book')
@@ -17,6 +18,11 @@ export class SpoutBook extends LitElement {
       'annotated',
       'translated',
     ],
+    blurb: `
+<p>However, the path was not desolate for Mark Twain. It was The Garden of Eden!</p>
+<p>What was it between Adam and Eve? Love, as we know. But was it like the love as we know it NOW? Or was it different back then, in that primordial universe?</p>
+<p>Two highly imaginative tales by Mark Twain, dealing with the human psychology of love—the simplest pleasure—the strongest compassion—the richest benevlolence—and yet the toughest emotion to stand by—are brought together under this title: Chronicle of Eden.</p>
+    `
   }
 
   @property({ type: Boolean })
@@ -51,7 +57,7 @@ export class SpoutBook extends LitElement {
           </section>
         </section>
 
-        <section class='blurb'></section>
+        <section class='blurb'>${unsafeHTML(this.data.blurb)}</section>
 
         <section class='gallery'></section>
       </main>

@@ -10,6 +10,8 @@
   main {
     margin-top: --u12;
     display: grid;
+    grid-column-gap: 0;
+    grid-row-gap: --u4;
     align-items: center;
 
     @media (640px < width <= 1024px) {
@@ -54,14 +56,11 @@
     }
 
     & > .listing {
+      max-width: 48ch;
       display: grid;
       grid-gap: --u0;
       font-family: Alegreya, serif;
       font-size: --u0;
-
-      @media (width > 1024px) {
-        max-width: 28rem;
-      }
 
       .title {
         font-family: Raleway, sans-serif;
@@ -82,6 +81,11 @@
         text-transform: uppercase;
       }
 
+      .brief {
+        font-size: --u0;
+        line-height: --u2;
+      }
+
       .store {
         display: grid;
         grid-template-columns: auto 1fr;
@@ -100,13 +104,23 @@
           font-size: --u-2;
           text-transform: uppercase;
           list-style-type: none;
-          line-height: 1.2em;
+          line-height: --u1;
 
           li {
             margin-top: 0;
             margin-bottom: 0.3rem;
           }
         }
+      }
+    }
+
+    & > .blurb {
+      max-width: 48ch;
+      font-size: --u-1;
+      line-height: --u2;
+
+      p {
+        margin-bottom: 1em;
       }
     }
 
