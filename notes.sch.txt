@@ -6,6 +6,9 @@
       ! TypeScript linting and compilation
       ! TypeScript watching
         Annoyingly, `tsc -w` clears screen at every update by default, had to use `--preserveWatchOutput` to multiplex with `concurrently`
+      ! Whitelist subpackages because they have to be manually whitelisted
+        @ https://www.snowpack.dev/#lit-html
+        We _could_ put `--include **/*.ts` on the `npm run postinstall` hook, but I've decided to pick the simpler hand-selected route instead
     ? PostCSS and StyleLint
       ! PostCSS with plugins
         ! VSCode integration
@@ -35,9 +38,14 @@
       ! Debug rendering sheet
       ! @font-faces sheet
       ? Color palette
-    ? Favicons
-      ? SVG Favicons
-      ? fallback ICO
+      ? Extract base styles css
+    ! Favicons
+      ! SVG Favicons
+      ! fallback ICO
+      ? Make favicon responsive
+        @ https://css-tricks.com/svg-favicons-and-all-the-fun-things-we-can-do-with-them/
+        ? color
+        ? scale
     ! Components
       ? book
         ! block s-scale layout
@@ -46,7 +54,7 @@
         ! extend with xl-scale
         ? block with placeholder content
           ! listing
-          ? blurb
+          ! blurb
           ? cover
           ? gallery
         ! Fix medium-scale scroll-snaps from clipping
