@@ -77,8 +77,8 @@
         margin-top: --u0;
         margin-bottom: --u-1;
         font-family: Raleway, sans-serif;
-        font-size: --u-2;
         font-weight: 700;
+        font-size: --u-2;
         text-transform: uppercase;
       }
 
@@ -87,6 +87,7 @@
         grid-template-columns: auto 1fr;
         grid-gap: --u0;
         font-family: Raleway, sans-serif;
+        font-variant-numeric: lining-nums;
 
         .cost {
           align-self: start;
@@ -96,10 +97,15 @@
         }
 
         .details {
-          font-size: --u-1;
+          font-size: --u-2;
           text-transform: uppercase;
           list-style-type: none;
-          line-height: 1.5em;
+          line-height: 1.2em;
+
+          li {
+            margin-top: 0;
+            margin-bottom: 0.3rem;
+          }
         }
       }
     }
