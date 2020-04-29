@@ -36,15 +36,23 @@
     & > * {
       grid-column-start: 2;
       grid-column-end: -1;
-      scroll-snap-align: center;
+      scroll-snap-align: start end;
+      min-height: 100%;
+      padding: --u8 0;
+      display: grid;
+      align-content: center;
     }
 
     & > .cover {
       grid-column-start: 1;
       grid-column-end: span 1;
       justify-self: stretch;
-      padding-bottom: 100%;
+      scroll-snap-align: center;
       position: relative;
+      min-height: initial;
+      padding: 0;
+      padding-bottom: 100%;
+      display: initial;
 
       & > * {
         position: absolute;
@@ -57,8 +65,9 @@
 
     & > .listing {
       max-width: 48ch;
+      min-height: 100%;
       display: grid;
-      grid-gap: --u0;
+      grid-gap: --u2;
       font-family: Alegreya, serif;
       font-size: --u0;
 
@@ -108,7 +117,7 @@
 
           li {
             margin-top: 0;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.5em;
           }
         }
       }
@@ -127,6 +136,7 @@
     & > .gallery {
       grid-column-start: 1;
       grid-column-end: -1;
+      padding: 0;
     }
   }
 }
