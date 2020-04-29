@@ -1,8 +1,8 @@
 export type Srcset = string
 
-export type MdSpan = string
+export type Span = string
 
-export type MdBlock = string
+export type Block = string
 
 export type Image = {
   srcset: Srcset,
@@ -13,15 +13,15 @@ export type Image = {
 
 export type Book = {
   cover: Image,
-  title: MdSpan,
-  subtitle?: MdSpan,
-  author?: MdSpan,
+  title: Span,
+  subtitle?: Span,
+  author?: Span,
   isbn?: string,
-  brief: MdSpan,
+  brief: Span,
   price: number,
   discount: number,
   size: { width: number, height: number, pages: number },
   tags: string[],
-  blurb: MdBlock,
+  blurb: Block,
   gallery: Image[],
 }
