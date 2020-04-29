@@ -49,8 +49,8 @@
           ? blurb
           ? cover
           ? gallery
-        ? fix medium scale scroll-snaps from clipping
-
+        ! Fix medium-scale scroll-snaps from clipping
+          Isn't actually a bug. What did you actually see?
       ? app
         ? local routing
           ? parse route
