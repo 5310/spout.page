@@ -28,6 +28,7 @@
           Lints, can't fix
         ? Fix Crash inside Vercel
     ? Dynamically fitting/sizing components
+    ? PostCSS mixins using classes
   ! Development
     ! Trial Vercel-specific routing and static serving
     ! Trial web-component-driven workflow
@@ -39,6 +40,7 @@
       ! @font-faces sheet
       ? Color palette
       ? Extract base styles css
+      ? Extract major type-treatments
     ! Favicons
       ! SVG Favicons
       ! fallback ICO
@@ -57,9 +59,18 @@
           ! blurb
           ? cover
           ? gallery
-        ! Fix medium-scale scroll-snaps from clipping
-          Isn't actually a bug. What did you actually see?
-          Actually, while there was no _bug_, I did make changes to make the vertical fit neater
+        ! Tweak scroll-snap
+          ! Fix medium-scale scroll-snaps from clipping
+            Isn't actually a bug. What did you actually see?
+            Actually, while there was no _bug_, I did make changes to make the vertical fit neater
+          ! Stop small-scale scroll-snaps
+            Apparently `scroll-snap-type` does not trigger snaps, `scroll-snap-align` does.
+        ! Adjust typography
+          !~ Try to normalize all line-heights
+            Nah, this isn't worth it. It's all single-column anyway.
+          ! Lean on letting the text breathe over density
+          ! Tweak tags list alignment
+          ! Tweak letter-spacing
       ? app
         ? local routing
           ? parse route
