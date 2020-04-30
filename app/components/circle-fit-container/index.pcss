@@ -1,0 +1,25 @@
+@import url("/app/reset.css");
+@import url("/app/typefaces.css");
+@import url("/app/debug.css"); /* DEBUG: */
+
+:host {
+  display: grid;
+  place-items: stretch;
+
+  main {
+    display: grid;
+    place-items: center;
+
+    > * {
+      grid-column-start: 1;
+      grid-column-end: -1;
+      grid-row-start: 1;
+      grid-row-end: -1;
+    }
+
+    .circle {
+      pointer-events: none;
+      border-radius: 50%;
+    }
+  }
+}
