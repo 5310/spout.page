@@ -77,6 +77,17 @@
           ! Tweak tags list alignment
           ! Tweak letter-spacing
           ! Settle OTF features for the base font
+        ? Implement section toggling 
+          ? Try not to populate sections that aren't shown at least at the start
+      ? circular-block
+        ? implement prototype with slot
+        ? see whether a resizeObserver can be used instead
+        ? implement random offsets
+        ? implement manual offsets
+      ? image
+        ? create component
+        ? implement bleed
+        ? integrate blurhash
       ? app
         ? local routing
           ? parse route
@@ -143,7 +154,7 @@
         - clear
         - solid
 
-    - cover
+    - circle-block
       does circle-fitting with images
       does random rotation
         preferably with hashes of the image srcset[0]
