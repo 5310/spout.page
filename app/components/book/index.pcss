@@ -8,7 +8,6 @@
   scroll-snap-type: y mandatory;
 
   main {
-    margin-top: --u12;
     display: grid;
     grid-column-gap: 0;
     grid-row-gap: --u4;
@@ -24,30 +23,28 @@
 
     @media (width > 640px) {
       @media (min-aspect-ratio: 1/1) {
-        margin-top: 0;
         grid-auto-rows: minmax(100vh, auto);
       }
-    }
-
-    &.partial {
-      margin-top: 0;
     }
 
     & > * {
       grid-column-start: 2;
       grid-column-end: -1;
-      scroll-snap-align: start end;
       min-height: 100%;
       padding: --u8 0;
       display: grid;
       align-content: center;
+
+      @media (width > 640px) {
+        scroll-snap-align: start;
+      }
     }
 
     & > .cover {
       grid-column-start: 1;
       grid-column-end: span 1;
       justify-self: stretch;
-      scroll-snap-align: center;
+      scroll-snap-align: none;
       position: relative;
       min-height: initial;
       padding: 0;
