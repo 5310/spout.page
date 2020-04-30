@@ -1,4 +1,5 @@
 * Tasks
+
   ! Tooling
     ! Snowpack and TypeScript
       ! Dependency management
@@ -18,6 +19,7 @@
       ? Stylelint
         ! Configuration
         ? Fix linting on Vercel
+
   ? Research
     ! Learn how to do SPA routing for components
     ? Learn how to handle JSON schemas with TypeScript
@@ -34,10 +36,13 @@
         @ https://developers.google.com/web/updates/2016/10/resizeobserver
       @ https://codepen.io/5310/pen/NWGvObZ?editors=1011
     ? PostCSS mixins using classes
+
   ! Development
+
     ! Trial Vercel-specific routing and static serving
     ! Trial web-component-driven workflow
     ! Create demo pages for each component for easier testing
+
     ? Common stylesheets
       ! Responsive unit of scale
       ! Reset stylesheet
@@ -46,14 +51,20 @@
       ? Color palette
       ? Extract base styles css
       ? Extract major type-treatments
-    ! Favicons
-      ! SVG Favicons
-      ! fallback ICO
-      ? Make favicon responsive
-        @ https://css-tricks.com/svg-favicons-and-all-the-fun-things-we-can-do-with-them/
-        ? color
-        ? scale
+
+    ! Manifest
+      ? Favicons
+        ! SVG Favicons
+        ! fallback ICO
+        ? Make favicon responsive
+          @ https://css-tricks.com/svg-favicons-and-all-the-fun-things-we-can-do-with-them/
+          ? color
+          ? scale
+      ? Serviceworker
+      ? Lighthouse audit
+
     ! Components
+
       ? book
         ! block s-scale layout
         ! extend with m-scale
@@ -79,15 +90,18 @@
           ! Settle OTF features for the base font
         ? Implement section toggling 
           ? Try not to populate sections that aren't shown at least at the start
+
       ? circular-block
         ? implement prototype with slot
         ? see whether a resizeObserver can be used instead
         ? implement random offsets
         ? implement manual offsets
+
       ? image
         ? create component
         ? implement bleed
         ? integrate blurhash
+
       ? app
         ? local routing
           ? parse route
@@ -95,8 +109,6 @@
           ? dynamically load components
           ? solve animation hooks
           ? fallback routing with URLParameters
-      ? Serviceworker
-      ? Lighthouse audit
 
 
 * Architecture
