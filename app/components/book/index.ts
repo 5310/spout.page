@@ -6,7 +6,7 @@ import { Book } from '../../types'
 export class SpoutBook extends LitElement {
   @property({ type: Object })
   data /*: Book*/ = {
-    title: 'An Obscure Book',
+    title: 'An Obscure & Overlong Book',
     subtitle: 'You\'ve Probably never heard of it',
     author: 'E. Plumbus',
     brief: 'You can also compose templates to create more complex templates. When a binding in the text content of a template returns a TemplateResult, the TemplateResult is interpolated in place.',
