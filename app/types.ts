@@ -1,8 +1,8 @@
 export type Srcset = string
 
-export type Span = string
+export type MarkupSpan = string
 
-export type Block = string
+export type MarkupBlock = string
 
 export type Image = {
   srcset: Srcset,
@@ -13,15 +13,15 @@ export type Image = {
 
 export type Book = {
   cover: Image,
-  title: Span,
-  subtitle?: Span,
-  author?: Span,
+  title: MarkupSpan,
+  subtitle?: MarkupSpan,
+  author?: MarkupSpan,
   isbn?: string,
-  brief: Span,
+  brief: MarkupSpan,
   price: number,
   discount: number,
   size: { width: number, height: number, pages: number },
   tags: string[],
-  blurb: Block,
+  blurb: MarkupBlock,
   gallery: Image[],
 }
