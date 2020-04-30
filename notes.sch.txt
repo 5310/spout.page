@@ -27,7 +27,12 @@
         ! VSCode integration
           Lints, can't fix
         ? Fix Crash inside Vercel
-    ? Dynamically fitting/sizing components
+    ! Dynamically fitting/sizing components
+      @ https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model/Determining_the_dimensions_of_elements
+      @ https://developer.mozilla.org/en-US/docs/Web/API/Window/resize_event
+      @ https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver
+        @ https://developers.google.com/web/updates/2016/10/resizeobserver
+      @ https://codepen.io/5310/pen/NWGvObZ?editors=1011
     ? PostCSS mixins using classes
   ! Development
     ! Trial Vercel-specific routing and static serving
