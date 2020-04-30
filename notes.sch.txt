@@ -91,9 +91,11 @@
         ? Implement section toggling 
           ? Try not to populate sections that aren't shown at least at the start
 
-      ? circular-block
-        ? implement prototype with slot
-        ? see whether a resizeObserver can be used instead
+      ? circle-fit-container
+        ! implement prototype with slot
+        !~ see whether a resizeObserver can be used instead
+          resizeObserver doesn't seem to trigger on stretches?
+          regardless, we can't go ahead yet without a lot of headache as TypeScript doesn't have types for it
         ? implement random offsets
         ? implement manual offsets
 
