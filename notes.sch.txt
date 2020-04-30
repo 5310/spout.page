@@ -71,6 +71,7 @@
           ! Lean on letting the text breathe over density
           ! Tweak tags list alignment
           ! Tweak letter-spacing
+          ! Settle OTF features for the base font
       ? app
         ? local routing
           ? parse route
