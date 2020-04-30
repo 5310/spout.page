@@ -73,8 +73,8 @@
         ? block with placeholder content
           ! listing
           ! blurb
-          ? cover
-          ? gallery
+          ? cover with circle-fit-container
+          ? gallery with circle-fit-container and image
         ! Tweak scroll-snap
           ! Fix medium-scale scroll-snaps from clipping
             Isn't actually a bug. What did you actually see?
@@ -97,7 +97,8 @@
           resizeObserver doesn't seem to trigger on stretches?
           regardless, we can't go ahead yet without a lot of headache as TypeScript doesn't have types for it
         ? implement random offsets
-        ? implement manual offsets
+          ? figure out how to do `offsetY`
+        ! implement manual offsets
 
       ? image
         ? create component
