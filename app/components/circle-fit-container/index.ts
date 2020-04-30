@@ -11,6 +11,27 @@ export class SpoutCircleFitContainer extends LitElement {
   @property({ type: Boolean })
   fit: boolean = false
 
+  @property({ type: Number })
+  offsetX: number = 0
+
+  @property({ type: Number })
+  offsetY: number = 0
+
+  @property({ type: Number })
+  offsetR: number = 0
+
+  @property({ type: Boolean })
+  randomX: boolean = true
+
+  @property({ type: Boolean })
+  randomY: boolean = true
+
+  @property({ type: Boolean })
+  randomR: boolean = true
+
+  #mainWidth = ''
+  #mainHeight = ''
+
   render() {
     return html`
       <link rel="stylesheet" href="/app/components/circle-fit-container/index.css" />
@@ -21,7 +42,7 @@ export class SpoutCircleFitContainer extends LitElement {
     `
   }
 
-  updated() {
+  updated(changedProperties: any) {
     this.resize()
   }
 
@@ -32,6 +53,8 @@ export class SpoutCircleFitContainer extends LitElement {
 
     $circle.style.display = 'none'
     $slot.style.display = 'none'
+    $circle.style.transform = 'initial'
+    $slot.style.transform = 'initial'
 
     $main.style.width = ''
     $main.style.height = ''
@@ -41,8 +64,10 @@ export class SpoutCircleFitContainer extends LitElement {
 
     $circle.style.width = $circle.style.height = `${Math.floor(diameter)}px`
 
-    $slot.style.width = `${Math.floor(diameter * Math.sin(angle))}px`
-    $slot.style.height = `${Math.floor(diameter * Math.cos(angle))}px`
+    const width = Math.floor(diameter * Math.sin(angle))
+    const height = Math.floor(diameter * Math.cos(angle))
+    $slot.style.width = `${width}px`
+    $slot.style.height = `${height}px`
 
     $circle.style.margin = 'initial'
     if (this.fit) {
@@ -53,5 +78,11 @@ export class SpoutCircleFitContainer extends LitElement {
 
     $circle.style.display = 'initial'
     $slot.style.display = 'initial'
+
+    const offsetX = this.offsetX || (this.randomX && this.fit ? 0 : (Math.random() > 0.5 ? +1 : -1) * Math.random() * ($main.scrollWidth - diameter) / 2)
+    const offsetY = this.offsetY || (this.randomX && this.fit ? 0 : (Math.random() > 0.5 ? +1 : -1) * Math.random() * ($main.scrollHeight - diameter) / 2)
+    const offsetR = this.offsetR || (this.randomR ? (Math.floor(Math.random() * 3) + (Math.random() > 0.5 ? +1 : -1) * Math.random() ** 2) * 30 : 0)
+    $circle.style.transform = `translate(${offsetX}px)`
+    $slot.style.transform = `translate(${offsetX}px) rotate(${offsetR}deg)`
   }
 }
