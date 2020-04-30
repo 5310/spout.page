@@ -50,8 +50,8 @@ export class SpoutBook extends LitElement {
           <section class="store">
             <div class="cost">${this.data.price * (100 - (this.data.discount ?? 0)) / 100}₹</div>
             <ul class="details">
-              <li>${this.data.size.pages} pages</li>
-              <li>${this.data.size.width}"×${this.data.size.height}"</li>
+              <li class="type strong">${this.data.size.pages} pages</li>
+              <li class="type strong">${this.data.size.width}"×${this.data.size.height}"</li>
               ${this.data.tags.map(tag => html`<li>${tag}</li>`)}
             </ul>
           </section>

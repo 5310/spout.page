@@ -76,6 +76,7 @@
       .subtitle {
         font-family: Raleway, sans-serif;
         font-size: --u-1;
+        letter-spacing: 0.05em;
       }
 
       .author {
@@ -85,6 +86,7 @@
         font-size: --u0;
         font-variant-caps: all-small-caps;
         text-transform: uppercase;
+        letter-spacing: 0.1em;
       }
 
       .brief {
@@ -109,12 +111,15 @@
         .details {
           font-size: --u-2;
           text-transform: uppercase;
+          letter-spacing: 0.1em;
           list-style-type: none;
           line-height: --u0;
 
           li {
-            margin-top: -0.3em;
-            margin-bottom: 0.3em;
+
+            &.type.strong {
+              letter-spacing: 0.2em;
+            }
           }
         }
       }
