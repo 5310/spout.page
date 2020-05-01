@@ -1,6 +1,9 @@
 import { LitElement, html, property, customElement } from '/web_modules/lit-element.js'
 import { unsafeHTML } from '/web_modules/lit-html/directives/unsafe-html.js'
 import { Book } from '../../types'
+import '/app/components/circle-fit-container/index.js'
+
+const LOADDELAY = 500
 
 @customElement('spout-book')
 export class SpoutBook extends LitElement {
@@ -35,9 +38,9 @@ export class SpoutBook extends LitElement {
     return html`
       <link rel="stylesheet" href="/app/components/book/index.css" />
 
-      <main class="${this.cover || this.listing ? 'partial' : ''}">
+      <main class="${this.cover || this.listing ? 'partial' : ''}" style="opacity: 0;">
         <section class="cover">
-          <div></div>
+          <spout-circle-fit-container></spout-circle-fit-container>
         </section>
 
         <section class="listing">
@@ -62,5 +65,12 @@ export class SpoutBook extends LitElement {
         <section class='gallery'></section>
       </main>
     `
+  }
+
+  firstUpdated() {
+    const $main = (this.shadowRoot as ShadowRoot).querySelector('main') as HTMLElement
+    self.setTimeout(() => {
+      requestAnimationFrame(() => $main.style.opacity = '1')
+    }, LOADDELAY)
   }
 }
