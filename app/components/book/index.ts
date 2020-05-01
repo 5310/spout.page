@@ -85,7 +85,7 @@ export class SpoutBook extends LitElement {
         <section class='gallery'>
           <main>
             ${this.data.gallery.map(({ aspectRatio }) => html`
-              <spout-circle-fit-container fitWidth ignoreWidth .aspectRatio=${aspectRatio} style="width: 100vw;"></spout-circle-fit-container>
+              <spout-circle-fit-container fitWidth ignoreWidth .aspectRatio=${aspectRatio}></spout-circle-fit-container>
             `)}
           </main>
         </section>
@@ -104,10 +104,6 @@ export class SpoutBook extends LitElement {
         $gallery.style.paddingLeft = $images[0].clientWidth / $gallery.clientWidth <= 0.8
           ? `${($gallery.clientWidth - $images[0].clientWidth) / 2}px`
           : ''
-
-        // NOTE: in case we want to make the gallery images strictly fit within the viewport
-        // $images.forEach($ => ($ as HTMLElement).style.width = '')
-        // $images[0].scroll(0, 0)
       })
     }, LOADDELAY)
   }
