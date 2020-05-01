@@ -1,5 +1,6 @@
 import { LitElement, html, property, customElement } from '/web_modules/lit-element.js'
 
+const LOADDELAY = 500
 const ROTATIONLIMIT = 60
 
 @customElement('spout-circle-fit-container')
@@ -39,7 +40,7 @@ export class SpoutCircleFitContainer extends LitElement {
   render() {
     return html`
       <link rel="stylesheet" href="/app/components/circle-fit-container/index.css" />
-      <main>
+      <main style="display: none; opacity: 0;">
         <div class='circle'></div>
         <slot></slot>
       </main>
@@ -48,12 +49,17 @@ export class SpoutCircleFitContainer extends LitElement {
 
   connectedCallback() {
     super.connectedCallback()
-    window.addEventListener('resize', this.resize.bind(this))
+    self.addEventListener('resize', this.resize.bind(this))
   }
 
-  // firstUpdated(changedProperties: any) {
-  //   requestAnimationFrame(() => this.resize())
-  // }
+  firstUpdated(changedProperties: any) {
+    const $main = (this.shadowRoot as ShadowRoot).querySelector('main') as HTMLElement
+    self.setTimeout(() => {
+      $main.style.display = ''
+      requestAnimationFrame(() => $main.style.opacity = '1')
+      this.resize()
+    }, LOADDELAY)
+  }
 
   updated(changedProperties: any) {
     this.resize()
@@ -75,7 +81,7 @@ export class SpoutCircleFitContainer extends LitElement {
     const mainScrollWidth = $main.scrollWidth || Infinity
     const mainScrollHeight = $main.scrollHeight || Infinity
 
-    this.#diameter = this.diameter || Math.min(mainScrollWidth, mainScrollHeight, window.innerHeight)
+    this.#diameter = this.diameter || Math.min(mainScrollWidth, mainScrollHeight, self.innerHeight)
 
     const angle = Math.atan(this.aspectRatio <= 0 ? 1 / 1 : this.aspectRatio)
 
@@ -92,7 +98,7 @@ export class SpoutCircleFitContainer extends LitElement {
     //   angle,
     //   width,
     //   height,
-    // })
+    // }, self.document.body.scrollWidth)
 
     $slot.style.width = `${width}px`
     $slot.style.height = `${height}px`
