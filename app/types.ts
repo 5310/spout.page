@@ -7,8 +7,8 @@ export type MarkupBlock = string
 export type Image = {
   srcset: Srcset,
   aspectratio: number,
-  blurhash?: string,
   bleed?: { top: number, left: number, bottom: number, right: number }
+  blurhash?: string,
 }
 
 export type Book = {
