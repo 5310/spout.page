@@ -93,11 +93,13 @@
 
       ? circle-fit-container
         ! implement prototype with slot
+        ! implement window resize handler
+        ? throttle window resize handler
         !~ see whether a resizeObserver can be used instead
           resizeObserver doesn't seem to trigger on stretches?
           regardless, we can't go ahead yet without a lot of headache as TypeScript doesn't have types for it
-        ? implement random offsets
-          ? figure out how to do `offsetY`
+        ! implement random offsets
+          ! figure out how to do `offsetY`
         ! implement manual offsets
 
       ? image
