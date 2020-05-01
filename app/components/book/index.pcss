@@ -5,7 +5,7 @@
 :host {
   width: 100%;
   min-height: 100%;
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y proximity;
 
   & > main {
     display: grid;
@@ -24,6 +24,7 @@
 
     @media (width > 640px) {
       @media (min-aspect-ratio: 1/1) {
+        scroll-snap-type: y mandatory;
         grid-auto-rows: minmax(100vh, auto);
       }
     }
