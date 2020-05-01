@@ -31,6 +31,7 @@
     & > * {
       grid-column-start: 2;
       grid-column-end: -1;
+      scroll-snap-align: start;
       min-height: 100%;
       display: grid;
       align-content: center;
@@ -141,7 +142,28 @@
       &.gallery {
         grid-column-start: 1;
         grid-column-end: -1;
+        scroll-snap-align: start;
+        height: 100vh;
         padding: 0;
+
+        & > main {
+          height: 100vh;
+          padding-left: 50vw;
+          transition: padding-left 1s ease-in-out;
+          display: grid;
+          grid-auto-flow: column;
+          grid-gap: --u0;
+          place-items: center;
+          justify-content: start;
+          overflow-x: scroll;
+          overflow-y: hidden;
+          scroll-snap-type: x proximity;
+          scroll-behavior: smooth;
+
+          & > * {
+            scroll-snap-align: center;
+          }
+        }
       }
     }
   }

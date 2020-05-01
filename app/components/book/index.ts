@@ -28,7 +28,21 @@ export class SpoutBook extends LitElement {
 <p>However, the path was not desolate for Mark Twain. It was The Garden of Eden!</p>
 <p>What was it between Adam and Eve? Love, as we know. But was it like the love as we know it NOW? Or was it different back then, in that primordial universe?</p>
 <p>Two highly imaginative tales by Mark Twain, dealing with the human psychology of love—the simplest pleasure—the strongest compassion—the richest benevlolence—and yet the toughest emotion to stand by—are brought together under this title: Chronicle of Eden.</p>
-    `
+    `,
+    gallery: [
+      {
+        aspectRatio: 1,
+      },
+      {
+        aspectRatio: 0.5,
+      },
+      {
+        aspectRatio: 1.141,
+      },
+      {
+        aspectRatio: 0.75,
+      },
+    ],
   }
 
   @property({ type: Boolean })
@@ -65,7 +79,13 @@ export class SpoutBook extends LitElement {
 
         <section class='blurb'>${unsafeHTML(this.data.blurb)}</section>
 
-        <section class='gallery'></section>
+        <section class='gallery'>
+          <main>
+            ${this.data.gallery.map(({ aspectRatio }) => html`
+              <spout-circle-fit-container fit ignoreWidth .aspectRatio=${aspectRatio}></spout-circle-fit-container>
+            `)}
+          </main>
+        </section>
       </main>
     `
   }
@@ -74,6 +94,18 @@ export class SpoutBook extends LitElement {
     const $main = (this.shadowRoot as ShadowRoot).querySelector('main') as HTMLElement
     self.setTimeout(() => {
       requestAnimationFrame(() => $main.style.opacity = '1')
+      requestAnimationFrame(() => {
+        const $gallery = $main.querySelector('.gallery > main') as HTMLElement
+        const $firstChild = $main.querySelector('.gallery > main > *:first-child') as HTMLElement
+
+        const padding = ($gallery.clientWidth - $firstChild.clientWidth) / 2
+
+        $gallery.style.paddingLeft = $firstChild.clientWidth / $gallery.clientWidth <= 0.8
+          ? `${($gallery.clientWidth - $firstChild.clientWidth) / 2}px`
+          : ''
+
+        $firstChild.scroll(0, 0)
+      })
     }, LOADDELAY)
   }
 }
