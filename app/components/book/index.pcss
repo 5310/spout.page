@@ -31,8 +31,8 @@
     & > * {
       grid-column-start: 2;
       grid-column-end: -1;
-      scroll-snap-align: start;
       min-height: 100%;
+      padding: --u0;
       display: grid;
       align-content: center;
 
@@ -44,6 +44,7 @@
         grid-column-start: 1;
         grid-column-end: span 1;
         scroll-snap-align: none;
+        padding: 0;
         align-content: stretch;
 
         @media (width > 640px) {
