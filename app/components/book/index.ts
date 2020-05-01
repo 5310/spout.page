@@ -60,7 +60,7 @@ export class SpoutBook extends LitElement {
 
       <main class="${this.cover || this.listing ? 'partial' : ''}" style="opacity: 0;">
         <section class="cover">
-          <!-- <spout-circle-fit-container .aspectRatio=${this.data.cover.aspectRatio}></spout-circle-fit-container> -->
+          <spout-circle-fit-container .aspectRatio=${this.data.cover.aspectRatio}></spout-circle-fit-container>
         </section>
 
         <section class="listing">
