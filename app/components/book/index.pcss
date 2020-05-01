@@ -5,7 +5,7 @@
 :host {
   width: 100%;
   min-height: 100%;
-  scroll-snap-type: y proximity;
+  scroll-snap-type: y mandatory;
 
   & > main {
     display: grid;
@@ -24,7 +24,6 @@
 
     @media (width > 640px) {
       @media (min-aspect-ratio: 1/1) {
-        scroll-snap-type: y mandatory;
         grid-auto-rows: minmax(100vh, auto);
       }
     }
@@ -36,10 +35,16 @@
       padding: --u0;
       display: grid;
       align-content: center;
+      scroll-snap-align: none;
 
       @media (width > 640px) {
-        scroll-snap-align: start;
         padding: --u8 0;
+      }
+
+      @media (width > 1024px) {
+        @media (min-aspect-ratio: 1/1) {
+          scroll-snap-align: start;
+        }
       }
 
       &.cover {
@@ -147,6 +152,7 @@
         grid-column-end: -1;
         height: 100vh;
         padding: 0;
+        scroll-snap-align: start;
 
         & > main {
           height: 100vh;
