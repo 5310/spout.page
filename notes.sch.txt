@@ -73,8 +73,15 @@
         ? block with placeholder content
           ! listing
           ! blurb
-          ? cover with circle-fit-container
-          ? gallery with circle-fit-container and image
+          ! cover with circle-fit-container
+          ? gallery
+            ? with circle-fit-container
+              ! templating
+              ! basic styles
+              ? add a drag-scroller that doesn't need a scrollbar and also works on mobile
+                @ https://ilyashubin.github.io/scrollbooster/
+              ! center the first image
+            ? with image
         ! Tweak scroll-snap
           ! Fix medium-scale scroll-snaps from clipping
             Isn't actually a bug. What did you actually see?
@@ -90,6 +97,7 @@
           ! Settle OTF features for the base font
         ? Implement section toggling 
           ? Try not to populate sections that aren't shown at least at the start
+        ? proper margins/paddings, especially for small-scale view
 
       ? circle-fit-container
         ! implement prototype with slot
