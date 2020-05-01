@@ -9,6 +9,9 @@ const LOADDELAY = 500
 export class SpoutBook extends LitElement {
   @property({ type: Object })
   data /*: Book*/ = {
+    cover: {
+      aspectRatio: 1 / Math.sqrt(2),
+    },
     title: 'An Obscure & Overlong Book',
     subtitle: 'You\'ve Probably never heard of it',
     author: 'E. Plumbus',
@@ -40,7 +43,7 @@ export class SpoutBook extends LitElement {
 
       <main class="${this.cover || this.listing ? 'partial' : ''}" style="opacity: 0;">
         <section class="cover">
-          <spout-circle-fit-container></spout-circle-fit-container>
+          <spout-circle-fit-container .aspectRatio=${this.data.cover.aspectRatio}></spout-circle-fit-container>
         </section>
 
         <section class="listing">
