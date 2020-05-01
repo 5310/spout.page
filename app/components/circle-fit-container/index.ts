@@ -21,16 +21,18 @@ export class SpoutCircleFitContainer extends LitElement {
   offsetR: number = 0
 
   @property({ type: Boolean })
-  randomX: boolean = true
+  randomX: boolean = false
 
   @property({ type: Boolean })
-  randomY: boolean = true
+  randomY: boolean = false
 
   @property({ type: Boolean })
-  randomR: boolean = true
+  randomR: boolean = false
 
-  #mainWidth = ''
-  #mainHeight = ''
+  #diameter: number = 0
+  #offsetX: number = (Math.random() > 0.5 ? +1 : -1) * Math.random()
+  #offsetY: number = (Math.random() > 0.5 ? +1 : -1) * Math.random()
+  #offsetR: number = (Math.random() > 0.5 ? +1 : -1) * Math.random()
 
   render() {
     return html`
@@ -41,6 +43,15 @@ export class SpoutCircleFitContainer extends LitElement {
       </main>
     `
   }
+
+  connectedCallback() {
+    super.connectedCallback()
+    window.addEventListener('resize', this.resize.bind(this))
+  }
+
+  // firstUpdated(changedProperties: any) {
+  //   requestAnimationFrame(() => this.resize())
+  // }
 
   updated(changedProperties: any) {
     this.resize()
@@ -59,13 +70,18 @@ export class SpoutCircleFitContainer extends LitElement {
     $main.style.width = ''
     $main.style.height = ''
 
-    const diameter = this.diameter || Math.min($main.scrollWidth || Infinity, $main.scrollHeight || Infinity, window.innerHeight)
+    const mainScrollWidth = $main.scrollWidth || Infinity
+    const mainScrollHeight = $main.scrollHeight || Infinity
+
+    this.#diameter = this.diameter || Math.min(mainScrollWidth, mainScrollHeight, window.innerHeight)
+
     const angle = Math.atan(this.aspectRatio <= 0 ? 1 / 1 : this.aspectRatio)
 
-    $circle.style.width = $circle.style.height = `${Math.floor(diameter)}px`
+    $circle.style.width = $circle.style.height = `${Math.floor(this.#diameter)}px`
 
-    const width = Math.floor(diameter * Math.sin(angle))
-    const height = Math.floor(diameter * Math.cos(angle))
+    const width = Math.floor(this.#diameter * Math.sin(angle))
+    const height = Math.floor(this.#diameter * Math.cos(angle))
+
     $slot.style.width = `${width}px`
     $slot.style.height = `${height}px`
 
@@ -79,10 +95,34 @@ export class SpoutCircleFitContainer extends LitElement {
     $circle.style.display = 'initial'
     $slot.style.display = 'initial'
 
-    const offsetX = this.offsetX || (this.randomX && this.fit ? 0 : (Math.random() > 0.5 ? +1 : -1) * Math.random() * ($main.scrollWidth - diameter) / 2)
-    const offsetY = this.offsetY || (this.randomX && this.fit ? 0 : (Math.random() > 0.5 ? +1 : -1) * Math.random() * ($main.scrollHeight - diameter) / 2)
-    const offsetR = this.offsetR || (this.randomR ? (Math.floor(Math.random() * 3) + (Math.random() > 0.5 ? +1 : -1) * Math.random() ** 2) * 30 : 0)
-    $circle.style.transform = `translate(${offsetX}px)`
-    $slot.style.transform = `translate(${offsetX}px) rotate(${offsetR}deg)`
+    this.offset()
+  }
+
+  offset() {
+    const $main = (this.shadowRoot as ShadowRoot).querySelector('main') as HTMLElement
+    const $circle = (this.shadowRoot as ShadowRoot).querySelector('.circle') as HTMLElement
+    const $slot = (this.shadowRoot as ShadowRoot).querySelector('slot') as HTMLElement
+
+    const mainScrollWidth = $main.scrollWidth
+    const mainScrollHeight = $main.scrollHeight
+
+    // wait if the main element hasn't been redrawn yet, since we need those dimensions
+    if (!mainScrollWidth || !mainScrollHeight) {
+      requestAnimationFrame(() => this.offset())
+      return
+    }
+
+    const translateX = this.randomX && !this.fit
+      ? (this.offsetX || this.#offsetX) * (mainScrollWidth - this.#diameter) / 2
+      : 0
+    const translateY = this.randomY && !this.fit
+      ? (this.offsetY || this.#offsetY) * (mainScrollHeight - this.#diameter) / 2
+      : 0
+    const rotate = this.randomR
+      ? (this.offsetY || this.#offsetY) * 80
+      : 0
+
+    $circle.style.transform = `translate(${translateX}px, ${translateY}px)`
+    $slot.style.transform = `translate(${translateX}px, ${translateY}px) rotate(${rotate}deg)`
   }
 }
