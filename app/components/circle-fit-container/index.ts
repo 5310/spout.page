@@ -1,5 +1,7 @@
 import { LitElement, html, property, customElement } from '/web_modules/lit-element.js'
 
+const ROTATIONLIMIT = 60
+
 @customElement('spout-circle-fit-container')
 export class SpoutCircleFitContainer extends LitElement {
   @property({ type: Number })
@@ -30,9 +32,9 @@ export class SpoutCircleFitContainer extends LitElement {
   randomR: boolean = false
 
   #diameter: number = 0
-  #offsetX: number = (Math.random() > 0.5 ? +1 : -1) * Math.random()
-  #offsetY: number = (Math.random() > 0.5 ? +1 : -1) * Math.random()
-  #offsetR: number = (Math.random() > 0.5 ? +1 : -1) * Math.random()
+  #randomOffsetX: number = (Math.random() > 0.5 ? +1 : -1) * Math.random()
+  #randomOffsetY: number = (Math.random() > 0.5 ? +1 : -1) * Math.random()
+  #randomOffsetR: number = (Math.random() > 0.5 ? +1 : -1) * Math.random()
 
   render() {
     return html`
@@ -82,6 +84,16 @@ export class SpoutCircleFitContainer extends LitElement {
     const width = Math.floor(this.#diameter * Math.sin(angle))
     const height = Math.floor(this.#diameter * Math.cos(angle))
 
+    // DEBUG:
+    // console.log({
+    //   mainScrollWidth,
+    //   mainScrollHeight,
+    //   diameter: this.#diameter,
+    //   angle,
+    //   width,
+    //   height,
+    // })
+
     $slot.style.width = `${width}px`
     $slot.style.height = `${height}px`
 
@@ -112,15 +124,26 @@ export class SpoutCircleFitContainer extends LitElement {
       return
     }
 
-    const translateX = this.randomX && !this.fit
-      ? (this.offsetX || this.#offsetX) * (mainScrollWidth - this.#diameter) / 2
+    const translateX = !this.fit
+      ? ((this.randomX ? this.#randomOffsetX : this.offsetX) || 0) * (mainScrollWidth - this.#diameter) / 2
       : 0
-    const translateY = this.randomY && !this.fit
-      ? (this.offsetY || this.#offsetY) * (mainScrollHeight - this.#diameter) / 2
+    const translateY = !this.fit
+      ? ((this.randomY ? this.#randomOffsetY : this.offsetY) || 0) * (mainScrollHeight - this.#diameter) / 2
       : 0
     const rotate = this.randomR
-      ? (this.offsetY || this.#offsetY) * 80
+      ? (this.offsetY || this.#randomOffsetY) * ROTATIONLIMIT
       : 0
+
+    // DEBUG:
+    // console.log({
+    //   mainScrollWidth,
+    //   randomOffsetX: this.#randomOffsetX,
+    //   translateX,
+    //   mainScrollHeight,
+    //   offsetY: this.offsetY,
+    //   randomOffsetY: this.#randomOffsetY,
+    //   translateY,
+    // })
 
     $circle.style.transform = `translate(${translateX}px, ${translateY}px)`
     $slot.style.transform = `translate(${translateX}px, ${translateY}px) rotate(${rotate}deg)`
