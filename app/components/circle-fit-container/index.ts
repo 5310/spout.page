@@ -15,6 +15,12 @@ export class SpoutCircleFitContainer extends LitElement {
   fit: boolean = false
 
   @property({ type: Boolean })
+  fitWidth: boolean = false
+
+  @property({ type: Boolean })
+  fitHeight: boolean = false
+
+  @property({ type: Boolean })
   ignoreWidth: boolean = false
 
   @property({ type: Number })
@@ -93,23 +99,26 @@ export class SpoutCircleFitContainer extends LitElement {
     const width = Math.floor(this.#diameter * Math.sin(angle))
     const height = Math.floor(this.#diameter * Math.cos(angle))
 
-    // DEBUG:
-    // console.log({
-    //   mainScrollWidth,
-    //   mainScrollHeight,
-    //   diameter: this.#diameter,
-    //   angle,
-    //   width,
-    //   height,
-    // }, self.document.body.scrollWidth)
+    DEBUG:
+    console.log({
+      mainScrollWidth,
+      mainScrollHeight,
+      diameter: this.#diameter,
+      angle,
+      width,
+      height,
+    }, self.document.body.scrollWidth)
 
     $slot.style.width = `${width}px`
     $slot.style.height = `${height}px`
 
-    $circle.style.margin = 'initial'
-    if (this.fit) {
-      $circle.style.margin = '-100vmax'
+    $circle.style.marginTop = $circle.style.marginLeft = $circle.style.marginBottom = $circle.style.marginRight = 'initial'
+    if (this.fit || this.fitWidth) {
+      $circle.style.marginLeft = $circle.style.marginRight = '-100vmax'
       $main.style.width = $slot.style.width
+    }
+    if (this.fit || this.fitHeight) {
+      $circle.style.marginTop = $circle.style.marginBottom = '-100vmax'
       $main.style.height = $slot.style.height
     }
 

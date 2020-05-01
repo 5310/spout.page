@@ -31,6 +31,9 @@ export class SpoutBook extends LitElement {
     `,
     gallery: [
       {
+        aspectRatio: 1.618,
+      },
+      {
         aspectRatio: 1,
       },
       {
@@ -57,7 +60,7 @@ export class SpoutBook extends LitElement {
 
       <main class="${this.cover || this.listing ? 'partial' : ''}" style="opacity: 0;">
         <section class="cover">
-          <spout-circle-fit-container .aspectRatio=${this.data.cover.aspectRatio}></spout-circle-fit-container>
+          <!-- <spout-circle-fit-container .aspectRatio=${this.data.cover.aspectRatio}></spout-circle-fit-container> -->
         </section>
 
         <section class="listing">
@@ -82,7 +85,7 @@ export class SpoutBook extends LitElement {
         <section class='gallery'>
           <main>
             ${this.data.gallery.map(({ aspectRatio }) => html`
-              <spout-circle-fit-container fit ignoreWidth .aspectRatio=${aspectRatio}></spout-circle-fit-container>
+              <spout-circle-fit-container fitWidth ignoreWidth .aspectRatio=${aspectRatio} style="width: 100vw;"></spout-circle-fit-container>
             `)}
           </main>
         </section>
@@ -96,15 +99,15 @@ export class SpoutBook extends LitElement {
       requestAnimationFrame(() => $main.style.opacity = '1')
       requestAnimationFrame(() => {
         const $gallery = $main.querySelector('.gallery > main') as HTMLElement
-        const $firstChild = $main.querySelector('.gallery > main > *:first-child') as HTMLElement
+        const $images = [...$main.querySelectorAll('.gallery > main > *')]
 
-        const padding = ($gallery.clientWidth - $firstChild.clientWidth) / 2
-
-        $gallery.style.paddingLeft = $firstChild.clientWidth / $gallery.clientWidth <= 0.8
-          ? `${($gallery.clientWidth - $firstChild.clientWidth) / 2}px`
+        $gallery.style.paddingLeft = $images[0].clientWidth / $gallery.clientWidth <= 0.8
+          ? `${($gallery.clientWidth - $images[0].clientWidth) / 2}px`
           : ''
 
-        $firstChild.scroll(0, 0)
+        // NOTE: in case we want to make the gallery images strictly fit within the viewport
+        // $images.forEach($ => ($ as HTMLElement).style.width = '')
+        // $images[0].scroll(0, 0)
       })
     }, LOADDELAY)
   }
