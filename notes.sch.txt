@@ -98,6 +98,8 @@
         ? Implement section toggling 
           ? Try not to populate sections that aren't shown at least at the start
         ! proper margins/paddings, especially for small-scale view
+        ? add resize handler
+          at least for the gallery
 
       ? circle-fit-container
         ! implement prototype with slot

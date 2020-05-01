@@ -149,7 +149,7 @@ export class SpoutCircleFitContainer extends LitElement {
       ? ((this.randomY ? this.#randomOffsetY : this.offsetY) || 0) * (mainScrollHeight - this.#diameter) / 2
       : 0
     const rotate = this.randomR
-      ? (this.offsetY || this.#randomOffsetY) * ROTATIONLIMIT
+      ? (this.offsetY || this.#randomOffsetR) * ROTATIONLIMIT
       : 0
 
     // DEBUG:
