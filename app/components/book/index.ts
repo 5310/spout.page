@@ -1,5 +1,6 @@
 import { LitElement, html, property, customElement } from '/web_modules/lit-element.js'
 import { unsafeHTML } from '/web_modules/lit-html/directives/unsafe-html.js'
+import mousecase from '/app/utils/mousecase.js'
 import { Book } from '../../types'
 import '/app/components/circle-fit-container/index.js'
 
@@ -104,6 +105,8 @@ export class SpoutBook extends LitElement {
         $gallery.style.paddingLeft = $images[0].clientWidth / $gallery.clientWidth <= 0.8
           ? `${($gallery.clientWidth - $images[0].clientWidth) / 2}px`
           : ''
+
+        mousecase($gallery).init()
       })
     }, LOADDELAY)
   }
