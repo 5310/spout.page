@@ -4,8 +4,10 @@
     ? Snowpack and TypeScript
       ? Find a way to import .js version sof .ts files type and all without breaking in-place compilation
       ? Find a way to build the site to a directory
-        It's trivial to do this for TypeScript and PostCSS
-        But we need to copy over anything else as well
+        ? It should be trivial to do this for TypeScript
+          @ https://github.com/microsoft/TypeScript/issues/16577
+        ? And even easier for PostCSS
+        ? But we need to copy over anything else as well
         As well as watch for such changes
       ! Dependency management
         Had to resort to absolute paths to make links eaier for web-components
