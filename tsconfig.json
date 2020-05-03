@@ -4,7 +4,6 @@
     "module": "esnext",
     "moduleResolution": "node",
     "baseUrl": ".",
-    "allowJs": true,
     "declaration": false,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,

@@ -27,7 +27,7 @@
     "lint:script": "npx tslint -p .",
     "lint:style": "npx stylelint './**/*.pcss'",
     "test:script": "npx jest --passWithNoTests",
-    "build:script": "rm ./app/**/*.js && npx tsc",
+    "build:script": "rm ./app/**/*.js; npx tsc",
     "build:style": "npx postcss './**/*.pcss' --base . --dir . --ext css",
     "postinstall": "npx snowpack"
   },
