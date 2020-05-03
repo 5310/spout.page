@@ -48,6 +48,9 @@
       ! Responsive unit of scale
       ! Reset stylesheet
       ! Debug rendering sheet
+        ! Debug coloring style
+        ! Make debug color a variable
+        ! Move the debug coloring variable only on the component demo HTMLs
       ! @font-faces sheet
       ? Color palette
       ? Extract base styles css
