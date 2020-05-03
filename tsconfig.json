@@ -4,6 +4,8 @@
     "module": "esnext",
     "moduleResolution": "node",
     "baseUrl": ".",
+    "allowJs": true,
+    "noEmit": true,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "strict": true,
@@ -27,6 +29,7 @@
     "**/*.ts"
   ],
   "exclude": [
+    "**/*.js",
     "node_modules",
     "web_modules",
     "**/__tests__/*"
