@@ -76,10 +76,10 @@
           ! blurb
           ! cover with circle-fit-container
           ? gallery
-            ? with circle-fit-container
+            ! with circle-fit-container
               ! templating
               ! basic styles
-              ? add a drag-scroller that doesn't need a scrollbar and also works on mobile
+              ! add a drag-scroller that doesn't need a scrollbar and also works on mobile
                 @ https://ilyashubin.github.io/scrollbooster/
               ! center the first image
             ? with image
@@ -99,7 +99,7 @@
         ? Implement section toggling 
           ? Try not to populate sections that aren't shown at least at the start
         ! proper margins/paddings, especially for small-scale view
-        ? add resize handler
+        !~ add resize handler
           at least for the gallery
 
       ? circle-fit-container
