@@ -19,9 +19,6 @@ export class SpoutCircleFitContainer extends LitElement {
   @property({ type: Boolean })
   fitHeight: boolean = false
 
-  @property({ type: Boolean })
-  ignoreWidth: boolean = false
-
   @property({ type: Number })
   offsetX: number = 0
 
@@ -91,10 +88,16 @@ export class SpoutCircleFitContainer extends LitElement {
     $main.style.width = ''
     $main.style.height = ''
 
-    const mainScrollWidth = this.ignoreWidth ? Infinity : $main.scrollWidth || Infinity
-    const mainScrollHeight = $main.scrollHeight || Infinity
+    const mainScrollWidth = $main.scrollWidth
+    const mainScrollHeight = $main.scrollHeight
 
-    this.#diameter = this.diameter || Math.min(mainScrollWidth, mainScrollHeight, self.innerHeight)
+    // wait if the main element hasn't been redrawn yet, since we need those dimensions
+    if (!mainScrollWidth) {
+      requestAnimationFrame(() => this.resize())
+      return
+    }
+
+    this.#diameter = this.diameter || Math.min(mainScrollWidth, mainScrollHeight || Infinity, self.innerHeight)
 
     const angle = Math.atan(this.aspectRatio <= 0 ? 1 / 1 : this.aspectRatio)
 
