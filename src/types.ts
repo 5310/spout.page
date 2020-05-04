@@ -4,11 +4,17 @@ export type MarkupSpan = string
 
 export type MarkupBlock = string
 
+export type BlurHash = {
+  width: number,
+  height: number,
+  hash: string,
+}
+
 export type Image = {
   srcset: Srcset,
   aspectRatio: number,
   bleed?: { top: number, left: number, bottom: number, right: number }
-  blurhash?: string,
+  blurhash?: BlurHash,
   alt?: string,
 }
 
