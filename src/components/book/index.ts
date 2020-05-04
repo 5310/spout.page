@@ -1,7 +1,7 @@
 import { LitElement, html, property, customElement } from '/web_modules/lit-element.js'
 import { unsafeHTML } from '/web_modules/lit-html/directives/unsafe-html.js'
 import mousecase from '/lib/mousecase.js'
-import { Book } from '../../types'
+import { Book } from '/types'
 import '/components/circle-fit-container/index.js'
 
 const LOADDELAY = 500
@@ -9,8 +9,9 @@ const LOADDELAY = 500
 @customElement('spout-book')
 export class SpoutBook extends LitElement {
   @property({ type: Object })
-  data /*: Book*/ = {
+  data: Book = {
     cover: {
+      srcset: '',
       aspectRatio: 1 / Math.sqrt(2),
     },
     title: 'An Obscure & Overlong Book',
@@ -32,18 +33,23 @@ export class SpoutBook extends LitElement {
     `,
     gallery: [
       {
+        srcset: '',
         aspectRatio: 1.618,
       },
       {
+        srcset: '',
         aspectRatio: 1,
       },
       {
+        srcset: '',
         aspectRatio: 0.5,
       },
       {
+        srcset: '',
         aspectRatio: 1.141,
       },
       {
+        srcset: '',
         aspectRatio: 0.75,
       },
     ],
