@@ -67,11 +67,13 @@ export class SpoutBook extends LitElement {
   @property({ type: Boolean })
   listing: boolean = false
 
+  #ready = false
+
   render() {
     return html`
       <link rel="stylesheet" href="/components/book/index.css" />
 
-      <main class="${this.cover || this.listing ? 'partial' : ''}" style="opacity: 0;">
+      <main class="${this.cover || this.listing ? 'partial' : ''}" style="display: none; opacity: 0;">
         <section class="cover">
           <spout-circle-fit-container .aspectRatio=${this.data.cover.aspectRatio}>
             <spout-image .data=${this.data.cover}></spout-image>
@@ -109,7 +111,14 @@ export class SpoutBook extends LitElement {
   }
 
   firstUpdated() {
+    const $stylesheet = (this.shadowRoot as ShadowRoot).querySelector('link') as HTMLElement
     const $main = (this.shadowRoot as ShadowRoot).querySelector('main') as HTMLElement
+    $stylesheet.addEventListener('load', () => {
+      this.#ready = true
+      $main.style.display = ''
+      self.requestAnimationFrame(() => $main.style.opacity = '')
+    })
+
     self.setTimeout(() => {
       requestAnimationFrame(() => $main.style.opacity = '1')
       requestAnimationFrame(() => {
@@ -123,5 +132,20 @@ export class SpoutBook extends LitElement {
         mousecase($gallery).init()
       })
     }, LOADDELAY)
+  }
+
+  resize() {
+    if (!this.#ready) return
+
+    const $main = (this.shadowRoot as ShadowRoot).querySelector('main') as HTMLElement
+
+    const $gallery = $main.querySelector('.gallery > main') as HTMLElement
+    const $images = [...$main.querySelectorAll('.gallery > main > *')]
+
+    $gallery.style.paddingLeft = $images[0].clientWidth / $gallery.clientWidth <= 0.8
+      ? `${($gallery.clientWidth - $images[0].clientWidth) / 2}px`
+      : ''
+
+    mousecase($gallery).init()
   }
 }
