@@ -1,3 +1,4 @@
+import log from '/lib/log.js'
 import { LitElement, html, property, customElement } from '/web_modules/lit-element.js'
 import { decode } from '/web_modules/blurhash.js'
 import { Image } from '/types'
@@ -69,12 +70,12 @@ export class SpoutImage extends LitElement {
     const height = mainScrollWidth ? mainScrollWidth / this.data.aspectRatio : mainScrollHeight
 
     // DEBUG:
-    // console.log('image', 'resize', {
-    //   mainScrollWidth,
-    //   mainScrollHeight,
-    //   width,
-    //   height,
-    // })
+    log('image', 'resize', {
+      mainScrollWidth,
+      mainScrollHeight,
+      width,
+      height,
+    })
 
     // wait if the main element hasn't been redrawn yet, since we need those dimensions
     if (!width || !height) {

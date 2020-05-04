@@ -1,3 +1,4 @@
+import log from '/lib/log.js'
 import { LitElement, html, property, customElement } from '/web_modules/lit-element.js'
 
 const ROTATIONLIMIT = 60
@@ -107,14 +108,14 @@ export class SpoutCircleFitContainer extends LitElement {
     const height = Math.floor(this.#diameter * Math.cos(angle))
 
     // DEBUG:
-    // console.log('circle-fit-container', 'resize', {
-    //   mainScrollWidth,
-    //   mainScrollHeight,
-    //   diameter: this.#diameter,
-    //   angle,
-    //   width,
-    //   height,
-    // })
+    log('circle-fit-container', 'resize', {
+      mainScrollWidth,
+      mainScrollHeight,
+      diameter: this.#diameter,
+      angle,
+      width,
+      height,
+    })
 
     $slot.style.width = `${width}px`
     $slot.style.height = `${height}px`
@@ -162,15 +163,15 @@ export class SpoutCircleFitContainer extends LitElement {
       : 0
 
     // DEBUG:
-    // console.log('circle-fit-container', 'offset', {
-    //   mainScrollWidth,
-    //   randomOffsetX: this.#randomOffsetX,
-    //   translateX,
-    //   mainScrollHeight,
-    //   offsetY: this.offsetY,
-    //   randomOffsetY: this.#randomOffsetY,
-    //   translateY,
-    // })
+    log('circle-fit-container', 'offset', {
+      mainScrollWidth,
+      randomOffsetX: this.#randomOffsetX,
+      translateX,
+      mainScrollHeight,
+      offsetY: this.offsetY,
+      randomOffsetY: this.#randomOffsetY,
+      translateY,
+    })
 
     $circle.style.transform = `translate(${translateX}px, ${translateY}px)`
     $slot.style.transform = `translate(${translateX}px, ${translateY}px) rotate(${rotate}deg)`
