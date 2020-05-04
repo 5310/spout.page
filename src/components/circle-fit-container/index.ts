@@ -1,6 +1,5 @@
 import { LitElement, html, property, customElement } from '/web_modules/lit-element.js'
 
-const LOADDELAY = 500
 const ROTATIONLIMIT = 60
 
 @customElement('spout-circle-fit-container')
@@ -41,6 +40,7 @@ export class SpoutCircleFitContainer extends LitElement {
   @property({ type: Boolean })
   randomR: boolean = false
 
+  #ready = false
   #diameter: number = 0
   #randomOffsetX: number = (Math.random() > 0.5 ? +1 : -1) * Math.random()
   #randomOffsetY: number = (Math.random() > 0.5 ? +1 : -1) * Math.random()
@@ -62,12 +62,14 @@ export class SpoutCircleFitContainer extends LitElement {
   }
 
   firstUpdated(changedProperties: any) {
+    const $stylesheet = (this.shadowRoot as ShadowRoot).querySelector('link') as HTMLElement
     const $main = (this.shadowRoot as ShadowRoot).querySelector('main') as HTMLElement
-    self.setTimeout(() => {
+    $stylesheet.addEventListener('load', () => {
+      this.#ready = true
       $main.style.display = ''
-      requestAnimationFrame(() => $main.style.opacity = '1')
+      self.requestAnimationFrame(() => $main.style.opacity = '')
       this.resize()
-    }, LOADDELAY)
+    })
   }
 
   updated(changedProperties: any) {
@@ -75,6 +77,8 @@ export class SpoutCircleFitContainer extends LitElement {
   }
 
   resize() {
+    if (!this.#ready) return
+
     const $main = (this.shadowRoot as ShadowRoot).querySelector('main') as HTMLElement
     const $circle = (this.shadowRoot as ShadowRoot).querySelector('.circle') as HTMLElement
     const $slot = (this.shadowRoot as ShadowRoot).querySelector('slot') as HTMLElement
@@ -129,6 +133,8 @@ export class SpoutCircleFitContainer extends LitElement {
   }
 
   offset() {
+    if (!this.#ready) return
+
     const $main = (this.shadowRoot as ShadowRoot).querySelector('main') as HTMLElement
     const $circle = (this.shadowRoot as ShadowRoot).querySelector('.circle') as HTMLElement
     const $slot = (this.shadowRoot as ShadowRoot).querySelector('slot') as HTMLElement

@@ -2,8 +2,6 @@ import { LitElement, html, property, customElement } from '/web_modules/lit-elem
 import { decode } from '/web_modules/blurhash.js'
 import { Image } from '/types'
 
-const LOADDELAY = 500
-
 @customElement('spout-image')
 export class SpoutImage extends LitElement {
   @property({ type: Object })
@@ -17,6 +15,7 @@ export class SpoutImage extends LitElement {
     },
   }
 
+  #ready = false
   #blurhash: Uint8ClampedArray = new Uint8ClampedArray()
 
   render() {
@@ -35,12 +34,15 @@ export class SpoutImage extends LitElement {
   }
 
   firstUpdated(changedProperties: any) {
+    const $stylesheet = (this.shadowRoot as ShadowRoot).querySelector('link') as HTMLElement
     const $main = (this.shadowRoot as ShadowRoot).querySelector('main') as HTMLElement
-    self.setTimeout(() => {
+    $stylesheet.addEventListener('load', () => {
+      this.#ready = true
       $main.style.display = ''
-      requestAnimationFrame(() => $main.style.opacity = '1')
+      self.requestAnimationFrame(() => $main.style.opacity = '')
       this.resize()
-    }, LOADDELAY)
+    })
+
     const $img = (this.shadowRoot as ShadowRoot).querySelector('img') as HTMLImageElement
     $img.addEventListener('load', () => {
       $img.style.opacity = ''
@@ -52,6 +54,8 @@ export class SpoutImage extends LitElement {
   }
 
   resize() {
+    if (!this.#ready) return
+
     const $main = (this.shadowRoot as ShadowRoot).querySelector('main') as HTMLElement
     const $img = (this.shadowRoot as ShadowRoot).querySelector('img') as HTMLImageElement
     const $canvas = (this.shadowRoot as ShadowRoot).querySelector('canvas') as HTMLCanvasElement
@@ -64,12 +68,6 @@ export class SpoutImage extends LitElement {
     const width = mainScrollWidth ? mainScrollWidth : mainScrollHeight * this.data.aspectRatio
     const height = mainScrollWidth ? mainScrollWidth / this.data.aspectRatio : mainScrollHeight
 
-    if (!(width * height)) return
-
-    $img.width = width
-    $img.height = height
-    $img.style.display = ''
-
     // DEBUG:
     // console.log({
     //   mainScrollWidth,
@@ -77,6 +75,16 @@ export class SpoutImage extends LitElement {
     //   width,
     //   height,
     // })
+
+    // wait if the main element hasn't been redrawn yet, since we need those dimensions
+    if (!width || !height) {
+      requestAnimationFrame(() => this.resize())
+      return
+    }
+
+    $img.width = width
+    $img.height = height
+    $img.style.display = ''
 
     if (this.data.blurhash) {
 
