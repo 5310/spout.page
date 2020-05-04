@@ -1,8 +1,8 @@
 import { LitElement, html, property, customElement } from '/web_modules/lit-element.js'
 import { unsafeHTML } from '/web_modules/lit-html/directives/unsafe-html.js'
-import mousecase from '/app/utils/mousecase.js'
+import mousecase from '/lib/mousecase.js'
 import { Book } from '../../types'
-import '/app/components/circle-fit-container/index.js'
+import '/components/circle-fit-container/index.js'
 
 const LOADDELAY = 500
 
@@ -57,7 +57,7 @@ export class SpoutBook extends LitElement {
 
   render() {
     return html`
-      <link rel="stylesheet" href="/app/components/book/index.css" />
+      <link rel="stylesheet" href="/components/book/index.css" />
 
       <main class="${this.cover || this.listing ? 'partial' : ''}" style="opacity: 0;">
         <section class="cover">

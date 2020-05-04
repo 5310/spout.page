@@ -1,1 +1,0 @@
-import '/app/components/simple-greeting/index.js'

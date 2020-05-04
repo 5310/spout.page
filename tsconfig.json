@@ -17,18 +17,18 @@
       "/web_modules/*.js": [
         "node_modules/@types/*",
         "node_modules/*",
-        "web_modules/*.js"
+        "src/web_modules/*.js"
       ],
-      "/app/*": [
-        "app/*"
+      "/*": [
+        "src/*"
       ]
     }
   },
   "include": [
-    "**/*.ts"
+    "src/**/*.ts"
   ],
   "exclude": [
-    "app/**/*.js",
+    "dist",
     "node_modules",
     "web_modules",
     "**/__tests__/*"

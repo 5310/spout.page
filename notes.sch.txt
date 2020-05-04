@@ -286,10 +286,10 @@
 
 * Structure
   - README.md
+  - notes.scg.tex
+    you're here!
   - *
     config files
-  - index.html
-    the only HTML file, the SPA that also handles all virtual routing 
   - content/
     Actual content and associated assets
       They're written in YAML for convenience, but will be served as JSON through
@@ -312,21 +312,25 @@
     - collections/
       index.ts
       [collection].ts
-  - app/
+  - src/
     - components/
       - */
         - index.ts
         - index.pcss
         - *
-    - utils/
+    - lib/
       - *
+    - manifest/
+      for all the app manifest files and icons, etc
+    - web_modules/
+      maintained by Snowpack, gitIgnored
+    - index.html
     - index.pcss
     - index.ts
     - reset.pcss
     - scale.pcss
     - debug.pcss
     - types.ts
-  - web_modules/
   - node_modules/
   - scratch/
 

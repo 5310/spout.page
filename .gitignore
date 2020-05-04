@@ -1,8 +1,9 @@
 **/*.css
 **/*.js
+src/web_modules/
 dist/
 node_modules/
-scratch/
 web_modules/
+scratch/
 .cache/
 .now/

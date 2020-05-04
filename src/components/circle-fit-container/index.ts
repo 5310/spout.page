@@ -48,7 +48,7 @@ export class SpoutCircleFitContainer extends LitElement {
 
   render() {
     return html`
-      <link rel="stylesheet" href="/app/components/circle-fit-container/index.css" />
+      <link rel="stylesheet" href="/components/circle-fit-container/index.css" />
       <main style="display: none; opacity: 0;">
         <div class='circle'></div>
         <slot></slot>
