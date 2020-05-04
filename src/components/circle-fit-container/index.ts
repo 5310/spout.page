@@ -42,6 +42,7 @@ export class SpoutCircleFitContainer extends LitElement {
   randomR: boolean = false
 
   #ready = false
+  #retries = 0
   #diameter: number = 0
   #randomOffsetX: number = (Math.random() > 0.5 ? +1 : -1) * Math.random()
   #randomOffsetY: number = (Math.random() > 0.5 ? +1 : -1) * Math.random()
@@ -78,7 +79,7 @@ export class SpoutCircleFitContainer extends LitElement {
   }
 
   resize() {
-    if (!this.#ready) return
+    if (!this.#ready && this.#retries < 100) return
 
     const $main = (this.shadowRoot as ShadowRoot).querySelector('main') as HTMLElement
     const $circle = (this.shadowRoot as ShadowRoot).querySelector('.circle') as HTMLElement
@@ -97,6 +98,7 @@ export class SpoutCircleFitContainer extends LitElement {
 
     // wait if the main element hasn't been redrawn yet, since we need those dimensions
     if ((!this.ignoreWidth && !mainScrollWidth) || (this.ignoreWidth && !mainScrollHeight)) {
+      this.#retries++
       requestAnimationFrame(() => this.resize())
       return
     }
@@ -137,6 +139,8 @@ export class SpoutCircleFitContainer extends LitElement {
     $slot.style.display = 'initial'
 
     this.offset()
+
+    this.#retries = 0
   }
 
   offset() {

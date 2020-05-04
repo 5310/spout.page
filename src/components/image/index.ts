@@ -17,6 +17,7 @@ export class SpoutImage extends LitElement {
   }
 
   #ready = false
+  #retries = 0
   #blurhash: Uint8ClampedArray = new Uint8ClampedArray()
 
   render() {
@@ -55,7 +56,7 @@ export class SpoutImage extends LitElement {
   }
 
   resize() {
-    if (!this.#ready) return
+    if (!this.#ready && this.#retries < 100) return
 
     const $main = (this.shadowRoot as ShadowRoot).querySelector('main') as HTMLElement
     const $img = (this.shadowRoot as ShadowRoot).querySelector('img') as HTMLImageElement
@@ -79,6 +80,7 @@ export class SpoutImage extends LitElement {
 
     // wait if the main element hasn't been redrawn yet, since we need those dimensions
     if (!width || !height) {
+      this.#retries++
       requestAnimationFrame(() => this.resize())
       return
     }
@@ -101,5 +103,7 @@ export class SpoutImage extends LitElement {
       imageData.data.set(this.#blurhash)
       ctx.putImageData(imageData, 0, 0)
     }
+
+    this.#retries = 0
   }
 }

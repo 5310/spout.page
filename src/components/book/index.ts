@@ -68,6 +68,7 @@ export class SpoutBook extends LitElement {
   listing: boolean = false
 
   #ready = false
+  #retries = 0
 
   render() {
     return html`
@@ -131,13 +132,14 @@ export class SpoutBook extends LitElement {
   }
 
   resize() {
-    this.#ready = true
+    if (this.#ready && this.#retries < 100) return
 
     const $gallery = (this.shadowRoot as ShadowRoot).querySelector('.gallery > main') as HTMLElement
     const $images = [...(this.shadowRoot as ShadowRoot).querySelectorAll('.gallery > main > *')]
 
     // wait if the first gallery element hasn't been redrawn yet, since we need those dimensions
     if (!$images[0].clientWidth) {
+      this.#retries++
       requestAnimationFrame(() => this.resize())
       return
     }
@@ -145,5 +147,7 @@ export class SpoutBook extends LitElement {
     $gallery.style.paddingLeft = $images[0].clientWidth / $gallery.clientWidth <= 0.8
       ? `${($gallery.clientWidth - $images[0].clientWidth) / 2}px`
       : ''
+
+    this.#retries = 0
   }
 }
