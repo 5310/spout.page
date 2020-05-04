@@ -110,25 +110,40 @@ export class SpoutBook extends LitElement {
     `
   }
 
+  connectedCallback() {
+    super.connectedCallback()
+    self.addEventListener('resize', this.resize.bind(this))
+  }
+
   firstUpdated() {
     const $stylesheet = (this.shadowRoot as ShadowRoot).querySelector('link') as HTMLElement
     const $main = (this.shadowRoot as ShadowRoot).querySelector('main') as HTMLElement
     $stylesheet.addEventListener('load', () => {
       this.#ready = true
       $main.style.display = ''
+      self.requestAnimationFrame(() => $main.style.opacity = '')
 
       const $gallery = $main.querySelector('.gallery > main') as HTMLElement
-      const $images = [...$main.querySelectorAll('.gallery > main > *')]
-
       mousecase($gallery).init()
 
-      self.requestAnimationFrame(() => {
-        $main.style.opacity = ''
-
-        $gallery.style.paddingLeft = $images[0].clientWidth / $gallery.clientWidth <= 0.8
-          ? `${($gallery.clientWidth - $images[0].clientWidth) / 2}px`
-          : ''
-      })
+      this.resize()
     })
+  }
+
+  resize() {
+    this.#ready = true
+
+    const $gallery = (this.shadowRoot as ShadowRoot).querySelector('.gallery > main') as HTMLElement
+    const $images = [...(this.shadowRoot as ShadowRoot).querySelectorAll('.gallery > main > *')]
+
+    // wait if the first gallery element hasn't been redrawn yet, since we need those dimensions
+    if (!$images[0].clientWidth) {
+      requestAnimationFrame(() => this.resize())
+      return
+    }
+
+    $gallery.style.paddingLeft = $images[0].clientWidth / $gallery.clientWidth <= 0.8
+      ? `${($gallery.clientWidth - $images[0].clientWidth) / 2}px`
+      : ''
   }
 }
