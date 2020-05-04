@@ -1,0 +1,27 @@
+@import url("/reset.css");
+@import url("/typefaces.css");
+@import url("/debug.css");
+
+:host {
+  display: grid;
+  place-items: stretch;
+
+  main {
+    display: grid;
+    place-items: stretch;
+    background: --color-tint;
+    color: --color-ink;
+
+    > * {
+      grid-column-start: 1;
+      grid-column-end: -1;
+      grid-row-start: 1;
+      grid-row-end: -1;
+    }
+
+    & > img {
+      object-fit: cover;
+      z-index: 100;
+    }
+  }
+}
