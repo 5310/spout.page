@@ -3,6 +3,7 @@ import { unsafeHTML } from '/web_modules/lit-html/directives/unsafe-html.js'
 import mousecase from '/lib/mousecase.js'
 import { Book } from '/types'
 import '/components/circle-fit-container/index.js'
+import '/components/image/index.js'
 
 const LOADDELAY = 500
 
@@ -13,6 +14,11 @@ export class SpoutBook extends LitElement {
     cover: {
       srcset: '',
       aspectRatio: 1 / Math.sqrt(2),
+      blurhash: {
+        width: 32,
+        height: 32,
+        hash: 'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
+      },
     },
     title: 'An Obscure & Overlong Book',
     subtitle: 'You\'ve Probably never heard of it',
@@ -67,7 +73,9 @@ export class SpoutBook extends LitElement {
 
       <main class="${this.cover || this.listing ? 'partial' : ''}" style="opacity: 0;">
         <section class="cover">
-          <spout-circle-fit-container .aspectRatio=${this.data.cover.aspectRatio}></spout-circle-fit-container>
+          <spout-circle-fit-container .aspectRatio=${this.data.cover.aspectRatio}>
+            <spout-image .data=${this.data.cover}></spout-image>
+          </spout-circle-fit-container>
         </section>
 
         <section class="listing">
