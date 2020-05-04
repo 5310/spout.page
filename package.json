@@ -20,7 +20,7 @@
     "develop": "npx concurrently -s -k true -n 'watch,serve,localtunnel' 'npm run watch' 'npx serve dist' 'npx lt -p 5000'",
     "lint": "npm run script:lint && npm run style:lint",
     "test": "npm run script:test",
-    "watch": "npx concurrently -s -k true -n 'watch,script,style' 'npm run static:watch'npm:watch run script:watch' 'npm run watch:style'",
+    "watch": "npx concurrently -s -k true -n 'static,script,style' 'npm run static:watch' 'npm run script:watch' 'npm run style:watch'",
     "build": "npm run test && npm run static:build && npm run script:build && npm run style:build",
     "static:watch": "npx cpx '{src/**/*.{html,svg,png,jpg},src/web_modules/**/*}' dist --watch",
     "static:build": "npx cpx '{src/**/*.{html,svg,png,jpg},src/web_modules/**/*}' dist",
