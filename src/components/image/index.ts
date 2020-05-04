@@ -9,7 +9,7 @@ export class SpoutImage extends LitElement {
   @property({ type: Object })
   data: Image = {
     srcset: '',
-    aspectRatio: 1 / 2,
+    aspectRatio: 1 / 1,
     blurhash: {
       width: 32,
       height: 32,
@@ -23,7 +23,7 @@ export class SpoutImage extends LitElement {
     return html`
       <link rel="stylesheet" href="/components/image/index.css" />
       <main style="display: none; opacity: 0;">
-        <img alt="${this.data.alt}"></img>
+        <img alt="${this.data.alt ?? ''}" srcset="${this.data.srcset}" style="opacity: 0;" width=0 height=0></img>
         <canvas></canvas>
       </main>
     `
@@ -41,6 +41,10 @@ export class SpoutImage extends LitElement {
       requestAnimationFrame(() => $main.style.opacity = '1')
       this.resize()
     }, LOADDELAY)
+    const $img = (this.shadowRoot as ShadowRoot).querySelector('img') as HTMLImageElement
+    $img.addEventListener('load', () => {
+      $img.style.opacity = ''
+    })
   }
 
   updated(changedProperties: any) {
@@ -52,6 +56,8 @@ export class SpoutImage extends LitElement {
     const $img = (this.shadowRoot as ShadowRoot).querySelector('img') as HTMLImageElement
     const $canvas = (this.shadowRoot as ShadowRoot).querySelector('canvas') as HTMLCanvasElement
 
+    $img.style.display = 'none'
+
     const mainScrollWidth = $main.scrollWidth
     const mainScrollHeight = $main.scrollHeight
 
@@ -62,6 +68,7 @@ export class SpoutImage extends LitElement {
 
     $img.width = width
     $img.height = height
+    $img.style.display = ''
 
     // DEBUG:
     // console.log({
