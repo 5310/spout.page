@@ -64,12 +64,12 @@ export class SpoutImage extends LitElement {
     $img.height = height
 
     // DEBUG:
-    console.log({
-      mainScrollWidth,
-      mainScrollHeight,
-      width,
-      height,
-    })
+    // console.log({
+    //   mainScrollWidth,
+    //   mainScrollHeight,
+    //   width,
+    //   height,
+    // })
 
     if (this.data.blurhash) {
 
