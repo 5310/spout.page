@@ -69,7 +69,7 @@ export class SpoutImage extends LitElement {
     const height = mainScrollWidth ? mainScrollWidth / this.data.aspectRatio : mainScrollHeight
 
     // DEBUG:
-    // console.log({
+    // console.log('image', 'resize', {
     //   mainScrollWidth,
     //   mainScrollHeight,
     //   width,

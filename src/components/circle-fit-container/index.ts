@@ -104,14 +104,14 @@ export class SpoutCircleFitContainer extends LitElement {
     const height = Math.floor(this.#diameter * Math.cos(angle))
 
     // DEBUG:
-    // console.log({
+    // console.log('circle-fit-container', 'resize', {
     //   mainScrollWidth,
     //   mainScrollHeight,
     //   diameter: this.#diameter,
     //   angle,
     //   width,
     //   height,
-    // }, self.document.body.scrollWidth)
+    // })
 
     $slot.style.width = `${width}px`
     $slot.style.height = `${height}px`
@@ -159,7 +159,7 @@ export class SpoutCircleFitContainer extends LitElement {
       : 0
 
     // DEBUG:
-    // console.log({
+    // console.log('circle-fit-container', 'offset', {
     //   mainScrollWidth,
     //   randomOffsetX: this.#randomOffsetX,
     //   translateX,
