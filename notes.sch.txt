@@ -59,7 +59,7 @@
         ! Make debug color a variable
         ! Move the debug coloring variable only on the component demo HTMLs
       ! @font-faces sheet
-      ? Color palette
+      ! Color palette
       ? Extract base styles css
       ? Extract major type-treatments
 
