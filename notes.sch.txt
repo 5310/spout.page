@@ -137,6 +137,8 @@
           ? fallback routing with URLParameters
           ? placeholder content and transition
 
+  ? Accessibility
+
 
 * Architecture
 
