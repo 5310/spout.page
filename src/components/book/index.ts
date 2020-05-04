@@ -97,9 +97,9 @@ export class SpoutBook extends LitElement {
           </section>
         </section>
 
-        <section class='blurb'>${unsafeHTML(this.data.blurb)}</section>
+        <section class="blurb">${unsafeHTML(this.data.blurb)}</section>
 
-        <section class='gallery'>
+        <section class="gallery">
           <main>
             ${this.data.gallery.map(({ aspectRatio }) => html`
               <spout-circle-fit-container fitWidth ignoreWidth .aspectRatio=${aspectRatio}></spout-circle-fit-container>
@@ -116,36 +116,19 @@ export class SpoutBook extends LitElement {
     $stylesheet.addEventListener('load', () => {
       this.#ready = true
       $main.style.display = ''
-      self.requestAnimationFrame(() => $main.style.opacity = '')
-    })
 
-    self.setTimeout(() => {
-      requestAnimationFrame(() => $main.style.opacity = '1')
-      requestAnimationFrame(() => {
-        const $gallery = $main.querySelector('.gallery > main') as HTMLElement
-        const $images = [...$main.querySelectorAll('.gallery > main > *')]
+      const $gallery = $main.querySelector('.gallery > main') as HTMLElement
+      const $images = [...$main.querySelectorAll('.gallery > main > *')]
+
+      mousecase($gallery).init()
+
+      self.requestAnimationFrame(() => {
+        $main.style.opacity = ''
 
         $gallery.style.paddingLeft = $images[0].clientWidth / $gallery.clientWidth <= 0.8
           ? `${($gallery.clientWidth - $images[0].clientWidth) / 2}px`
           : ''
-
-        mousecase($gallery).init()
       })
-    }, LOADDELAY)
-  }
-
-  resize() {
-    if (!this.#ready) return
-
-    const $main = (this.shadowRoot as ShadowRoot).querySelector('main') as HTMLElement
-
-    const $gallery = $main.querySelector('.gallery > main') as HTMLElement
-    const $images = [...$main.querySelectorAll('.gallery > main > *')]
-
-    $gallery.style.paddingLeft = $images[0].clientWidth / $gallery.clientWidth <= 0.8
-      ? `${($gallery.clientWidth - $images[0].clientWidth) / 2}px`
-      : ''
-
-    mousecase($gallery).init()
+    })
   }
 }
