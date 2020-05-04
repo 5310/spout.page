@@ -5,6 +5,7 @@
 :host {
   display: grid;
   place-items: stretch;
+  color: --color-ink;
 
   & > main {
     display: grid;
@@ -21,6 +22,10 @@
     .circle {
       pointer-events: none;
       border-radius: 50%;
+    }
+
+    slot {
+      background: --color-ink;
     }
   }
 }

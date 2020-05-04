@@ -13,6 +13,8 @@
     place-items: stretch;
     transition: opacity 0.5s ease-out;
     scroll-snap-type: y proximity;
+    background: --color-paper;
+    color: --color-ink;
 
     @media (640px < width <= 1024px) {
       grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
@@ -116,8 +118,8 @@
           .cost {
             align-self: start;
             padding: --u0;
-            background: black;
-            color: white;
+            background: --color-ink;
+            color: --color-paper;
           }
 
           .details {
