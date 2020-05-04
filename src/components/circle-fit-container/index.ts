@@ -81,8 +81,8 @@ export class SpoutCircleFitContainer extends LitElement {
 
     $circle.style.display = 'none'
     $slot.style.display = 'none'
-    $circle.style.transform = 'initial'
-    $slot.style.transform = 'initial'
+    $circle.style.transform = ''
+    $slot.style.transform = ''
 
     $main.style.width = ''
     $main.style.height = ''
