@@ -24,7 +24,7 @@ export class SpoutImage extends LitElement {
       <link rel="stylesheet" href="/components/image/index.css" />
       <main style="display: none; opacity: 0;">
         <img alt="${this.data.alt ?? ''}" srcset="${this.data.srcset}" style="opacity: 0;" width=0 height=0></img>
-        <canvas></canvas>
+        <canvas width=0 height=0></canvas>
       </main>
     `
   }
