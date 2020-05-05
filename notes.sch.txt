@@ -57,6 +57,7 @@
     ! Trial web-component-driven workflow
     ! Create demo pages for each component for easier testing
     ? Debug harsh scroll-snaps on Chrome or disable it
+    ? Debug why the module isn't good enough to import components
 
     ? Common stylesheets
       ! Responsive unit of scale
