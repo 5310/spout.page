@@ -13,7 +13,7 @@ export type BlurHash = {
 export type Image = {
   srcset: Srcset,
   aspectRatio: number,
-  bleed?: { top: number, left: number, bottom: number, right: number }
+  // bleed?: { top: number, left: number, bottom: number, right: number }
   blurhash?: BlurHash,
   alt?: string,
 }
