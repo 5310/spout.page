@@ -12,7 +12,7 @@
     <script type="module" src="/components/book/index.js"></script>
     <style>
       :root {
-        --color-debug: rgba(0, 0, 0, 0.1);
+        /* --color-debug: rgba(0, 0, 0, 0.1); */
 
         background: var(--color-paper, white);
       }
@@ -21,6 +21,14 @@
 
   <body>
     <spout-book></spout-book>
+    <script>
+      fetch('/content/books/placeholder/index.json')
+        .then(response => response.json())
+        .then(data => {
+          const $book = document.querySelector('spout-book')
+          $book.data = data
+        })
+    </script>
   </body>
 
 </html>

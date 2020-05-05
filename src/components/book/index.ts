@@ -11,56 +11,7 @@ const LOADDELAY = 500
 @customElement('spout-book')
 export class SpoutBook extends LitElement {
   @property({ type: Object })
-  data: Book = {
-    cover: {
-      srcset: '',
-      aspectRatio: 1 / Math.sqrt(2),
-      blurhash: {
-        width: 32,
-        height: 32,
-        hash: 'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
-      },
-    },
-    title: 'An Obscure & Overlong Book',
-    subtitle: 'You\'ve Probably never heard of it',
-    author: 'E. Plumbus',
-    brief: 'You can also compose templates to create more complex templates. When a binding in the text content of a template returns a TemplateResult, the TemplateResult is interpolated in place.',
-    price: 300,
-    discount: 12,
-    size: { width: 11, height: 16, pages: 98 },
-    tags: [
-      'illustrated',
-      'annotated',
-      'translated',
-    ],
-    blurb: `
-<p>However, the path was not desolate for Mark Twain. It was The Garden of Eden!</p>
-<p>What was it between Adam and Eve? Love, as we know. But was it like the love as we know it NOW? Or was it different back then, in that primordial universe?</p>
-<p>Two highly imaginative tales by Mark Twain, dealing with the human psychology of love—the simplest pleasure—the strongest compassion—the richest benevlolence—and yet the toughest emotion to stand by—are brought together under this title: Chronicle of Eden.</p>
-    `,
-    gallery: [
-      {
-        srcset: '',
-        aspectRatio: 1.618,
-      },
-      {
-        srcset: '',
-        aspectRatio: 1,
-      },
-      {
-        srcset: '',
-        aspectRatio: 0.5,
-      },
-      {
-        srcset: '',
-        aspectRatio: 1.141,
-      },
-      {
-        srcset: '',
-        aspectRatio: 0.75,
-      },
-    ],
-  }
+  data: Book | undefined
 
   @property({ type: Object })
   hide = {
@@ -78,6 +29,7 @@ export class SpoutBook extends LitElement {
   #retries = 0
 
   render() {
+    if (!this.data) return
     return html`
       <link rel="stylesheet" href="/components/book/index.css" />
 
@@ -117,8 +69,10 @@ export class SpoutBook extends LitElement {
         ${this.hide.gallery ? '' : html`
           <section class="gallery">
             <main>
-              ${this.data.gallery.map(({ aspectRatio }) => html`
-                <spout-circle-fit-container fitWidth ignoreWidth .aspectRatio=${aspectRatio}></spout-circle-fit-container>
+              ${this.data.gallery.map(image => html`
+                <spout-circle-fit-container fitWidth ignoreWidth .aspectRatio=${image.aspectRatio}>
+                  <spout-image .data=${image}></spout-image>
+                </spout-circle-fit-container>
               `)}
             </main>
           </section>
