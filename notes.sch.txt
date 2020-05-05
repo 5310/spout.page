@@ -43,6 +43,9 @@
         @ https://developers.google.com/web/updates/2016/10/resizeobserver
       @ https://codepen.io/5310/pen/NWGvObZ?editors=1011
     ? PostCSS mixins using classes
+    ? Find a way for the favicon to adopt the palette of the page automatically
+    ? Find a way to delegate resizing of child components 
+      see how to do this with events that go downwards
 
   ! Development
 
@@ -74,9 +77,21 @@
       ? Serviceworker
       ? Lighthouse audit
 
+    ! Content
+      ! placeholder
+        ! book
+        ! collection
+      ! build process for yaml with Markdown
+
     ! Components
 
       ? collection
+        ! create component
+        ! block
+          ! books with fetches
+          ! listing
+        ! stickyfy books
+        ! alternate style withfor index
 
       ! book
         ! block s-scale layout
