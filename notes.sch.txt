@@ -1,6 +1,6 @@
 * Tasks
 
-  ? Tooling
+  ! Tooling
     ! Snowpack and TypeScript
       ! Find a way to import .js version sof .ts files type and all without breaking in-place compilation
       ! Find a way to build the site to a directory
@@ -17,15 +17,15 @@
       ! Whitelist subpackages because they have to be manually whitelisted
         @ https://www.snowpack.dev/#lit-html
         We _could_ put `--include **/*.ts` on the `npm run postinstall` hook, but I've decided to pick the simpler hand-selected route instead
-    ? PostCSS and StyleLint
+    ! PostCSS and StyleLint
       ! PostCSS with plugins
         ! VSCode integration
         ! Basics such as nesting, etc
         ! Convenient custom-properties and calculations
         ! CSS4 media queries
-      ? Stylelint
+      ! Stylelint
         ! Configuration
-        ? Fix linting on Vercel
+        ~? Fix linting on Vercel
 
   ? Research
     ! Learn how to do SPA routing for components
@@ -63,7 +63,7 @@
       ? Extract base styles css
       ? Extract major type-treatments
 
-    ! Manifest
+    ? Manifest
       ! Favicons
         ! SVG Favicons
         ! fallback ICO
@@ -75,6 +75,8 @@
       ? Lighthouse audit
 
     ! Components
+
+      ? collection
 
       ! book
         ! block s-scale layout
@@ -113,10 +115,10 @@
           at least for the gallery
         ! animation please
 
-      ? circle-fit-container
+      ! circle-fit-container
         ! implement prototype with slot
         ! implement window resize handler
-        ? throttle window resize handler
+        ! debounce window resize handler
         !~ see whether a resizeObserver can be used instead
           resizeObserver doesn't seem to trigger on stretches?
           regardless, we can't go ahead yet without a lot of headache as TypeScript doesn't have types for it
@@ -125,9 +127,10 @@
         ! implement manual offsets
 
       ? image
-        ? create component
+        ! create component
+        ! integrate blurhash
         ? implement bleed
-        ? integrate blurhash
+          we probably need a dummy rectangle like we have a dummy circle
 
       ? app
         ? local routing
