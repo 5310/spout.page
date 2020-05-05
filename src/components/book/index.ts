@@ -130,14 +130,33 @@ export class SpoutBook extends LitElement {
 
   firstUpdated() {
     const $stylesheet = (this.shadowRoot as ShadowRoot).querySelector('link') as HTMLElement
-    const $main = (this.shadowRoot as ShadowRoot).querySelector('main') as HTMLElement
     $stylesheet.addEventListener('load', () => {
       this.#ready = true
+
+      // render main
+      const $main = (this.shadowRoot as ShadowRoot).querySelector('main') as HTMLElement
       $main.style.display = ''
       self.requestAnimationFrame(() => $main.style.opacity = '')
 
+      // center gallery
       const $gallery = $main.querySelector('.gallery > main') as HTMLElement
       mousecase($gallery).init()
+
+      // animate sections load-in
+      const $sections = Array.from((this.shadowRoot as ShadowRoot).querySelectorAll('main > *')) as HTMLElement[]
+      $sections.forEach(($section, i) => {
+        $section.animate(
+          {
+            opacity: [0, 1]
+          },
+          {
+            delay: 200 * i,
+            duration: 500,
+            fill: 'forwards',
+            easing: 'ease-out',
+          }
+        )
+      })
 
       this.resize()
     })
