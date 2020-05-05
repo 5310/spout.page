@@ -58,11 +58,27 @@
         padding-top: --u8;
         align-content: stretch;
 
+        spout-circle-fit-container {
+          transition: height 1s ease-out;
+        }
+
         @media (width > 640px) {
           padding: 0;
 
           spout-circle-fit-container {
             max-height: 100vh;
+          }
+        }
+
+        &.small {
+          spout-circle-fit-container {
+            align-self: center;
+          }
+
+          @media (width > 640px) {
+            spout-circle-fit-container {
+              height: 30vw;
+            }
           }
         }
       }

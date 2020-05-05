@@ -71,6 +71,9 @@ export class SpoutBook extends LitElement {
     gallery: false,
   }
 
+  @property({ type: Boolean })
+  coverSmall = false
+
   #ready = false
   #retries = 0
 
@@ -80,8 +83,8 @@ export class SpoutBook extends LitElement {
 
       <main style="display: none; opacity: 0;">
         ${this.hide.cover ? '' : html`
-          <section class="cover">
-            <spout-circle-fit-container .aspectRatio=${this.data.cover.aspectRatio}>
+          <section class="cover ${this.coverSmall ? 'small' : ''}">
+            <spout-circle-fit-container .aspectRatio=${this.data.cover.aspectRatio} .randomX=${this.coverSmall} .randomR=${this.coverSmall}>
               <spout-image .data=${this.data.cover}></spout-image>
             </spout-circle-fit-container>
           </section>
