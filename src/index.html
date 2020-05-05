@@ -8,10 +8,25 @@
     <link rel="alternate icon" href="/manifest/favicon.ico">
     <link rel="stylesheet" href="/index.css">
     <script type="module" src="/index.js"></script>
+    <script type="module" src="/components/book/index.js"></script>
+    <style>
+      :root {
+        background: var(--color-paper, white);
+        color: var(--color-ink, black);
+      }
+    </style>
   </head>
 
   <body>
-    <spout-simple-greeting name="Everyone"></spout-simple-greeting>
+    <spout-book></spout-book>
+    <script>
+      fetch('/content/books/placeholder/index.json')
+        .then(response => response.json())
+        .then(data => {
+          const $book = document.querySelector('spout-book')
+          $book.data = data
+        })
+    </script>
   </body>
 
 </html>
