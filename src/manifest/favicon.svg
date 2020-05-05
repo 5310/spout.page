@@ -1,10 +1,10 @@
 <svg width="100" height="101" fill="none" xmlns="http://www.w3.org/2000/svg">
     <style>
-        .paper { fill: #dcceb4; }
-        .ink { fill: #41414d; }
+        .paper { fill: white; }
+        .ink { fill: black; }
         @media (prefers-color-scheme: dark) {
-            .paper { fill: #2b2b31; }
-            .ink { fill: #e0d5c0; }
+            .paper { fill: black; }
+            .ink { fill: white; }
         }
     </style>
     <g clip-path="url(#clip0)">
