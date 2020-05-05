@@ -61,11 +61,14 @@ export class SpoutBook extends LitElement {
     ],
   }
 
-  @property({ type: Boolean })
-  cover: boolean = false
-
-  @property({ type: Boolean })
-  listing: boolean = false
+  @property({ type: Object })
+  hide = {
+    cover: false,
+    titling: false,
+    store: false,
+    blurb: false,
+    gallery: false,
+  }
 
   #ready = false
   #retries = 0
@@ -74,39 +77,48 @@ export class SpoutBook extends LitElement {
     return html`
       <link rel="stylesheet" href="/components/book/index.css" />
 
-      <main class="${this.cover || this.listing ? 'partial' : ''}" style="display: none; opacity: 0;">
-        <section class="cover">
-          <spout-circle-fit-container .aspectRatio=${this.data.cover.aspectRatio}>
-            <spout-image .data=${this.data.cover}></spout-image>
-          </spout-circle-fit-container>
-        </section>
+      <main style="display: none; opacity: 0;">
+        ${this.hide.cover ? '' : html`
+          <section class="cover">
+            <spout-circle-fit-container .aspectRatio=${this.data.cover.aspectRatio}>
+              <spout-image .data=${this.data.cover}></spout-image>
+            </spout-circle-fit-container>
+          </section>
+        `}
 
         <section class="listing">
-          <section class="titling">
-            <div class="title">${this.data.title}</div>
-            <div class="subtitle">${this.data.subtitle}</div>
-            <div class="author">${this.data.author}</div>
-            <div class="brief">${this.data.brief}</div>
-          </section>
-          <section class="store">
-            <div class="cost">${this.data.price * (100 - (this.data.discount ?? 0)) / 100}₹</div>
-            <ul class="details">
-              <li class="type strong">${this.data.size.pages} pages</li>
-              <li class="type strong">${this.data.size.width}"×${this.data.size.height}"</li>
-              ${this.data.tags.map(tag => html`<li>${tag}</li>`)}
-            </ul>
-          </section>
+          ${this.hide.titling ? '' : html`
+            <section class="titling">
+              <div class="title">${this.data.title}</div>
+              <div class="subtitle">${this.data.subtitle}</div>
+              <div class="author">${this.data.author}</div>
+              <div class="brief">${this.data.brief}</div>
+            </section>
+          `}
+
+          ${this.hide.store ? '' : html`
+            <section class="store">
+              <div class="cost">${this.data.price * (100 - (this.data.discount ?? 0)) / 100}₹</div>
+              <ul class="details">
+                <li class="type strong">${this.data.size.pages} pages</li>
+                <li class="type strong">${this.data.size.width}"×${this.data.size.height}"</li>
+                ${this.data.tags.map(tag => html`<li>${tag}</li>`)}
+              </ul>
+            </section>
+          `}
         </section>
 
-        <section class="blurb">${unsafeHTML(this.data.blurb)}</section>
+        ${this.hide.blurb ? '' : html`<section class="blurb">${unsafeHTML(this.data.blurb)}</section>`}
 
-        <section class="gallery">
-          <main>
-            ${this.data.gallery.map(({ aspectRatio }) => html`
-              <spout-circle-fit-container fitWidth ignoreWidth .aspectRatio=${aspectRatio}></spout-circle-fit-container>
-            `)}
-          </main>
-        </section>
+        ${this.hide.gallery ? '' : html`
+          <section class="gallery">
+            <main>
+              ${this.data.gallery.map(({ aspectRatio }) => html`
+                <spout-circle-fit-container fitWidth ignoreWidth .aspectRatio=${aspectRatio}></spout-circle-fit-container>
+              `)}
+            </main>
+          </section>
+        `}
       </main>
     `
   }
@@ -145,7 +157,7 @@ export class SpoutBook extends LitElement {
     }
 
     $gallery.style.paddingLeft = $images[0].clientWidth / $gallery.clientWidth <= 0.8
-      ? `${($gallery.clientWidth - $images[0].clientWidth) / 2}px`
+      ? `${($gallery.clientWidth - $images[0].clientWidth) / 2} px`
       : ''
 
     this.#retries = 0
