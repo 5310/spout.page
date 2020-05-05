@@ -18,6 +18,15 @@ export type Image = {
   alt?: string,
 }
 
+export type Palette = {
+  paper: string,
+  ink: string,
+  dark?: {
+    paper: string,
+    ink: string,
+  }
+}
+
 export type Book = {
   cover: Image,
   title: MarkupSpan,
@@ -31,4 +40,5 @@ export type Book = {
   tags: string[],
   blurb: MarkupBlock,
   gallery: Image[],
+  colors?: Palette,
 }
