@@ -81,18 +81,18 @@
         ! extend with m-scale
         ! extend with l-scale
         ! extend with xl-scale
-        ? block with placeholder content
+        ! block with placeholder content
           ! listing
           ! blurb
           ! cover with circle-fit-container
-          ? gallery
+          ! gallery
             ! with circle-fit-container
               ! templating
               ! basic styles
               ! add a drag-scroller that doesn't need a scrollbar and also works on mobile
                 @ https://ilyashubin.github.io/scrollbooster/
               ! center the first image
-            ? with image
+            ! with image
         ! Tweak scroll-snap
           ! Fix medium-scale scroll-snaps from clipping
             Isn't actually a bug. What did you actually see?
@@ -106,11 +106,12 @@
           ! Tweak tags list alignment
           ! Tweak letter-spacing
           ! Settle OTF features for the base font
-        ? Implement section toggling 
+        ! Implement section toggling 
           ? Try not to populate sections that aren't shown at least at the start
         ! proper margins/paddings, especially for small-scale view
         !~ add resize handler
           at least for the gallery
+        ? animation please
 
       ? circle-fit-container
         ! implement prototype with slot
@@ -350,6 +351,11 @@
     @ http://open-type.surge.sh/
     @ https://fontdrop.info/
 
+  * Web Animation API
+    @ https://developers.google.com/web/updates/2015/10/web-animations-resources
+    @ https://developer.mozilla.org/en-US/docs/Web/API/Element/animate
+    @ https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API/Keyframe_Formats
+    @ https://codepen.io/5310/pen/zYvpwpG
   
   * Content format
     Our data should be flat files
