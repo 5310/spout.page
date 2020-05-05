@@ -147,7 +147,7 @@ export class SpoutBook extends LitElement {
     if (this.#ready && this.#retries < 100) return
 
     const $gallery = (this.shadowRoot as ShadowRoot).querySelector('.gallery > main') as HTMLElement
-    const $images = [...(this.shadowRoot as ShadowRoot).querySelectorAll('.gallery > main > *')]
+    const $images = Array.from((this.shadowRoot as ShadowRoot).querySelectorAll('.gallery > main > *'))
 
     // wait if the first gallery element hasn't been redrawn yet, since we need those dimensions
     if (!$images[0].clientWidth) {
