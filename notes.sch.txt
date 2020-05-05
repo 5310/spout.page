@@ -76,7 +76,7 @@
 
     ! Components
 
-      ? book
+      ! book
         ! block s-scale layout
         ! extend with m-scale
         ! extend with l-scale
@@ -111,7 +111,7 @@
         ! proper margins/paddings, especially for small-scale view
         !~ add resize handler
           at least for the gallery
-        ? animation please
+        ! animation please
 
       ? circle-fit-container
         ! implement prototype with slot
