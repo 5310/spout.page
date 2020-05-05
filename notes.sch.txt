@@ -43,9 +43,13 @@
         @ https://developers.google.com/web/updates/2016/10/resizeobserver
       @ https://codepen.io/5310/pen/NWGvObZ?editors=1011
     ? PostCSS mixins using classes
-    ? Find a way for the favicon to adopt the palette of the page automatically
-    ? Find a way to delegate resizing of child components 
-      see how to do this with events that go downwards
+    ! Find a way for the favicon to adopt the palette of the page automatically
+      Can't do with without some code working on the page itself
+      Preliminary code was a failure for reasons unknown
+    !~ Find a way to delegate resizing of child components 
+      Yeah, this isn't possible. Events in the DOM only travel upwards
+      Capturing only reverses the order of the event being handled, which is by default the common-sense way: bottom to top
+      The only way for a parent to communicate to a child is to proactively call a method on the child
 
   ! Development
 
