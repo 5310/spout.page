@@ -1,4 +1,5 @@
 import log from '/lib/log.js'
+import debounce from '/lib/debounce.js'
 import { LitElement, html, property, customElement } from '/web_modules/lit-element.js'
 import { decode } from '/web_modules/blurhash.js'
 import { Image } from '/types'
@@ -32,7 +33,7 @@ export class SpoutImage extends LitElement {
 
   connectedCallback() {
     super.connectedCallback()
-    self.addEventListener('resize', this.resize.bind(this))
+    self.addEventListener('resize', debounce(200, () => this.resize()))
   }
 
   firstUpdated(changedProperties: any) {

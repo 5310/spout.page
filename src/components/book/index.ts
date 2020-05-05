@@ -1,3 +1,4 @@
+import debounce from '/lib/debounce.js'
 import { LitElement, html, property, customElement } from '/web_modules/lit-element.js'
 import { unsafeHTML } from '/web_modules/lit-html/directives/unsafe-html.js'
 import mousecase from '/lib/mousecase.js'
@@ -125,7 +126,7 @@ export class SpoutBook extends LitElement {
 
   connectedCallback() {
     super.connectedCallback()
-    self.addEventListener('resize', this.resize.bind(this))
+    self.addEventListener('resize', debounce(200, () => this.resize()))
   }
 
   firstUpdated() {
