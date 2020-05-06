@@ -56,8 +56,11 @@
     ! Trial Vercel-specific routing and static serving
     ! Trial web-component-driven workflow
     ! Create demo pages for each component for easier testing
-    ? Debug harsh scroll-snaps on Chrome or disable it
-    ? Debug why the module isn't good enough to import components
+
+    ? Debug
+      ? Harsh scroll-snaps on Chrome or disable it
+      ? Why the module isn't good enough to import components on /index.html
+      ? Initial load failing somehow and spinning the resize handlers infinitely
 
     ? Common stylesheets
       ! Responsive unit of scale
@@ -134,6 +137,24 @@
         !~ add resize handler
           at least for the gallery
         ! animation please
+        ! non-viewport based scaling for the gallery
+          on Chrome for Android, or any similar browser, on-scroll hiding of the address bar reflows content
+        ? implement overscroll hints for the gallery
+          most important on the desktop, where some people don't realize there's content to scroll horizontally
+        ! implement mouse-wheel scrolling for the gallery
+          @ https://codepen.io/5310/pen/RwWQwvv?editors=1111
+          @ https://jsfiddle.net/ahpy9f66/
+          ! remember to handle limits
+            if `scroll-behavior: smooth` is set, scrollLeft isn't applied immediately on the DOM so we can't overflow 
+              not even the following request animation frame worked
+              but it would be nice to coexist with it
+        ! try out hacky scrollbar hiding trick
+          @ https://stackoverflow.com/a/49278385
+          consider only scrolling the gallery if the mouse is central enough within it perhaps
+
+      ! carousel
+        extract the gallery into its own component
+        it has to have a height set, defaulting to 100vh;
 
       ! circle-fit-container
         ! implement prototype with slot
