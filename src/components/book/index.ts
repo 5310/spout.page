@@ -3,6 +3,7 @@ import { LitElement, html, property, customElement } from '/web_modules/lit-elem
 import { unsafeHTML } from '/web_modules/lit-html/directives/unsafe-html.js'
 import mousecase from '/lib/mousecase.js'
 import { Book } from '/types'
+import '/components/carousel/index.js'
 import '/components/circle-fit-container/index.js'
 import '/components/image/index.js'
 
@@ -24,9 +25,6 @@ export class SpoutBook extends LitElement {
 
   @property({ type: Boolean })
   coverSmall = false
-
-  #ready = false
-  #retries = 0
 
   render() {
     if (!this.data) return
@@ -68,37 +66,26 @@ export class SpoutBook extends LitElement {
 
         ${this.hide.gallery ? '' : html`
           <section class="gallery">
-            <main>
+            <spout-carousel>
               ${this.data.gallery.map(image => html`
                 <spout-circle-fit-container fitWidth ignoreWidth .aspectRatio=${image.aspectRatio}>
                   <spout-image .data=${image}></spout-image>
                 </spout-circle-fit-container>
               `)}
-            </main>
+            </spout-carousel>
           </section>
         `}
       </main>
     `
   }
 
-  connectedCallback() {
-    super.connectedCallback()
-    self.addEventListener('resize', debounce(200, () => this.resize()))
-  }
-
   firstUpdated() {
     const $stylesheet = (this.shadowRoot as ShadowRoot).querySelector('link') as HTMLElement
     $stylesheet.addEventListener('load', () => {
-      this.#ready = true
-
       // render main
       const $main = (this.shadowRoot as ShadowRoot).querySelector('main') as HTMLElement
       $main.style.display = ''
       self.requestAnimationFrame(() => $main.style.opacity = '')
-
-      // hook up horizontal scroll for gallery
-      const $gallery = $main.querySelector('.gallery > main') as HTMLElement
-      mousecase($gallery).init()
 
       // animate sections load-in
       const $sections = Array.from((this.shadowRoot as ShadowRoot).querySelectorAll('main > *')) as HTMLElement[]
@@ -115,28 +102,6 @@ export class SpoutBook extends LitElement {
           }
         )
       })
-
-      this.resize()
     })
-  }
-
-  resize() {
-    if (!this.#ready || this.#retries >= 100) return
-
-    const $gallery = (this.shadowRoot as ShadowRoot).querySelector('.gallery > main') as HTMLElement
-    const $images = Array.from((this.shadowRoot as ShadowRoot).querySelectorAll('.gallery > main > *'))
-
-    // wait if the first gallery element hasn't been redrawn yet, since we need those dimensions
-    if (!$images[0].clientWidth) {
-      this.#retries++
-      requestAnimationFrame(() => this.resize())
-      return
-    }
-
-    $gallery.style.paddingLeft = $images[0].clientWidth / $gallery.clientWidth <= 0.8
-      ? `${($gallery.clientWidth - $images[0].clientWidth) / 2}px`
-      : ''
-
-    this.#retries = 0
   }
 }
