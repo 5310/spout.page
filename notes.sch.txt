@@ -93,6 +93,15 @@
 
     ! Components
 
+      ? app
+        ? local routing
+          ? parse route
+          ? manage history
+          ? dynamically load components
+          ? solve animation hooks
+          ? fallback routing with URLParameters
+          ? placeholder content and transition
+
       ? collection
         ! create component
         ! block
@@ -109,9 +118,9 @@
         ! block with placeholder content
           ! listing
           ! blurb
-          ! cover with circle-fit-container
+          ! cover with circumcircle
           ! gallery
-            ! with circle-fit-container
+            ! with circumcircle
               ! templating
               ! basic styles
               ! add a drag-scroller that doesn't need a scrollbar and also works on mobile
@@ -157,7 +166,7 @@
           most important on the desktop, where some people don't realize there's content to scroll horizontally
           ? consider implementing on-hover scrolling for overscroll hints
 
-      ! circle-fit-container
+      ! circumcircle
         ! implement prototype with slot
         ! implement window resize handler
         ! debounce window resize handler
@@ -167,22 +176,13 @@
         ! implement random offsets
           ! figure out how to do `offsetY`
         ! implement manual offsets
-        ? for the love of Alan Turing name this element better
+        ! for the love of Alan Turing name this element better
 
       ? image
         ! create component
         ! integrate blurhash
         ? implement bleed
-          we probably need a dummy rectangle like we have a dummy circle
-
-      ? app
-        ? local routing
-          ? parse route
-          ? manage history
-          ? dynamically load components
-          ? solve animation hooks
-          ? fallback routing with URLParameters
-          ? placeholder content and transition
+          we probably need a dummy rectangle like we have a dummy circumcircle
 
   ? Accessibility
 
