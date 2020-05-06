@@ -109,7 +109,7 @@ const mousecase = (
       target.style.scrollBehavior = ''
       if (_scrollLeft !== target.scrollLeft) {
         e.preventDefault()
-        target.scrollIntoView({ behavior: 'smooth' })
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' })
       }
     })
   },
