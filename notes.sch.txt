@@ -137,10 +137,10 @@
         !~ add resize handler
           at least for the gallery
         ! animation please
+
+      ? carousel
         ! non-viewport based scaling for the gallery
           on Chrome for Android, or any similar browser, on-scroll hiding of the address bar reflows content
-        ? implement overscroll hints for the gallery
-          most important on the desktop, where some people don't realize there's content to scroll horizontally
         ! implement mouse-wheel scrolling for the gallery
           @ https://codepen.io/5310/pen/RwWQwvv?editors=1111
           @ https://jsfiddle.net/ahpy9f66/
@@ -151,10 +151,11 @@
         ! try out hacky scrollbar hiding trick
           @ https://stackoverflow.com/a/49278385
           consider only scrolling the gallery if the mouse is central enough within it perhaps
-
-      ! carousel
-        extract the gallery into its own component
-        it has to have a height set, defaulting to 100vh;
+        ! extract the gallery into its own component
+          it has to have a height set
+        ? implement overscroll hints
+          most important on the desktop, where some people don't realize there's content to scroll horizontally
+          ? consider implementing on-hover scrolling for overscroll hints
 
       ! circle-fit-container
         ! implement prototype with slot
@@ -166,6 +167,7 @@
         ! implement random offsets
           ! figure out how to do `offsetY`
         ! implement manual offsets
+        ? for the love of Alan Turing name this element better
 
       ? image
         ! create component
