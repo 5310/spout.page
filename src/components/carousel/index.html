@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title>spout.page · source · components · carousel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/svg+xml" href="/manifest/favicon.svg">
+    <link rel="alternate icon" href="/manifest/favicon.ico">
+    <link rel="stylesheet" href="/reset.css">
+    <link rel="stylesheet" href="/colors.css">
+    <link rel="stylesheet" href="/scale.css">
+    <script type="module" src="/components/carousel/index.js"></script>
+    <script type="module" src="/components/circle-fit-container/index.js"></script>
+    <style>
+      :root {
+        --color-debug: rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+
+  <body style="min-height: 100vh;">
+    <spout-carousel>
+      <spout-circle-fit-container ignoreWidth fitWidth></spout-circle-fit-container>
+      <spout-circle-fit-container ignoreWidth fitWidth></spout-circle-fit-container>
+      <spout-circle-fit-container ignoreWidth fitWidth></spout-circle-fit-container>
+      <spout-circle-fit-container ignoreWidth fitWidth></spout-circle-fit-container>
+      <spout-circle-fit-container ignoreWidth fitWidth></spout-circle-fit-container>
+    </spout-carousel>
+  </body>
+
+</html>
