@@ -38,9 +38,9 @@ export class SpoutImage extends LitElement {
     if (!this.#ready || this.#retries >= 100) return
 
     const $main = (this.shadowRoot as ShadowRoot).querySelector('main') as HTMLElement
-    const $contents = Array.from((this.shadowRoot as ShadowRoot).querySelectorAll('main > slot > *')) // FIXME: not selecting right
+    const $contents = ((this.shadowRoot as ShadowRoot).querySelector('main > slot') as HTMLSlotElement).assignedElements()
 
-    // wait if the first gallery element hasn't been redrawn yet, since we need those dimensions
+    // wait if the first slotted element hasn't been redrawn yet, since we need those dimensions
     if (!$contents[0].clientWidth) {
       this.#retries++
       requestAnimationFrame(() => this.resize())
