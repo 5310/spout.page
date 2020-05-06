@@ -101,6 +101,17 @@ const mousecase = (
     if (!this.canUseMousecase(target, this.props.rule)) return
     this.state.isOn = true
     this.manageState()
+    target.addEventListener('wheel', (e) => {
+      const _scrollLeft = target.scrollLeft
+      // const _scrollBehavior = target.style.scrollBehavior
+      if (e.deltaY > 0) target.scrollLeft += 100
+      else target.scrollLeft -= 100
+      target.style.scrollBehavior = ''
+      if (_scrollLeft !== target.scrollLeft) {
+        e.preventDefault()
+        target.scrollIntoView({ behavior: 'smooth' })
+      }
+    })
   },
   off() {
     this.state.isOn = false
