@@ -4,8 +4,8 @@ import { LitElement, html, property, customElement } from '/web_modules/lit-elem
 
 const ROTATIONLIMIT = 60
 
-@customElement('spout-circle-fit-container')
-export class SpoutCircleFitContainer extends LitElement {
+@customElement('spout-circumcircle')
+export class SpoutCircumcircle extends LitElement {
   @property({ type: Number })
   aspectRatio = 1 / 1
 
@@ -51,7 +51,7 @@ export class SpoutCircleFitContainer extends LitElement {
 
   render() {
     return html`
-      <link rel="stylesheet" href="/components/circle-fit-container/index.css" />
+      <link rel="stylesheet" href="/components/circumcircle/index.css" />
       <main style="display: none; opacity: 0;">
         <div class='circle'></div>
         <slot></slot>
@@ -114,7 +114,7 @@ export class SpoutCircleFitContainer extends LitElement {
     const height = Math.floor(this.#diameter * Math.cos(angle))
 
     // DEBUG:
-    log('circle-fit-container', 'resize', {
+    log('circumcircle', 'resize', {
       mainScrollWidth,
       mainScrollHeight,
       diameter: this.#diameter,
@@ -171,7 +171,7 @@ export class SpoutCircleFitContainer extends LitElement {
       : 0
 
     // DEBUG:
-    log('circle-fit-container', 'offset', {
+    log('circumcircle', 'offset', {
       mainScrollWidth,
       randomOffsetX: this.#randomOffsetX,
       translateX,

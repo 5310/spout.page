@@ -4,7 +4,7 @@ import { unsafeHTML } from '/web_modules/lit-html/directives/unsafe-html.js'
 import mousecase from '/lib/mousecase.js'
 import { Book } from '/types'
 import '/components/carousel/index.js'
-import '/components/circle-fit-container/index.js'
+import '/components/circumcircle/index.js'
 import '/components/image/index.js'
 
 const LOADDELAY = 500
@@ -34,9 +34,9 @@ export class SpoutBook extends LitElement {
       <main style="display: none; opacity: 0;">
         ${this.hide.cover ? '' : html`
           <section class="cover ${this.coverSmall ? 'small' : ''}">
-            <spout-circle-fit-container .aspectRatio=${this.data.cover.aspectRatio} .randomX=${this.coverSmall} .randomR=${this.coverSmall}>
+            <spout-circumcircle .aspectRatio=${this.data.cover.aspectRatio} .randomX=${this.coverSmall} .randomR=${this.coverSmall}>
               <spout-image .data=${this.data.cover}></spout-image>
-            </spout-circle-fit-container>
+            </spout-circumcircle>
           </section>
         `}
 
@@ -68,9 +68,9 @@ export class SpoutBook extends LitElement {
           <section class="gallery">
             <spout-carousel>
               ${this.data.gallery.map(image => html`
-                <spout-circle-fit-container fitWidth ignoreWidth .aspectRatio=${image.aspectRatio}>
+                <spout-circumcircle fitWidth ignoreWidth .aspectRatio=${image.aspectRatio}>
                   <spout-image .data=${image}></spout-image>
-                </spout-circle-fit-container>
+                </spout-circumcircle>
               `)}
             </spout-carousel>
           </section>
