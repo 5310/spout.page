@@ -41,7 +41,9 @@
       scroll-snap-align: start;
 
       @media (width > 640px) {
-        padding: --u8 0;
+        @media (min-aspect-ratio: 1/1) {
+          padding: --u8 0;
+        }
       }
 
       @media (width > 1024px) {
@@ -90,10 +92,17 @@
       &.listing {
         max-width: 48ch;
         min-height: 100%;
+        padding-top: --u8;
         display: grid;
         grid-gap: --u2;
         font-family: Alegreya, serif;
         font-size: --u0;
+
+        @media (width > 640px) {
+          @media (max-aspect-ratio: 1/1) {
+            padding-top: --u12;
+          }
+        }
 
         .title {
           margin-left: -0.05em;
