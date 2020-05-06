@@ -96,7 +96,7 @@ export class SpoutBook extends LitElement {
       $main.style.display = ''
       self.requestAnimationFrame(() => $main.style.opacity = '')
 
-      // center gallery
+      // hook up horizontal scroll for gallery
       const $gallery = $main.querySelector('.gallery > main') as HTMLElement
       mousecase($gallery).init()
 
@@ -121,7 +121,7 @@ export class SpoutBook extends LitElement {
   }
 
   resize() {
-    if (this.#ready && this.#retries < 100) return
+    if (!this.#ready || this.#retries >= 100) return
 
     const $gallery = (this.shadowRoot as ShadowRoot).querySelector('.gallery > main') as HTMLElement
     const $images = Array.from((this.shadowRoot as ShadowRoot).querySelectorAll('.gallery > main > *'))
@@ -134,7 +134,7 @@ export class SpoutBook extends LitElement {
     }
 
     $gallery.style.paddingLeft = $images[0].clientWidth / $gallery.clientWidth <= 0.8
-      ? `${($gallery.clientWidth - $images[0].clientWidth) / 2} px`
+      ? `${($gallery.clientWidth - $images[0].clientWidth) / 2}px`
       : ''
 
     this.#retries = 0

@@ -179,7 +179,7 @@
 
         & > main {
           height: 100vh;
-          padding-left: 50vw;
+          padding-left: --u0;
           transition: padding-left 1s ease-in-out;
           display: grid;
           grid-auto-flow: column;
@@ -188,12 +188,6 @@
           justify-content: start;
           overflow-x: scroll;
           overflow-y: hidden;
-          scroll-snap-type: x proximity;
-          scroll-behavior: smooth;
-
-          & > * {
-            scroll-snap-align: center;
-          }
         }
       }
     }
