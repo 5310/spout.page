@@ -104,7 +104,7 @@ export class SpoutCircleFitContainer extends LitElement {
       return
     }
 
-    this.#diameter = this.diameter || Math.min(mainScrollWidth || Infinity, mainScrollHeight || Infinity, self.innerHeight)
+    this.#diameter = this.diameter || Math.min(mainScrollWidth || Infinity, mainScrollHeight)
 
     const angle = Math.atan(this.aspectRatio <= 0 ? 1 / 1 : this.aspectRatio)
 
