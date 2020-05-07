@@ -42,3 +42,11 @@ export type Book = {
   gallery: Image[],
   colors?: Palette,
 }
+
+export type Collection = {
+  cover?: Srcset,
+  title: MarkupSpan,
+  blurb: MarkupBlock,
+  books: Book[],
+  colors?: Palette,
+}
