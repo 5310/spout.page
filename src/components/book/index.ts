@@ -1,3 +1,4 @@
+import debounce from '/lib/debounce.js'
 import { LitElement, html, property, customElement } from '/web_modules/lit-element.js'
 import { unsafeHTML } from '/web_modules/lit-html/directives/unsafe-html.js'
 import mousecase from '/lib/mousecase.js'
@@ -21,7 +22,10 @@ export class SpoutBook extends LitElement {
   }
 
   @property({ type: Boolean })
-  coverSmall = false
+  brief = false
+
+  #ready = false
+  #retries = 0
 
   render() {
     if (!this.data) return
@@ -30,8 +34,8 @@ export class SpoutBook extends LitElement {
 
       <main style="display: none; opacity: 0;">
         ${this.hide.cover ? '' : html`
-          <section class="cover ${this.coverSmall ? 'small' : ''}">
-            <spout-circumcircle .aspectRatio=${this.data.cover.aspectRatio} .randomX=${this.coverSmall} .randomR=${this.coverSmall}>
+          <section class="cover ${this.brief ? 'small' : ''}">
+            <spout-circumcircle .aspectRatio=${this.data.cover.aspectRatio} .randomX=${this.brief} .randomR=${this.brief}>
               <spout-image .data=${this.data.cover}></spout-image>
             </spout-circumcircle>
           </section>
@@ -65,7 +69,7 @@ export class SpoutBook extends LitElement {
           <section class="gallery">
             <spout-carousel>
               ${this.data.gallery.map(image => html`
-                <spout-circumcircle fitWidth ignoreWidth .aspectRatio=${image.aspectRatio}>
+                <spout-circumcircle ignoreWidth .aspectRatio=${image.aspectRatio}>
                   <spout-image .data=${image}></spout-image>
                 </spout-circumcircle>
               `)}
@@ -76,9 +80,16 @@ export class SpoutBook extends LitElement {
     `
   }
 
+  connectedCallback() {
+    super.connectedCallback()
+    self.addEventListener('resize', debounce(200, () => this.resize()))
+  }
+
   firstUpdated() {
     const $stylesheet = (this.shadowRoot as ShadowRoot).querySelector('link') as HTMLElement
     $stylesheet.addEventListener('load', () => {
+      this.#ready = true
+
       // render main
       const $main = (this.shadowRoot as ShadowRoot).querySelector('main') as HTMLElement
       $main.style.display = ''
@@ -99,6 +110,17 @@ export class SpoutBook extends LitElement {
           }
         )
       })
+
+      this.resize()
     })
+  }
+
+  resize() {
+    if (!this.#ready || this.#retries >= 100) return
+
+    const $cover = (this.shadowRoot as ShadowRoot).querySelector('.cover > spout-circumcircle') as any // NOTE: importing this type breaks things
+    $cover.fitWidth = !this.brief && (self.innerWidth <= 640)
+
+    this.#retries = 0
   }
 }

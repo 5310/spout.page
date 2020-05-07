@@ -56,6 +56,7 @@
         grid-column-start: 1;
         grid-column-end: span 1;
         scroll-snap-align: center;
+        height: 100vh;
         padding: 0;
         padding-top: --u8;
         align-content: stretch;
@@ -66,14 +67,11 @@
 
         @media (width <= 640px) {
           height: 100vw;
+          padding-left: --u0;
         }
 
         @media (width > 640px) {
           padding: 0;
-
-          spout-circumcircle {
-            max-height: 100vh;
-          }
         }
 
         &.small {
@@ -92,7 +90,6 @@
       &.listing {
         max-width: 48ch;
         min-height: 100%;
-        padding-top: --u8;
         display: grid;
         grid-gap: --u2;
         font-family: Alegreya, serif;
