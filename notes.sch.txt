@@ -102,6 +102,7 @@
           ? solve animation hooks
           ? fallback routing with URLParameters
           ? placeholder content and transition
+          ? warning about substandard browsers
 
       ? collection
         ! create component
