@@ -1,4 +1,3 @@
-import debounce from '/lib/debounce.js'
 import { LitElement, html, property, customElement } from '/web_modules/lit-element.js'
 import { unsafeHTML } from '/web_modules/lit-html/directives/unsafe-html.js'
 import mousecase from '/lib/mousecase.js'
@@ -6,8 +5,6 @@ import { Book } from '/types'
 import '/components/carousel/index.js'
 import '/components/circumcircle/index.js'
 import '/components/image/index.js'
-
-const LOADDELAY = 500
 
 @customElement('spout-book')
 export class SpoutBook extends LitElement {
