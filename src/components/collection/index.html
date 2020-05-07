@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title>spout.page · source · components · collection</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/svg+xml" href="/manifest/favicon.svg">
+    <link rel="alternate icon" href="/manifest/favicon.ico">
+    <link rel="stylesheet" href="/reset.css">
+    <link rel="stylesheet" href="/colors.css">
+    <link rel="stylesheet" href="/scale.css">
+    <script type="module" src="/components/collection/index.js"></script>
+    <style>
+      :root {
+        --color-debug: rgba(0, 0, 0, 0.1);
+
+        background: var(--color-paper, white);
+      }
+    </style>
+  </head>
+
+  <body>
+    <spout-collection></spout-collection>
+    <script>
+      fetch('/content/collections/placeholder/index.json')
+        .then(response => response.json())
+        .then(data => {
+          const $book = document.querySelector('spout-collection')
+          $book.data = data
+        })
+    </script>
+  </body>
+
+</html>
