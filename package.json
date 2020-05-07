@@ -65,7 +65,8 @@
     "webDependencies": [
       "blurhash",
       "lit-element",
-      "lit-html/directives/unsafe-html.js"
+      "lit-html/directives/unsafe-html.js",
+      "lit-html/directives/until.js"
     ]
   }
 }
