@@ -4,7 +4,7 @@ import { LitElement, html, property, customElement } from '/web_modules/lit-elem
 import mousecase from '/lib/mousecase.js'
 
 @customElement('spout-carousel')
-export class SpoutImage extends LitElement {
+export default class SpoutImage extends LitElement {
   #ready = false
   #retries = 0
 

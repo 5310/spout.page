@@ -5,7 +5,7 @@ import { decode } from '/web_modules/blurhash.js'
 import { Image } from '/types'
 
 @customElement('spout-image')
-export class SpoutImage extends LitElement {
+export default class SpoutImage extends LitElement {
   @property({ type: Object })
   data: Image = {
     srcset: '',

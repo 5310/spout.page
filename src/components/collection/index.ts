@@ -4,7 +4,7 @@ import { Collection } from '/types'
 import '/components/book/index.js'
 
 @customElement('spout-collection')
-export class SpoutCollection extends LitElement {
+export default class SpoutCollection extends LitElement {
   @property({ type: Object })
   data: Collection | undefined
 

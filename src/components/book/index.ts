@@ -5,10 +5,12 @@ import mousecase from '/lib/mousecase.js'
 import { Book } from '/types'
 import '/components/carousel/index.js'
 import '/components/circumcircle/index.js'
+// tslint:disable-next-line: no-duplicate-imports
+import SpoutCircumcircle from '/components/circumcircle/index.js'
 import '/components/image/index.js'
 
 @customElement('spout-book')
-export class SpoutBook extends LitElement {
+export default class SpoutBook extends LitElement {
   @property({ type: Object })
   data: Book | undefined
 
@@ -118,7 +120,7 @@ export class SpoutBook extends LitElement {
   resize() {
     if (!this.#ready || this.#retries >= 100) return
 
-    const $cover = (this.shadowRoot as ShadowRoot).querySelector('.cover > spout-circumcircle') as any // NOTE: importing this type breaks things
+    const $cover = (this.shadowRoot as ShadowRoot).querySelector('.cover > spout-circumcircle') as SpoutCircumcircle
     $cover.fitWidth = !this.brief && (self.innerWidth <= 640)
 
     this.#retries = 0

@@ -1,7 +1,7 @@
 import { LitElement, html, css, property, customElement } from '/web_modules/lit-element.js'
 
 @customElement('spout-simple-greeting')
-export class SpoutSimpleGreeting extends LitElement {
+export default class SpoutSimpleGreeting extends LitElement {
   @property()
   name = 'World'
 

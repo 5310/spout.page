@@ -5,7 +5,7 @@ import { LitElement, html, property, customElement } from '/web_modules/lit-elem
 const ROTATIONLIMIT = 60
 
 @customElement('spout-circumcircle')
-export class SpoutCircumcircle extends LitElement {
+export default class SpoutCircumcircle extends LitElement {
   @property({ type: Number })
   aspectRatio = 1 / 1
 
