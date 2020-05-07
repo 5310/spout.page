@@ -71,7 +71,7 @@ export default class SpoutBook extends LitElement {
           <section class="gallery">
             <spout-carousel>
               ${this.data.gallery.map(image => html`
-                <spout-circumcircle ignoreWidth .aspectRatio=${image.aspectRatio}>
+                <spout-circumcircle fitWidth ignoreWidth .aspectRatio=${image.aspectRatio}>
                   <spout-image .data=${image}></spout-image>
                 </spout-circumcircle>
               `)}
