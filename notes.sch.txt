@@ -17,6 +17,7 @@
       ! Whitelist subpackages because they have to be manually whitelisted
         @ https://www.snowpack.dev/#lit-html
         We _could_ put `--include **/*.ts` on the `npm run postinstall` hook, but I've decided to pick the simpler hand-selected route instead
+      ! Importing a custom-element class as an object doesn't register it, so we have to also import it as script first
     ! PostCSS and StyleLint
       ! PostCSS with plugins
         ! VSCode integration
