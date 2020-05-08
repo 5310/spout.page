@@ -90,6 +90,7 @@ export default class SpoutBook extends LitElement {
   }
 
   firstUpdated() {
+    if (!this.data) return
     const $stylesheet = (this.shadowRoot as ShadowRoot).querySelector('link') as HTMLElement
     $stylesheet.addEventListener('load', () => {
       this.#ready = true
