@@ -37,6 +37,7 @@ export default class SpoutImage extends LitElement {
   }
 
   firstUpdated(changedProperties: any) {
+    if (!this.data) return
     const $stylesheet = (this.shadowRoot as ShadowRoot).querySelector('link') as HTMLElement
     const $main = (this.shadowRoot as ShadowRoot).querySelector('main') as HTMLElement
     $stylesheet.addEventListener('load', () => {
