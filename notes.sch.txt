@@ -57,6 +57,7 @@
     ! Trial Vercel-specific routing and static serving
     ! Trial web-component-driven workflow
     ! Create demo pages for each component for easier testing
+    ! PRNG for random offsets
 
     ? Debug
       ? Harsh scroll-snaps on Chrome or disable it
