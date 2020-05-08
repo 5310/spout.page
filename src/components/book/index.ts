@@ -17,6 +17,7 @@ export default class SpoutBook extends LitElement {
   @property({ type: Object })
   hide = {
     cover: false,
+    listing: false,
     titling: false,
     store: false,
     blurb: false,
@@ -43,27 +44,29 @@ export default class SpoutBook extends LitElement {
           </section>
         `}
 
-        <section class="listing">
-          ${this.hide.titling ? '' : html`
-            <section class="titling">
-              <div class="title">${this.data.title}</div>
-              <div class="subtitle">${this.data.subtitle}</div>
-              <div class="author">${this.data.author}</div>
-              <div class="brief">${this.data.brief}</div>
-            </section>
-          `}
+        ${this.hide.listing ? '' : html`
+          <section class="listing">
+            ${this.hide.titling ? '' : html`
+              <section class="titling">
+                <div class="title">${this.data.title}</div>
+                <div class="subtitle">${this.data.subtitle}</div>
+                <div class="author">${this.data.author}</div>
+                <div class="brief">${this.data.brief}</div>
+              </section>
+            `}
 
-          ${this.summary || this.hide.store ? '' : html`
-            <section class="store">
-              <div class="cost">${this.data.price * (100 - (this.data.discount ?? 0)) / 100}₹</div>
-              <ul class="details">
-                <li class="type strong">${this.data.size.pages} pages</li>
-                <li class="type strong">${this.data.size.width}"×${this.data.size.height}"</li>
-                ${this.data.tags.map(tag => html`<li>${tag}</li>`)}
-              </ul>
-            </section>
-          `}
-        </section>
+            ${this.summary || this.hide.store ? '' : html`
+              <section class="store">
+                <div class="cost">${this.data.price * (100 - (this.data.discount ?? 0)) / 100}₹</div>
+                <ul class="details">
+                  <li class="type strong">${this.data.size.pages} pages</li>
+                  <li class="type strong">${this.data.size.width}"×${this.data.size.height}"</li>
+                  ${this.data.tags.map(tag => html`<li>${tag}</li>`)}
+                </ul>
+              </section>
+            `}
+          </section>
+        `}
 
         ${this.summary ? '' : html`
           ${this.hide.blurb ? '' : html`<section class="blurb">${unsafeHTML(this.data.blurb)}</section>`}
