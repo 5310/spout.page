@@ -7,6 +7,7 @@
   min-height: 100%;
 
   & > main {
+    padding-top: --u8;
     display: grid;
     grid-column-gap: 0;
     grid-row-gap: --u4;
@@ -26,6 +27,7 @@
     @media (width > 640px) {
       @media (min-aspect-ratio: 1/1) {
         scroll-snap-type: y mandatory;
+        padding-top: 0;
         grid-auto-rows: minmax(100vh, auto);
       }
     }
@@ -56,50 +58,23 @@
         grid-column-start: 1;
         grid-column-end: span 1;
         scroll-snap-align: center;
-        height: 100vh;
         padding: 0;
-        padding-top: --u8;
         align-content: stretch;
-
-        spout-circumcircle {
-          transition: height 1s ease-out;
-        }
 
         @media (width <= 640px) {
           height: 100vw;
           padding-left: --u0;
-        }
-
-        @media (width > 640px) {
-          padding: 0;
-        }
-
-        &.small {
-          spout-circumcircle {
-            align-self: center;
-          }
-
-          @media (width > 640px) {
-            spout-circumcircle {
-              height: 30vw;
-            }
-          }
         }
       }
 
       &.listing {
         max-width: 48ch;
         min-height: 100%;
+        padding: --u8 --u0;
         display: grid;
         grid-gap: --u2;
         font-family: Alegreya, serif;
         font-size: --u0;
-
-        @media (width > 640px) {
-          @media (max-aspect-ratio: 1/1) {
-            padding-top: --u12;
-          }
-        }
 
         .title {
           margin-left: -0.05em;
@@ -183,6 +158,37 @@
         height: 100vh;
         padding: 0;
         scroll-snap-align: center;
+      }
+    }
+
+    &.summarized,
+    &.cover-only {
+      padding: 0;
+
+      @media (width > 640px) {
+        @media (min-aspect-ratio: 1/1) {
+          grid-auto-rows: auto;
+        }
+      }
+
+      & > .cover {
+        width: auto;
+        height: auto;
+        padding: 0;
+
+        spout-circumcircle {
+          height: 50vw;
+        }
+
+        @media (width > 640px) {
+          spout-circumcircle {
+            height: 30vw;
+          }
+        }
+      }
+
+      & > .listing {
+        padding: 0 --u0;
       }
     }
   }
