@@ -23,8 +23,8 @@ export default class SpoutBook extends LitElement {
     gallery: false,
   }
 
-  @property({ type: String })
-  mode: 'summarized' | 'cover-only' | undefined
+  @property({ type: Boolean })
+  summary = false
 
   #ready = false
   #retries = 0
@@ -34,40 +34,38 @@ export default class SpoutBook extends LitElement {
     return html`
       <link rel="stylesheet" href="/components/book/index.css" />
 
-      <main style="display: none; opacity: 0;" class="${this.mode || ''}">
+      <main style="display: none; opacity: 0;" class="${this.summary ? 'summary' : ''}">
         ${this.hide.cover ? '' : html`
           <section class="cover">
-            <spout-circumcircle .aspectRatio=${this.data.cover.aspectRatio} .randomX=${this.mode} .randomR=${this.mode}>
+            <spout-circumcircle .aspectRatio=${this.data.cover.aspectRatio} .randomX=${this.summary} .randomR=${this.summary}>
               <spout-image .data=${this.data.cover}></spout-image>
             </spout-circumcircle>
           </section>
         `}
 
-        ${this.mode === 'cover-only' ? '' : html`
-          <section class="listing">
-            ${this.hide.titling ? '' : html`
-              <section class="titling">
-                <div class="title">${this.data.title}</div>
-                <div class="subtitle">${this.data.subtitle}</div>
-                <div class="author">${this.data.author}</div>
-                <div class="brief">${this.data.brief}</div>
-              </section>
-            `}
+        <section class="listing">
+          ${this.hide.titling ? '' : html`
+            <section class="titling">
+              <div class="title">${this.data.title}</div>
+              <div class="subtitle">${this.data.subtitle}</div>
+              <div class="author">${this.data.author}</div>
+              <div class="brief">${this.data.brief}</div>
+            </section>
+          `}
 
-            ${this.mode || this.hide.store ? '' : html`
-              <section class="store">
-                <div class="cost">${this.data.price * (100 - (this.data.discount ?? 0)) / 100}₹</div>
-                <ul class="details">
-                  <li class="type strong">${this.data.size.pages} pages</li>
-                  <li class="type strong">${this.data.size.width}"×${this.data.size.height}"</li>
-                  ${this.data.tags.map(tag => html`<li>${tag}</li>`)}
-                </ul>
-              </section>
-            `}
-          </section>
-        `}
+          ${this.summary || this.hide.store ? '' : html`
+            <section class="store">
+              <div class="cost">${this.data.price * (100 - (this.data.discount ?? 0)) / 100}₹</div>
+              <ul class="details">
+                <li class="type strong">${this.data.size.pages} pages</li>
+                <li class="type strong">${this.data.size.width}"×${this.data.size.height}"</li>
+                ${this.data.tags.map(tag => html`<li>${tag}</li>`)}
+              </ul>
+            </section>
+          `}
+        </section>
 
-        ${this.mode ? '' : html`
+        ${this.summary ? '' : html`
           ${this.hide.blurb ? '' : html`<section class="blurb">${unsafeHTML(this.data.blurb)}</section>`}
 
           ${this.hide.gallery ? '' : html`
@@ -129,7 +127,7 @@ export default class SpoutBook extends LitElement {
     if (!this.#ready || this.#retries >= 100) return
 
     const $cover = (this.shadowRoot as ShadowRoot).querySelector('.cover > spout-circumcircle') as SpoutCircumcircle
-    $cover.fitWidth = this.mode === undefined && (self.innerWidth <= 640)
+    $cover.fitWidth = !this.summary && (self.innerWidth <= 640)
 
     this.#retries = 0
   }
