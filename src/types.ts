@@ -1,3 +1,5 @@
+export type ID = string
+
 export type Srcset = string
 
 export type MarkupSpan = string
@@ -47,6 +49,6 @@ export type Collection = {
   cover?: Srcset,
   title: MarkupSpan,
   blurb: MarkupBlock,
-  books: Book[],
+  books: ID[],
   colors?: Palette,
 }
