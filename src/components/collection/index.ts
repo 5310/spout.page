@@ -1,6 +1,7 @@
 import { LitElement, html, property, customElement } from '/web_modules/lit-element.js'
 import { unsafeHTML } from '/web_modules/lit-html/directives/unsafe-html.js'
-import { Collection } from '/types'
+import { until } from '/web_modules/lit-html/directives/until.js'
+import { ID, Collection } from '/types'
 import '/components/book/index.js'
 
 @customElement('spout-collection')
@@ -9,10 +10,18 @@ export default class SpoutCollection extends LitElement {
   data: Collection | undefined
 
   @property({ type: Boolean })
-  brief = false
+  summary = false
 
   render() {
     if (!this.data) return
+
+    const book = (id: ID) => until(
+      fetch(`/content/books/${id}/index.json`)
+        .then(response => response.json())
+        .then(data => html`<spout-book class="book" .data=${data} summary></spout-book>`),
+      html`<div class="book"></div>`,
+    )
+
     return html`
       <link rel="stylesheet" href="/components/collection/index.css" />
 
@@ -23,10 +32,7 @@ export default class SpoutCollection extends LitElement {
           </section>
 
           <section class="books">
-            ${this.data.books.map(book => html`
-              <spout-book class="cover" .data=${book} hide=${{ titling: true, store: true, blurb: true, gallery: true }}></spout-book>
-              <spout-book class="listing" .data=${book} hide=${{ cover: true, store: true, blurb: true, gallery: true }}></spout-book>
-            `)}
+            ${this.data.books.map(id => book(id))}
           </section>
       </main>
     `

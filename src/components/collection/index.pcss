@@ -5,4 +5,56 @@
 :host {
   width: 100%;
   min-height: 100%;
+
+  & > main {
+    display: grid;
+    grid-column-gap: 0;
+    grid-row-gap: --u4;
+    place-items: stretch;
+    transition: opacity 0.5s ease-out;
+    scroll-snap-type: y proximity;
+    color: --color-ink;
+
+    @media (640px < width <= 1024px) {
+      grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    }
+
+    @media (width > 1024px) {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+
+    @media (width > 640px) {
+      @media (min-aspect-ratio: 1/1) {
+        scroll-snap-type: y mandatory;
+        grid-auto-rows: minmax(100vh, auto);
+      }
+    }
+
+    & > * {
+      opacity: 0; /* initial state for animation */
+      min-height: 100%;
+      padding: --u0;
+      display: grid;
+      align-content: center;
+      scroll-snap-align: start;
+
+      &.titling {
+        grid-column-start: 2;
+        grid-column-end: -1;
+        display: grid;
+        grid-gap: --u2;
+        font-family: Alegreya, serif;
+        font-size: --u0;
+      }
+
+      &.books {
+        display: contents;
+
+        & > * {
+          grid-column-start: 1;
+          grid-column-end: span 2;
+        }
+      }
+    }
+  }
 }
