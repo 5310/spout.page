@@ -8,6 +8,7 @@
   pointer-events: none;
 
   & > main {
+    padding-top: var(--u8);
     display: grid;
     grid-column-gap: 0;
     grid-row-gap: --u4;
@@ -26,6 +27,7 @@
     @media (width > 640px) {
       @media (min-aspect-ratio: 1/1) {
         scroll-snap-type: y mandatory;
+        padding-top: 0;
         grid-auto-rows: minmax(100vh, auto);
       }
     }
