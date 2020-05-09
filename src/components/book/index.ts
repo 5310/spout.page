@@ -131,7 +131,7 @@ export default class SpoutBook extends LitElement {
     if (!this.#ready || this.#retries >= 100) return
 
     const $cover = (this.shadowRoot as ShadowRoot).querySelector('.cover > spout-circumcircle') as SpoutCircumcircle
-    $cover.fitWidth = !this.summary && (self.innerWidth <= 640)
+    if ($cover) $cover.fitWidth = !this.summary && (self.innerWidth <= 640)
 
     this.#retries = 0
   }

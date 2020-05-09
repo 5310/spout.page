@@ -162,7 +162,9 @@
     }
 
     &.summary {
+      height: 100%;
       padding: 0;
+      scroll-snap-type: none;
 
       @media (width > 640px) {
         @media (min-aspect-ratio: 1/1) {
@@ -170,10 +172,15 @@
         }
       }
 
+      & > * {
+        scroll-snap-align: none;
+      }
+
       & > .cover {
         width: auto;
         height: auto;
         padding: 0;
+        align-items: center;
 
         spout-circumcircle {
           height: 50vw;
@@ -187,7 +194,7 @@
       }
 
       & > .listing {
-        padding: 0 --u0;
+        padding: --u2 --u0;
       }
     }
   }
