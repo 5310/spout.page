@@ -12,7 +12,6 @@
     grid-row-gap: --u4;
     place-items: stretch;
     transition: opacity 0.5s ease-out;
-    scroll-snap-type: y proximity;
     color: --color-ink;
 
     @media (640px < width <= 1024px) {
@@ -36,15 +35,30 @@
       padding: --u0;
       display: grid;
       align-content: center;
-      scroll-snap-align: start;
 
       &.titling {
         grid-column-start: 2;
         grid-column-end: -1;
+        height: 100vmin;
         display: grid;
         grid-gap: --u2;
         font-family: Alegreya, serif;
         font-size: --u0;
+
+        @media (width <= 640px) {
+          grid-column-start: 1;
+          grid-column-end: span 2;
+        }
+
+        & > .title {
+          margin-left: -0.05em;
+          font-family: Raleway, sans-serif;
+          font-size: --u6;
+          letter-spacing: 0.05em;
+          line-height: 1em;
+          font-variant-ligatures: discretionary-ligatures;
+          font-feature-settings: "kern" on, "liga" on, "rlig" on, "calt" on, "dlig" on;
+        }
       }
 
       &.books {
@@ -53,6 +67,25 @@
         & > * {
           grid-column-start: 1;
           grid-column-end: span 2;
+
+          @media (width <= 640px) {
+            grid-row-start: auto !important;
+          }
+
+          &.cover {
+            height: 100%;
+            margin-bottom: calc(-1 * var(--u2));
+            padding-top: --u2;
+            position: sticky;
+            scroll-snap-align: start;
+
+            @media (width > 640px) {
+              @media (min-aspect-ratio: 1/1) {
+                margin: 0;
+                padding: 0;
+              }
+            }
+          }
         }
       }
     }

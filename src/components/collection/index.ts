@@ -15,12 +15,34 @@ export default class SpoutCollection extends LitElement {
   render() {
     if (!this.data) return
 
-    const book = (id: ID) => until(
-      fetch(`/content/books/${id}/index.json`)
-        .then(response => response.json())
-        .then(data => html`<spout-book class="book" .data=${data} summary></spout-book>`),
-      html`<div class="book"></div>`,
-    )
+    const book = (id: string, i: number) =>
+      until(
+        fetch(`/content/books/${id}/index.json`)
+          .then(response => response.json())
+          .then(data => html`
+            <spout-book
+              class="cover"
+              style="
+                grid-row-start: ${2 + i};
+                bottom: ${self.innerWidth / self.innerHeight > 1 ? `calc(-33vmin - 5% * ${i + 1})` : `calc(-2.5% * ${i + 1})`};
+                z-index: ${100 - i};
+              "
+              summary
+              .data=${data}
+              .hide="${{ listing: true }}"
+              ></spout-book>
+            <spout-book
+              class="listing"
+              style="
+                grid-row-start: ${2 + i};
+                z-index: ${100 - i};
+              "
+              summary
+              .data=${data}
+              .hide="${{ cover: true }}"></spout-book>
+          `),
+        '',
+      )
 
     return html`
       <link rel="stylesheet" href="/components/collection/index.css" />
@@ -32,7 +54,7 @@ export default class SpoutCollection extends LitElement {
           </section>
 
           <section class="books">
-            ${this.data.books.map(id => book(id))}
+            ${this.data.books.map((id, i) => book(id, i))}
           </section>
       </main>
     `
