@@ -52,6 +52,7 @@
         @media (width <= 640px) {
           grid-column-start: 1;
           grid-column-end: span 2;
+          margin-bottom: --u4;
         }
 
         & > * {
@@ -66,6 +67,20 @@
           line-height: 1em;
           font-variant-ligatures: discretionary-ligatures;
           font-feature-settings: "kern" on, "liga" on, "rlig" on, "calt" on, "dlig" on;
+
+          a {
+            text-decoration: none;
+          }
+        }
+
+        & > .link {
+          font-family: Raleway, sans-serif;
+          font-size: --u4;
+          font-weight: 500;
+
+          a {
+            text-decoration: none;
+          }
         }
 
         p {
@@ -100,6 +115,12 @@
           }
         }
       }
+    }
+
+    &.summary {
+      height: 100%;
+      padding: 0;
+      scroll-snap-type: none;
     }
   }
 }

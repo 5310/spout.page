@@ -48,10 +48,11 @@ export default class SpoutBook extends LitElement {
           <section class="listing">
             ${this.hide.titling ? '' : html`
               <section class="titling">
-                <div class="title">${this.data.title}</div>
+                <div class="title"><a href="/book/${this.data.id}">${this.data.title}</a></div>
                 <div class="subtitle">${this.data.subtitle}</div>
                 <div class="author">${this.data.author}</div>
                 <div class="brief">${this.data.brief}</div>
+                ${!this.summary ? '' : html`<div class="link"><a href="/book/${this.data.id}">⟶</a></div>`}
               </section>
             `}
 
