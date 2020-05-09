@@ -2,7 +2,7 @@ import log from '/lib/log.js'
 import debounce from '/lib/debounce.js'
 import { LitElement, html, property, customElement } from '/web_modules/lit-element.js'
 
-const ROTATIONLIMIT = 60
+const ROTATIONLIMIT = 45
 
 @customElement('spout-circumcircle')
 export default class SpoutCircumcircle extends LitElement {
