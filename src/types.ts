@@ -6,6 +6,8 @@ export type MarkupSpan = string
 
 export type MarkupBlock = string
 
+export type Color = string
+
 export type BlurHash = {
   width: number,
   height: number,
@@ -21,11 +23,13 @@ export type Image = {
 }
 
 export type Palette = {
-  paper: string,
-  ink: string,
+  paper: Color,
+  ink: Color,
+  tint: Color,
   dark?: {
-    paper: string,
-    ink: string,
+    paper: Color,
+    ink: Color,
+    tint: Color,
   }
 }
 
