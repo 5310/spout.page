@@ -5,6 +5,7 @@
 :host {
   display: grid;
   place-items: stretch;
+  pointer-events: none;
 
   & > main {
     display: grid;
@@ -22,6 +23,10 @@
     .circle {
       pointer-events: none;
       border-radius: 50%;
+    }
+
+    slot {
+      pointer-events: auto;
     }
   }
 }

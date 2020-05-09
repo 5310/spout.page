@@ -5,6 +5,7 @@
 :host {
   width: 100%;
   min-height: 100%;
+  pointer-events: none;
 
   & > main {
     padding-top: --u8;
@@ -77,6 +78,10 @@
         font-family: Alegreya, serif;
         font-size: --u0;
 
+        & > * {
+          pointer-events: auto;
+        }
+
         .title {
           margin-left: -0.05em;
           font-family: Raleway, sans-serif;
@@ -148,6 +153,10 @@
         font-size: --u-1;
         line-height: --u2;
 
+        & > * {
+          pointer-events: auto;
+        }
+
         p {
           margin-bottom: 1em;
         }
@@ -159,6 +168,7 @@
         height: 100vh;
         padding: 0;
         scroll-snap-align: center;
+        pointer-events: auto;
       }
     }
 
