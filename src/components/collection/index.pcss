@@ -38,7 +38,6 @@
       padding: --u0;
       display: grid;
       align-content: center;
-      pointer-events: auto;
 
       &.titling {
         grid-column-start: 2;
@@ -54,6 +53,10 @@
           grid-column-end: span 2;
         }
 
+        & > * {
+          pointer-events: auto;
+        }
+
         & > .title {
           margin-left: -0.05em;
           font-family: Raleway, sans-serif;
@@ -62,6 +65,10 @@
           line-height: 1em;
           font-variant-ligatures: discretionary-ligatures;
           font-feature-settings: "kern" on, "liga" on, "rlig" on, "calt" on, "dlig" on;
+        }
+
+        p {
+          margin-bottom: 1em;
         }
       }
 

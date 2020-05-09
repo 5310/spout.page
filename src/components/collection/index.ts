@@ -34,10 +34,7 @@ export default class SpoutCollection extends LitElement {
               ></spout-book>
             <spout-book
               class="listing"
-              style="
-                grid-row-start: ${2 + i};
-                z-index: ${100 - i};
-              "
+              style="grid-row-start: ${2 + i};"
               summary
               .data=${data}
               .hide="${{ cover: true }}"></spout-book>
