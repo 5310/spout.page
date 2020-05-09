@@ -1,6 +1,7 @@
 {
+  "id": "placeholder",
   "cover": "/content/books/placeholder/cover_1865.jpg",
-  "title": "Alice's Adventures in Wonderland",
+  "title": "The Wonderland on Anon",
   "blurb": "<p>This is a placeholder collection.</p><p>It is composed of nothing but The Adventures of Alice in Wonderland. Not even different versions or adaptations of it, just that one original book ad infinitum.</p>",
   "books": [
     "placeholder",

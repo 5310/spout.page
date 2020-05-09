@@ -30,6 +30,7 @@ export type Palette = {
 }
 
 export type Book = {
+  id: ID,
   cover: Image,
   title: MarkupSpan,
   subtitle?: MarkupSpan,
@@ -46,6 +47,7 @@ export type Book = {
 }
 
 export type Collection = {
+  id: ID,
   cover?: Srcset,
   title: MarkupSpan,
   blurb: MarkupBlock,
