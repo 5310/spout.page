@@ -8,7 +8,7 @@
     <link rel="alternate icon" href="/manifest/favicon.ico">
     <link rel="stylesheet" href="/index.css">
     <script type="module" src="/index.js"></script>
-    <script type="module" src="/components/book/index.js"></script>
+    <script type="module" src="/components/collection/index.js"></script>
     <style>
       :root {
         background: var(--color-paper, white);
@@ -18,12 +18,12 @@
   </head>
 
   <body>
-    <spout-book></spout-book>
+    <spout-collection></spout-collection>
     <script>
-      fetch('/content/books/placeholder/index.json')
+      fetch('/content/collections/placeholder/index.json')
         .then(response => response.json())
         .then(data => {
-          const $book = document.querySelector('spout-book')
+          const $book = document.querySelector('spout-collection')
           $book.data = data
         })
     </script>
