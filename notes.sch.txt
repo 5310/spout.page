@@ -121,6 +121,7 @@
         ! manage pointer-events
         ! summary mode
         ? color
+        ? scroll-hint for paginated breaks
 
       ! book
         ! block s-scale layout
@@ -162,6 +163,7 @@
         ! add full view arrow
         ~? custom events for "pointerdown" on the cover, title, arrow
         ? color
+        ? scroll-hint for paginated breaks
 
       ? carousel
         ! non-viewport based scaling for the gallery
