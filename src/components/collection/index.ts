@@ -24,7 +24,7 @@ export default class SpoutCollection extends LitElement {
               class="cover"
               style="
                 grid-row-start: ${2 + i};
-                bottom: ${self.innerWidth / self.innerHeight > 1 ? `calc(-33vmin - 5% * ${i + 1})` : `calc(-2.5% * ${i + 1})`};
+                bottom: ${self.innerWidth / self.innerHeight > 1 ? `calc(-33vmin - 5% * ${i + 1})` : `calc(-2.5% - 2.5% * ${i + 1})`};
                 z-index: ${100 - i};
               "
               summary

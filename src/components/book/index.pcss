@@ -26,9 +26,10 @@
     }
 
     @media (width > 640px) {
+      padding-top: 0;
+
       @media (min-aspect-ratio: 1/1) {
         scroll-snap-type: y mandatory;
-        padding-top: 0;
         grid-auto-rows: minmax(100vh, auto);
       }
     }
@@ -77,6 +78,10 @@
         grid-gap: --u2;
         font-family: Alegreya, serif;
         font-size: --u0;
+
+        @media (width > 640px) {
+          min-height: 100vh;
+        }
 
         & > * {
           pointer-events: auto;
@@ -218,6 +223,10 @@
 
       & > .listing {
         padding: --u2 --u0;
+
+        @media (width > 640px) {
+          min-height: initial;
+        }
       }
     }
   }
