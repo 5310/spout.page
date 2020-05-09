@@ -30,6 +30,7 @@ export default class SpoutCollection extends LitElement {
               summary
               .data=${data}
               .hide="${{ listing: true }}"
+              @click="${() => ((this.shadowRoot as ShadowRoot).querySelector(`.books :nth-child(${(i + 1) * 2})`) as HTMLElement).scrollIntoView({ behavior: 'smooth', block: 'center' })}"
               ></spout-book>
             <spout-book
               class="listing"
