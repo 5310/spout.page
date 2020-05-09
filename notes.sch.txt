@@ -110,10 +110,17 @@
         ! block
           ! books with fetches
           ! listing
-        ! stickyfy books
-        ! alternate style withfor index
+        ! stickify books
+        ! alternate style with for index
+        ! make the covers scroll on click
+          don't use the entire element, as we won't be able to click behind them on other books anymore
+          ` @click="${() => ((this.shadowRoot as ShadowRoot).querySelector(`.books :nth-child(${(i + 1) * 2})`) as HTMLElement).scrollIntoView({ behavior: 'smooth', block: 'center' })}"
+          @ https://stackoverflow.com/a/26799885
+        ! make the listings visit the book on click
+          don't use the entire element, as then people will misclick on everything
+        ! manage pointer-events
 
-      ! book
+      ? book
         ! block s-scale layout
         ! extend with m-scale
         ! extend with l-scale
@@ -149,6 +156,9 @@
         !~ add resize handler
           at least for the gallery
         ! animation please
+        ! manage pointer-events
+        ? add full view arrow
+        ? custom events for "pointerdown" on the cover, title, arrow
 
       ? carousel
         ! non-viewport based scaling for the gallery
@@ -180,6 +190,7 @@
           ! figure out how to do `offsetY`
         ! implement manual offsets
         ! for the love of Alan Turing name this element better
+        ! manage pointer-events
 
       ? image
         ! create component
