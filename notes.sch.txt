@@ -105,7 +105,7 @@
           ? placeholder content and transition
           ? warning about substandard browsers
 
-      ? collection
+      ! collection
         ! create component
         ! block
           ! books with fetches
@@ -119,8 +119,10 @@
         ! make the listings visit the book on click
           don't use the entire element, as then people will misclick on everything
         ! manage pointer-events
+        ! summary mode
+        ? color
 
-      ? book
+      ! book
         ! block s-scale layout
         ! extend with m-scale
         ! extend with l-scale
@@ -157,8 +159,9 @@
           at least for the gallery
         ! animation please
         ! manage pointer-events
-        ? add full view arrow
-        ? custom events for "pointerdown" on the cover, title, arrow
+        ! add full view arrow
+        ~? custom events for "pointerdown" on the cover, title, arrow
+        ? color
 
       ? carousel
         ! non-viewport based scaling for the gallery
