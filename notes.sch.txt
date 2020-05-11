@@ -71,6 +71,7 @@
       ? Why the module isn't good enough to import components on /index.html
       ? Initial load failing somehow and spinning the resize handlers infinitely
       ? Why aren't @font-faces loading on the Chromebook?
+      ? Somehow make smooth scrolling work with scrollwheels with mousecase
 
     ? Common stylesheets
       ! Responsive unit of scale
