@@ -29,8 +29,14 @@
         ~? Fix linting on Vercel
 
   ? Research
-    ! Learn how to do SPA routing for components
+    ? Learn how to do SPA routing for components
+      @ https://www.pika.dev/npm/router-slot
+        @ https://www.pika.dev/npm/router-slot#%E2%9E%A4-lit-element
+      @ https://www.pika.dev/npm/universal-router
+      @ https://www.pika.dev/npm/routerjs
     ? Learn how to handle JSON schemas with TypeScript
+      @ https://spin.atomicobject.com/2018/03/26/typescript-data-validation/
+      @ https://www.npmjs.com/package/typescript-json-schema
     ! Learn how to preload important bits of CSS to avoid FOUC
       `preload` is the only real solution, and Firefox doesn't support it for some reason
       aside from the service worker ofc, which is always good for subsequent loads
@@ -51,6 +57,11 @@
       Yeah, this isn't possible. Events in the DOM only travel upwards
       Capturing only reverses the order of the event being handled, which is by default the common-sense way: bottom to top
       The only way for a parent to communicate to a child is to proactively call a method on the child
+    ? Proper scroll-snapping, that actually works
+      @ https://css-tricks.com/practical-css-scroll-snapping/
+      We need mobile overscroll reload to work
+      We want Firefox mouse-wheel scrolling to work
+      We want Chrome touch scrolling to work
 
   ! Development
 
@@ -115,7 +126,7 @@
           ? warning about substandard browsers
           ? the footer must have a `scroll-snap-align: end` for scroll snap to work to the very end in Firefox
 
-      ! collection
+      ? collection
         ! create component
         ! block
           ! books with fetches
@@ -132,8 +143,9 @@
         ! summary mode
         ? color
         ? scroll-hint for paginated breaks
+        ? linkable IDs for every section
 
-      ! book
+      ? book
         ! block s-scale layout
         ! extend with m-scale
         ! extend with l-scale
@@ -174,6 +186,7 @@
         ~? custom events for "pointerdown" on the cover, title, arrow
         ? color
         ? scroll-hint for paginated breaks
+        ? linkable IDs for every section
 
       ? carousel
         ! non-viewport based scaling for the gallery
@@ -193,6 +206,7 @@
         ? implement overscroll hints
           most important on the desktop, where some people don't realize there's content to scroll horizontally
           ? consider implementing on-hover scrolling for overscroll hints
+        ? linkable IDs for every showcase element
 
       ! circumcircle
         ! implement prototype with slot
