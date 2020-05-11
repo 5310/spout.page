@@ -5,6 +5,8 @@
 // and despite claiming to in the doc, cannot accept an HTMLElement as target, only a string selector
 // which will not work inside a web-component
 
+import debounce from '/lib/debounce.js'
+
 interface MousecasePropArguments {
   cssClass?: string
   rule?: boolean
@@ -35,6 +37,7 @@ interface MousecaseResult {
   mouseNotDown: () => MousecaseThis
   manageState: () => MousecaseThis
   init: () => void
+  initWheel: () => void
   off: () => MousecaseThis
   on: () => MousecaseThis
 }
@@ -80,14 +83,12 @@ const mousecase = (
     el.classList.add(activeClass)
     this.state.startx = e.pageX - el.offsetLeft
     this.state.scrollLeft = el.scrollLeft
-    target.style.scrollBehavior = ''
     return this
   },
   mouseNotDown() {
     this.state.isDown = false
     const { activeClass, el } = this.props
     el.classList.remove(activeClass)
-    target.style.scrollBehavior = 'smooth'
     return this
   },
   manageState() {
@@ -103,6 +104,9 @@ const mousecase = (
     if (!this.canUseMousecase(target, this.props.rule)) return
     this.state.isOn = true
     this.manageState()
+    this.initWheel()
+  },
+  initWheel() {
     target.addEventListener('wheel', (e) => {
       const speed = 100
       let deltaScroll: number
@@ -114,9 +118,7 @@ const mousecase = (
         deltaScroll = -speed
         overscroll = target.scrollLeft <= 0
       }
-      target.style.scrollBehavior = 'smooth'
       target.scrollLeft += deltaScroll
-      target.style.scrollBehavior = ''
       if (!overscroll) {
         e.preventDefault()
         target.scrollIntoView({ behavior: 'smooth', block: 'center' })
