@@ -2,6 +2,7 @@ import log from '/lib/log.js'
 import debounce from '/lib/debounce.js'
 import { LitElement, html, property, customElement } from '/web_modules/lit-element.js'
 
+const RETRIESLIMIT = 100
 const ROTATIONLIMIT = 45
 
 @customElement('spout-circumcircle')
@@ -80,7 +81,7 @@ export default class SpoutCircumcircle extends LitElement {
   }
 
   resize() {
-    if (!this.#ready && this.#retries < 100) return
+    if (!this.#ready || this.#retries >= RETRIESLIMIT) return
 
     const $main = (this.shadowRoot as ShadowRoot).querySelector('main') as HTMLElement
     const $circle = (this.shadowRoot as ShadowRoot).querySelector('.circle') as HTMLElement

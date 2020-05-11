@@ -3,6 +3,8 @@ import debounce from '/lib/debounce.js'
 import { LitElement, html, property, customElement } from '/web_modules/lit-element.js'
 import mousecase from '/lib/mousecase.js'
 
+const RETRIESLIMIT = 100
+
 @customElement('spout-carousel')
 export default class SpoutImage extends LitElement {
   #ready = false
@@ -35,7 +37,7 @@ export default class SpoutImage extends LitElement {
   }
 
   resize() {
-    if (!this.#ready || this.#retries >= 100) return
+    if (!this.#ready || this.#retries >= RETRIESLIMIT) return
 
     const $main = (this.shadowRoot as ShadowRoot).querySelector('main') as HTMLElement
     const $contents = ((this.shadowRoot as ShadowRoot).querySelector('main > slot') as HTMLSlotElement).assignedElements()

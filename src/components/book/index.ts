@@ -9,6 +9,8 @@ import '/components/circumcircle/index.js'
 import SpoutCircumcircle from '/components/circumcircle/index.js'
 import '/components/image/index.js'
 
+const RETRIESLIMIT = 100
+
 @customElement('spout-book')
 export default class SpoutBook extends LitElement {
   @property({ type: Object })
@@ -129,7 +131,7 @@ export default class SpoutBook extends LitElement {
   }
 
   resize() {
-    if (!this.#ready || this.#retries >= 100) return
+    if (!this.#ready || this.#retries >= RETRIESLIMIT) return
 
     const $cover = (this.shadowRoot as ShadowRoot).querySelector('.cover > spout-circumcircle') as SpoutCircumcircle
     if ($cover) $cover.fitWidth = !this.summary && (self.innerWidth <= 640)

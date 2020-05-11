@@ -4,6 +4,8 @@ import { LitElement, html, property, customElement } from '/web_modules/lit-elem
 import { decode } from '/web_modules/blurhash.js'
 import { Image } from '/types'
 
+const RETRIESLIMIT = 100
+
 @customElement('spout-image')
 export default class SpoutImage extends LitElement {
   @property({ type: Object })
@@ -58,7 +60,7 @@ export default class SpoutImage extends LitElement {
   }
 
   resize() {
-    if (!this.#ready && this.#retries < 100) return
+    if (!this.#ready || this.#retries >= RETRIESLIMIT) return
 
     const $main = (this.shadowRoot as ShadowRoot).querySelector('main') as HTMLElement
     const $img = (this.shadowRoot as ShadowRoot).querySelector('img') as HTMLImageElement
