@@ -57,10 +57,17 @@
     ! Trial Vercel-specific routing and static serving
     ! Trial web-component-driven workflow
     ! Create demo pages for each component for easier testing
-    ! PRNG for random offsets
+    ? PRNG for random offsets
+    ! Refactor component styles by specificity and saner defaults
 
     ? Debug
-      ? Harsh scroll-snaps on Chrome or disable it
+      ? Fix scroll-snap issues
+        Scroll snaps still have a lot of gotchas:
+        - On Chrome, setting :root to it breaks overscroll
+        - And setting anything other than :root doesn't work
+        - On Firefox setting type to proximity often breaks mouse scroll
+        - On Chrome setting type to mandatory creates weird harsh snapping glitches
+        For now, the "fix" is just to disable it
       ? Why the module isn't good enough to import components on /index.html
       ? Initial load failing somehow and spinning the resize handlers infinitely
       ? Why aren't @font-faces loading on the Chromebook?
@@ -105,6 +112,7 @@
           ? fallback routing with URLParameters
           ? placeholder content and transition
           ? warning about substandard browsers
+          ? the footer must have a `scroll-snap-align: end` for scroll snap to work to the very end in Firefox
 
       ! collection
         ! create component
