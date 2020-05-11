@@ -48,8 +48,8 @@ export default class SpoutCollection extends LitElement {
       <main style="display: none; opacity: 0;">
           <section class="titling">
             <div class="blurb">${unsafeHTML(this.data.blurb)}</div>
-            <div class="title"><a class="text bare" href="/collection/${this.data.id}">${this.data.title}</a></div>
-            ${!this.summary ? '' : html`<div class="link"><a class="text bare" href="/collection/${this.data.id}">⟶</a></div>`}
+            <div class="title"><a class="text bare" href="/collections/${this.data.id}">${this.data.title}</a></div>
+            ${!this.summary ? '' : html`<div class="link"><a class="text bare" href="/collections/${this.data.id}">⟶</a></div>`}
           </section>
 
           ${this.summary ? '' : html`
