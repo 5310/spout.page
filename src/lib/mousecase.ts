@@ -80,12 +80,14 @@ const mousecase = (
     el.classList.add(activeClass)
     this.state.startx = e.pageX - el.offsetLeft
     this.state.scrollLeft = el.scrollLeft
+    target.style.scrollBehavior = ''
     return this
   },
   mouseNotDown() {
     this.state.isDown = false
     const { activeClass, el } = this.props
     el.classList.remove(activeClass)
+    target.style.scrollBehavior = 'smooth'
     return this
   },
   manageState() {
@@ -102,12 +104,20 @@ const mousecase = (
     this.state.isOn = true
     this.manageState()
     target.addEventListener('wheel', (e) => {
-      const _scrollLeft = target.scrollLeft
-      // const _scrollBehavior = target.style.scrollBehavior
-      if (e.deltaY > 0) target.scrollLeft += 100
-      else target.scrollLeft -= 100
+      const speed = 100
+      let deltaScroll: number
+      let overscroll: boolean
+      if (e.deltaY > 0) {
+        deltaScroll = speed
+        overscroll = target.offsetWidth + target.scrollLeft >= target.scrollWidth
+      } else {
+        deltaScroll = -speed
+        overscroll = target.scrollLeft <= 0
+      }
+      target.style.scrollBehavior = 'smooth'
+      target.scrollLeft += deltaScroll
       target.style.scrollBehavior = ''
-      if (_scrollLeft !== target.scrollLeft) {
+      if (!overscroll) {
         e.preventDefault()
         target.scrollIntoView({ behavior: 'smooth', block: 'center' })
       }
