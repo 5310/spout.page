@@ -74,6 +74,13 @@ export default class SpoutImage extends LitElement {
     const width = mainScrollWidth ? mainScrollWidth : mainScrollHeight * this.data.aspectRatio
     const height = mainScrollWidth ? mainScrollWidth / this.data.aspectRatio : mainScrollHeight
 
+    // wait if the main element hasn't been redrawn yet, since we need those dimensions
+    if (!width || !height) {
+      this.#retries++
+      requestAnimationFrame(() => this.resize())
+      return
+    }
+
     // DEBUG:
     log('image', 'resize', {
       mainScrollWidth,
@@ -81,13 +88,6 @@ export default class SpoutImage extends LitElement {
       width,
       height,
     })
-
-    // wait if the main element hasn't been redrawn yet, since we need those dimensions
-    if (!width || !height) {
-      this.#retries++
-      requestAnimationFrame(() => this.resize())
-      return
-    }
 
     $img.width = width
     $img.height = height
