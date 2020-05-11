@@ -8,8 +8,7 @@
   pointer-events: none;
 
   & > main {
-    margin-bottom: 50vh;
-    padding-top: --u8;
+    padding-bottom: 50vh;
     display: grid;
     grid-column-gap: 0;
     grid-auto-rows: auto;
@@ -17,6 +16,10 @@
     place-items: stretch;
     transition: opacity 0.5s ease-out;
     color: --color-ink;
+
+    @media (width <= 640px) {
+      padding-top: --u8;
+    }
 
     @media (640px < width <= 1024px) {
       grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
@@ -27,10 +30,7 @@
     }
 
     @media (width > 640px) {
-      padding-top: 0;
-
       @media (min-aspect-ratio: 1/1) {
-        scroll-snap-type: y mandatory;
         grid-auto-rows: minmax(100vh, auto);
       }
     }
@@ -42,22 +42,30 @@
       display: grid;
       align-content: center;
 
+      @media (width <= 640px) {
+        scroll-margin-top: --u4;
+      }
+
       &.titling {
-        grid-column-start: 2;
-        grid-column-end: -1;
         scroll-snap-align: start;
         max-width: 48ch;
-        min-height: 100vh;
         display: grid;
         grid-gap: --u2;
         font-family: Alegreya, serif;
         font-size: --u0;
 
         @media (width <= 640px) {
+          scroll-margin-top: --u8;
           grid-column-start: 1;
           grid-column-end: span 2;
           min-height: 100vw;
           margin-bottom: --u4;
+        }
+
+        @media (width > 640px) {
+          grid-column-start: 2;
+          grid-column-end: -1;
+          min-height: 100vh;
         }
 
         & > * {
@@ -102,20 +110,21 @@
 
           @media (width <= 640px) {
             grid-row-start: auto !important;
+            scroll-margin-top: --u4;
           }
 
           &.cover {
             height: 100%;
-            margin-bottom: calc(-1 * var(--u2));
-            padding-top: --u2;
             position: sticky;
             scroll-snap-align: start;
             cursor: pointer;
 
-            @media (width > 640px) {
-              margin-bottom: 0;
-              padding-top: 0;
+            @media (width <= 640px) {
+              margin-bottom: calc(-1 * var(--u2));
+              padding-top: --u2;
+            }
 
+            @media (width > 640px) {
               @media (min-aspect-ratio: 1/1) {
                 margin: 0;
                 padding: 0;
@@ -129,7 +138,6 @@
     &.summary {
       height: 100%;
       padding: 0;
-      scroll-snap-type: none;
     }
   }
 }

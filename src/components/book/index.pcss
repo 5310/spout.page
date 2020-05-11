@@ -8,14 +8,16 @@
   pointer-events: none;
 
   & > main {
-    padding-top: --u8;
     display: grid;
     grid-column-gap: 0;
     grid-row-gap: --u4;
     place-items: stretch;
     transition: opacity 0.5s ease-out;
-    scroll-snap-type: y proximity;
     color: --color-ink;
+
+    @media (width <= 640px) {
+      padding-top: --u8;
+    }
 
     @media (640px < width <= 1024px) {
       grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
@@ -26,16 +28,13 @@
     }
 
     @media (width > 640px) {
-      padding-top: 0;
-
       @media (min-aspect-ratio: 1/1) {
-        scroll-snap-type: y mandatory;
         grid-auto-rows: minmax(100vh, auto);
       }
     }
 
     & > * {
-      opacity: 0; /* initial state for animation */
+      opacity: 0;
       grid-column-start: 2;
       grid-column-end: -1;
       min-height: 100%;
@@ -43,6 +42,10 @@
       display: grid;
       align-content: center;
       scroll-snap-align: start;
+
+      @media (width <= 640px) {
+        scroll-margin-top: --u4;
+      }
 
       @media (width > 640px) {
         @media (min-aspect-ratio: 1/1) {
@@ -65,6 +68,7 @@
         filter: drop-shadow(0 --u0 --u0 --color-tint);
 
         @media (width <= 640px) {
+          scroll-margin-top: --u8;
           height: 100vw;
           padding-left: --u0;
         }
@@ -72,12 +76,15 @@
 
       &.listing {
         max-width: 48ch;
-        min-height: 100%;
         padding: --u8 --u0;
         display: grid;
         grid-gap: --u2;
         font-family: Alegreya, serif;
         font-size: --u0;
+
+        @media (width <= 640px) {
+          min-height: 100%;
+        }
 
         @media (width > 640px) {
           min-height: 100vh;
@@ -192,7 +199,6 @@
     &.summary {
       height: 100%;
       padding: 0;
-      scroll-snap-type: none;
 
       @media (width > 640px) {
         @media (min-aspect-ratio: 1/1) {
@@ -211,11 +217,11 @@
         align-items: center;
 
         spout-circumcircle {
-          height: 50vw;
-        }
+          @media (width <= 640px) {
+            height: 50vw;
+          }
 
-        @media (width > 640px) {
-          spout-circumcircle {
+          @media (width > 640px) {
             height: 30vw;
           }
         }
