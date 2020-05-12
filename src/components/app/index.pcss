@@ -12,7 +12,6 @@
     position: fixed;
     top: 0;
     z-index: 500;
-    mix-blend-mode: difference;
     padding: 0 --u0;
     display: grid;
     grid-auto-flow: column;
@@ -32,6 +31,13 @@
       font-family: Raleway, sans-serif;
       font-size: --u-1;
       letter-spacing: 0.1em;
+      opacity: 0.5;
+      transition: opacity 0.5s ease-in-out;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 1;
+      }
     }
 
     & > .logo {
