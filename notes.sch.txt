@@ -140,6 +140,7 @@
         ? header
           ? title
           ? breadcrumb
+          ? bake style into template so that it can denote a working site
         ? footer
           ! the footer must have a `scroll-snap-align: end` for scroll snap to work to the very end in Firefox
 
