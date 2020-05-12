@@ -21,6 +21,9 @@ export default class SpoutApp extends LitElement {
 
   @query('router-slot') $routerSlot!: RouterSlot
 
+  @property({ type: String })
+  title = ''
+
   routes = [
     {
       path: '**',
@@ -28,16 +31,20 @@ export default class SpoutApp extends LitElement {
       setup: (component: HTMLElement, info: IRoutingInfo) => {
         fetch('/content/books/placeholder/index.json')
           .then(response => response.json())
-          .then(data => (component as SpoutBook).data = data)
+          .then(data => {
+            (component as SpoutBook).data = data
+            this.title = data.title
+          })
       },
     }
   ]
 
   render() {
+    self.document.title = this.title
     return html`
       <link rel="stylesheet" href="/components/app/index.css" />
       <header style="opacity: 0;">
-        <section class="title">title</section>
+        <section class="title">${this.title}</section>
         <section class="logo"></section>
       </header>
       <main>
