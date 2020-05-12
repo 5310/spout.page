@@ -38,11 +38,11 @@ export default class SpoutApp extends LitElement {
   ]
 
   render() {
-    self.document.title = this.title
+    self.document.title = `spout.page · books · ${this.title}`
     return html`
       <link rel="stylesheet" href="/components/app/index.css" />
       <header style="opacity: 0;">
-        <section class="title">${this.title}</section>
+        <section class="title">books · ${this.title}</section>
         <section class="logo"></section>
       </header>
       <main>
