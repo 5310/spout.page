@@ -42,7 +42,7 @@ export default class SpoutApp extends LitElement {
     return html`
       <link rel="stylesheet" href="/components/app/index.css" />
       <header style="opacity: 0;">
-        <section class="title">books · ${this.title}</section>
+        <section class="title" @click=${() => self.scrollTo({ top: 0, behavior: 'smooth' })}>books · ${this.title}</section>
         <section class="logo"></section>
       </header>
       <main>
