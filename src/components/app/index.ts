@@ -24,25 +24,73 @@ export default class SpoutApp extends LitElement {
 
   routes = [
     {
-      path: '**',
+      path: 'collections/:id',
+      component: SpoutCollection,
+      setup: (component: HTMLElement, info: IRoutingInfo) => {
+        fetch(`/content/collections/${info.match.params.id}/index.json`)
+          .then(response => response.json())
+          .then(data => {
+            (component as SpoutCollection).data = data
+            this.title = `collection · ${data.title}`
+          })
+          .catch(() => {
+            fetch(`/content/collections/404/index.json`)
+              .then(response => response.json())
+              .then(data => {
+                (component as SpoutCollection).data = data
+                this.title = `collection not found`
+              })
+          })
+      },
+    },
+    {
+      path: 'books/:id',
       component: SpoutBook,
       setup: (component: HTMLElement, info: IRoutingInfo) => {
-        fetch('/content/books/placeholder/index.json')
+        fetch(`/content/books/${info.match.params.id}/index.json`)
           .then(response => response.json())
           .then(data => {
             (component as SpoutBook).data = data
-            this.title = data.title
+            this.title = `book · ${data.title}`
+          })
+          .catch(() => {
+            fetch(`/content/books/404/index.json`)
+              .then(response => response.json())
+              .then(data => {
+                (component as SpoutBook).data = data
+                this.title = `book not found`
+              })
           })
       },
-    }
+    },
+    {
+      path: '/',
+      redirectTo: 'collections/placeholder', // TODO:
+    },
+    {
+      path: 'about',
+      redirectTo: 'collections/placeholder', // TODO:
+    },
+    {
+      path: 'collections',
+      redirectTo: 'collections/placeholder', // TODO:
+    },
+    {
+      path: 'books',
+      redirectTo: 'books/placeholder', // TODO:
+    },
+    {
+      path: '**',
+      redirectTo: 'collections/placeholder', // TODO:
+    },
   ]
 
   render() {
-    self.document.title = `spout.page · books · ${this.title}`
+    self.document.title = `spout.page · ${this.title}`
     return html`
       <link rel="stylesheet" href="/components/app/index.css" />
       <header style="opacity: 0;">
-        <section class="title" @click=${() => self.scrollTo({ top: 0, behavior: 'smooth' })}>books · ${this.title}</section>
+        <section class="title" @click=${() => self.scrollTo({ top: 0, behavior: 'smooth' })}>${this.title}</section>
         <section class="logo"></section>
       </header>
       <main>
