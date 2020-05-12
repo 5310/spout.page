@@ -20,7 +20,7 @@ export default class SpoutApp extends LitElement {
   @query('router-slot') $routerSlot!: RouterSlot
 
   @property({ type: String })
-  title = ''
+  title = 'loading...'
 
   routes = [
     {
