@@ -120,18 +120,29 @@
 
       ? app
         ? local routing
-          ? parse route
+          ! parse route
           ! manage history
+          ? manage scroll position
+            as per `routing-slot`'s advice, if I make the document scroll upon `navigationend` the scroll history gets overwritten
           ~? dynamically load components
-            We don't want to do this dynamically, at least for now
-          ? solve animation hooks
-          ? fallback routing with URLParameters
-          ? placeholder content and transition
+            we don't want to do this dynamically, at least for now
+          !~ solve animation hooks
+            we don't need it fade outs, or anything slow and fancy
+          !~ fallback routing with URLParameters
+            definitely don't need these
+          !~ placeholder content and transition
+            we don't need these either
           ? warning about substandard browsers
+          ? handle colors
         ? header
           ? title
+          ? breadcrumb
         ? footer
           ! the footer must have a `scroll-snap-align: end` for scroll snap to work to the very end in Firefox
+
+      ? home
+
+      ? collections
 
       ? collection
         ! create component
@@ -194,6 +205,11 @@
         ? color
         ? scroll-hint for paginated breaks
         ? linkable IDs for every section
+        ? queryParameter parent collection
+
+      ? about
+
+      ? checkout
 
       ? carousel
         ! non-viewport based scaling for the gallery
