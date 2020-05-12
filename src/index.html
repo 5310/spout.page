@@ -3,12 +3,13 @@
 
   <head>
     <title>sprout.page</title>
+    <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/svg+xml" href="/manifest/favicon.svg">
     <link rel="alternate icon" href="/manifest/favicon.ico">
     <link rel="stylesheet" href="/index.css">
     <script type="module" src="/index.js"></script>
-    <script type="module" src="/components/collection/index.js"></script>
+    <script type="module" src="/components/app/index.js"></script>
     <style>
       :root {
         background: var(--color-paper, white);
@@ -18,15 +19,7 @@
   </head>
 
   <body>
-    <spout-collection></spout-collection>
-    <script>
-      fetch('/content/collections/placeholder/index.json')
-        .then(response => response.json())
-        .then(data => {
-          const $book = document.querySelector('spout-collection')
-          $book.data = data
-        })
-    </script>
+    <spout-app></spout-app>
   </body>
 
 </html>
