@@ -121,13 +121,17 @@
       ? app
         ? local routing
           ? parse route
-          ? manage history
-          ? dynamically load components
+          ! manage history
+          ~? dynamically load components
+            We don't want to do this dynamically, at least for now
           ? solve animation hooks
           ? fallback routing with URLParameters
           ? placeholder content and transition
           ? warning about substandard browsers
-          ? the footer must have a `scroll-snap-align: end` for scroll snap to work to the very end in Firefox
+        ? header
+          ? title
+        ? footer
+          ! the footer must have a `scroll-snap-align: end` for scroll snap to work to the very end in Firefox
 
       ? collection
         ! create component
