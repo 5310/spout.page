@@ -43,7 +43,7 @@ export default class SpoutImage extends LitElement {
     const $contents = ((this.shadowRoot as ShadowRoot).querySelector('main > slot') as HTMLSlotElement).assignedElements()
 
     // wait if the first slotted element hasn't been redrawn yet, since we need those dimensions
-    if (!$contents[0].clientWidth) {
+    if (!$contents[0]?.clientWidth) {
       this.#retries++
       requestAnimationFrame(() => this.resize())
       return
