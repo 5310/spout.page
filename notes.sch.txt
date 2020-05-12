@@ -73,6 +73,9 @@
     ? PRNG for random offsets
     ! Refactor component styles by specificity and saner defaults
     ? Use lit-element queries to select reused elements
+    ? Use events to trigger title settings
+      ? trigger events from components that want to conditionally set titles
+      ? handle event at app
 
     ? Debug
       ? Fix scroll-snap issues
