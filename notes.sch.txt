@@ -72,6 +72,7 @@
     ! Create demo pages for each component for easier testing
     ? PRNG for random offsets
     ! Refactor component styles by specificity and saner defaults
+    ? Use lit-element queries to select reused elements
 
     ? Debug
       ? Fix scroll-snap issues
