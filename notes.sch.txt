@@ -60,8 +60,10 @@
     ? Proper scroll-snapping, that actually works
       @ https://css-tricks.com/practical-css-scroll-snapping/
       We need mobile overscroll reload to work
-      We want Firefox mouse-wheel scrolling to work
-      We want Chrome touch scrolling to work
+      We want Firefox mouse-wheel scrolling to work without getting stuck
+      We want Chrome touch scrolling to work without harsh rubberbanding
+      We want Chrome mouse-wheel scrolling to work without scrolling multiple breaks
+    ? Learn the CSS property `contain`
 
   ! Development
 
