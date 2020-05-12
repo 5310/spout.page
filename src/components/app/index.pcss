@@ -1,0 +1,55 @@
+@import url("/reset.css");
+@import url("/typefaces.css");
+@import url("/debug.css");
+
+:host {
+  width: 100%;
+  min-height: 100%;
+
+  & > header {
+    width: 100%;
+    height: --u8;
+    position: fixed;
+    top: 0;
+    z-index: 500;
+    padding: 0 --u0;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr auto;
+    grid-gap: --u0;
+    align-items: center;
+
+    @media (width > 640px) {
+      padding: 0 --u8;
+    }
+
+    @media (width > 1536px) {
+      height: --u6;
+    }
+
+    & > .title {
+      font-family: Raleway, sans-serif;
+      font-size: --u-1;
+      letter-spacing: 0.1em;
+    }
+
+    & > .logo {
+      width: 12ch;
+      height: --u4;
+    }
+  }
+
+  & > main {
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  & > footer {
+    width: 100%;
+    padding: 0 --u0;
+    background: #0003;
+    min-height: 50vmin;
+    scroll-snap-align: end;
+    display: grid;
+  }
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title>spout.page · source · components · app</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/svg+xml" href="/manifest/favicon.svg">
+    <link rel="alternate icon" href="/manifest/favicon.ico">
+    <link rel="stylesheet" href="/reset.css">
+    <link rel="stylesheet" href="/colors.css">
+    <link rel="stylesheet" href="/scale.css">
+    <base href="/">
+    <script type="module" src="/components/app/index.js"></script>
+    <style>
+      :root {
+        --color-debug: rgba(0, 0, 0, 0.1);
+
+        background: var(--color-paper, white);
+      }
+    </style>
+    <script>
+        self.LOG = true
+    </script>
+  </head>
+
+  <body>
+    <spout-app></spout-app>
+  </body>
+
+</html>
