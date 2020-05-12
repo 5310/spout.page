@@ -62,6 +62,7 @@ export default class SpoutCollection extends LitElement {
   }
 
   firstUpdated() {
+    if (!this.data) return
     const $stylesheet = (this.shadowRoot as ShadowRoot).querySelector('link') as HTMLElement
     $stylesheet.addEventListener('load', () => {
       // render main
@@ -85,5 +86,12 @@ export default class SpoutCollection extends LitElement {
         )
       })
     })
+  }
+
+  updated(changedProperties: Map<string, any>) {
+    if (changedProperties.has('data')) {
+      this.firstUpdated()
+      return
+    }
   }
 }

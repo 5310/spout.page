@@ -126,7 +126,11 @@ export default class SpoutBook extends LitElement {
     })
   }
 
-  updated() {
+  updated(changedProperties: Map<string, any>) {
+    if (changedProperties.has('data')) {
+      this.firstUpdated()
+      return
+    }
     this.resize()
   }
 
