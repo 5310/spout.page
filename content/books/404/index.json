@@ -1,0 +1,21 @@
+{
+  "id": "404",
+  "cover": {
+    "srcset": "/content/books/404/cover.png",
+    "aspectRatio": 1,
+    "alt": "ceci n'est pas une couverture"
+  },
+  "title": "Liber Incognita",
+  "isbn": "",
+  "brief": "Uh oh! We couldn't find this book. Could we interest you in something else while we go look for it?",
+  "price": 404,
+  "discount": 0,
+  "size": {
+    "width": 0,
+    "height": 0,
+    "pages": 0
+  },
+  "tags": [],
+  "blurb": "",
+  "gallery": []
+}
