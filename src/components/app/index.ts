@@ -69,7 +69,7 @@ export default class SpoutApp extends LitElement {
     },
     {
       path: 'about',
-      redirectTo: 'collections/placeholder', // TODO:
+      redirectTo: '/', // TODO:
     },
     {
       path: 'collections',
@@ -77,11 +77,11 @@ export default class SpoutApp extends LitElement {
     },
     {
       path: 'books',
-      redirectTo: 'books/placeholder', // TODO:
+      redirectTo: 'collections',
     },
     {
       path: '**',
-      redirectTo: 'collections/placeholder', // TODO:
+      redirectTo: '/', // TODO:
     },
   ]
 
