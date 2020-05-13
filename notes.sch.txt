@@ -83,6 +83,7 @@
       ! Generate JSON
       ! Process image sources for blurhash, aspect ratio, etc
       ? Process image sources for responsive scaling
+      @ https://sharp.pixelplumbing.com/api-constructor
       @ https://www.npmjs.com/package/jimp
       @ https://metalsmith.io/
       @ https://github.com/segmentio/metalsmith-markdown/blob/master/lib/index.js
