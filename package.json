@@ -24,7 +24,7 @@
     "build": "npm run test && npm run schema:build && npm run static:build && npm run script:build && npm run style:build && npm run content:build",
     "static:watch": "npx cpx '{src/**/*.{html,svg,png,jpg},src/web_modules/**/*}' dist --watch",
     "static:build": "npx cpx '{src/**/*.{html,svg,png,jpg},src/web_modules/**/*}' dist",
-    "schema:build": "eval 'mkdir schema && for type in YAMLBook YAMLCollection Book Collection IDs; do npx typescript-json-schema --refs --aliasRefs --required --out ./schema/$type.schema.json ./src/types.ts $type; done'",
+    "schema:build": "eval 'mkdir -p schema && for type in YAMLBook YAMLCollection Book Collection IDs; do npx typescript-json-schema --refs --aliasRefs --required --out ./schema/$type.schema.json ./src/types.ts $type; done'",
     "script:lint": "npx tslint -p .",
     "script:test": "npx jest --passWithNoTests",
     "script:watch": "npx tsc --outDir dist --watch --preserveWatchOutput",
