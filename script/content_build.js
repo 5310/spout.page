@@ -16,7 +16,7 @@ const markdownSpanToMarkupSpan = markdown => !markdown ? undefined : marked(
   }
 ).slice(3, -5)
 
-const markdownBlockToMarkupBlock = markdown => !markdown ? undefined : marked(
+const markdownBlockToMarkupBlock = markdown => !markdown ? '' : marked(
   markdown.replace('\n', '\n\n'),
   {
     gfm: true,
