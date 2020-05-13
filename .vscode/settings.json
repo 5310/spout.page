@@ -1,0 +1,10 @@
+{
+  "yaml.schemas": {
+    "./schema/YAMLBook.schema.json": [
+      "/content/books/*/index.yaml"
+    ],
+    "./schema/YAMLCollection.schema.json": [
+      "/content/collections/*/index.yaml"
+    ]
+  }
+}
