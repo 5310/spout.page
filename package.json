@@ -32,7 +32,8 @@
     "style:lint": "npx stylelint 'dist/**/*.pcss'",
     "style:watch": "npx postcss 'src/**/*.pcss' --base src --dir dist --ext css --watch",
     "style:build": "npx postcss 'src/**/*.pcss' --base src --dir dist --ext css",
-    "content:build": "node script/content_build.js",
+    "content:validate": "npx ajv-cli -s ./schema/Book.schema.json -d './dist/content/books/*/index.json' && npx ajv-cli -s ./schema/Collection.schema.json -d './dist/content/collections/*/index.json'",
+    "content:build": "node script/content_build.js && npm run content:validate",
     "postinstall": "npx snowpack --dest src/web_modules/"
   },
   "devDependencies": {
