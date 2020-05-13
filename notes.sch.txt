@@ -79,10 +79,14 @@
 
     ? Process yaml
       ! Generate schemata
-      ? Define linting for YAML/JSON
+      ! Define linting for ~~YAML/~~JSON
+        There is literally NO way to validate a YAML file with a schema on NPM
       ! Generate JSON
       ! Process image sources for blurhash, aspect ratio, etc
       ? Process image sources for responsive scaling
+      ~@ https://www.npmjs.com/package/pajv
+        Absolutely broken
+      @ https://github.com/ajv-validator/ajv-cli
       @ https://sharp.pixelplumbing.com/api-constructor
       @ https://www.npmjs.com/package/jimp
       @ https://metalsmith.io/
