@@ -81,7 +81,7 @@
       ! Generate schemata
       ? Define linting for YAML/JSON
       ! Generate JSON
-      ? Process image sources for blurhash, aspect ratio, etc
+      ! Process image sources for blurhash, aspect ratio, etc
       ? Process image sources for responsive scaling
       @ https://www.npmjs.com/package/jimp
       @ https://metalsmith.io/
