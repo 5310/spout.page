@@ -1,7 +1,7 @@
-**/*.css
-**/*.js
 schema/
 src/web_modules/
+src/**/*.css
+src/**/*.jss
 dist/
 node_modules/
 web_modules/
