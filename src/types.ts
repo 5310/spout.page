@@ -110,6 +110,8 @@ export type Palette = {
 export type YAMLBook = {
   /**
    * The front cover of the book.
+   *
+   * @default "cover.jpg"
    */
   cover: string,
   /**
@@ -180,6 +182,8 @@ export type YAMLCollection = {
    * A backing art for the collection.
    *
    * Presently unused.
+   *
+   * @default "cover.jpg"
    */
   cover?: Src,
   /**
