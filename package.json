@@ -21,9 +21,10 @@
     "lint": "npm run script:lint && npm run style:lint",
     "test": "npm run script:test",
     "watch": "npx concurrently -s -k true -n 'static,script,style' 'npm run static:watch' 'npm run script:watch' 'npm run style:watch'",
-    "build": "npm run test && npm run static:build && npm run script:build && npm run style:build && npm run content:build",
+    "build": "npm run test && npm run schema:build && npm run static:build && npm run script:build && npm run style:build && npm run content:build",
     "static:watch": "npx cpx '{src/**/*.{html,svg,png,jpg},src/web_modules/**/*}' dist --watch",
     "static:build": "npx cpx '{src/**/*.{html,svg,png,jpg},src/web_modules/**/*}' dist",
+    "schema:build": "eval 'for type in YAMLBook YAMLCollection Book Collection IDs; do npx typescript-json-schema --refs --aliasRefs --required --out ./schema/$type.schema.json ./src/types.ts $type; done'",
     "script:lint": "npx tslint -p .",
     "script:test": "npx jest --passWithNoTests",
     "script:watch": "npx tsc --outDir dist --watch --preserveWatchOutput",
@@ -54,6 +55,7 @@
     "stylelint-config-standard": "^20.0.0",
     "ts-jest": "^25.4.0",
     "typescript": "^3.8.3",
+    "typescript-json-schema": "^0.42.0",
     "typescript-tslint-plugin": "^0.5.5"
   },
   "dependencies": {
