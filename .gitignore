@@ -1,5 +1,6 @@
 **/*.css
 **/*.js
+schema/
 src/web_modules/
 dist/
 node_modules/
