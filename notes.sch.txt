@@ -29,12 +29,12 @@
         ~? Fix linting on Vercel
 
   ? Research
-    ? Learn how to do SPA routing for components
+    ! Learn how to do SPA routing for components
       @ https://www.pika.dev/npm/router-slot
         @ https://www.pika.dev/npm/router-slot#%E2%9E%A4-lit-element
       @ https://www.pika.dev/npm/universal-router
       @ https://www.pika.dev/npm/routerjs
-    ? Learn how to handle JSON schemas with TypeScript
+    ! Learn how to handle JSON schemas with TypeScript
       @ https://spin.atomicobject.com/2018/03/26/typescript-data-validation/
       @ https://www.npmjs.com/package/typescript-json-schema
     ! Learn how to preload important bits of CSS to avoid FOUC
@@ -472,7 +472,7 @@
     @ https://developer.mozilla.org/en-US/docs/Web/API/Element/animate
     @ https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API/Keyframe_Formats
     @ https://codepen.io/5310/pen/zYvpwpG
-  
+
   * Content format
     Our data should be flat files
       That is, all books under `books/` as individual files, all collections under `collections`, etc
@@ -483,6 +483,17 @@
       While decoupled this way, we still would colocate the content with the app for now
     Eventually we might move to one of the many serverless CMS tools
       They would still likely edit the content directly in the repo
+      @ https://bejamas.io/blog/git-based-cms-vs-api-first-cms/
+      The biggest roadblock we have in terms of using a Git backed CMS is our unconventional project structure
+        Most of these CMSes assume there is just one global media folder for all uploads
+        All posts are just one file instead of a file inside of a folder, etc.
+        Options
+          - Netlify CMS
+            Can't do multiple upload folders
+            Can probably do folders with index.yaml
+          - Prose.io
+            Can't do multiple upload folders
+          - Forestry.io
 
   * Vercel troubles
     Vercel 2 is supposedly "zero configuration"
