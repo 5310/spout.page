@@ -1,4 +1,4 @@
-cover: /content/books/placeholder/cover_1865.jpg
+cover: cover_1865.jpg
 
 title: Alice's Adventures in Wonderland
 subtitle: Better Known as Alice in Wonderland
@@ -27,11 +27,11 @@ blurb:
   In 2014, Robert McCrum named the tale "one of the best loved in the English canon", and called it "perhaps the greatest, possibly most influential, and certainly the most world-famous Victorian English fiction".
 
 gallery:
-  - src: /content/books/placeholder/illustration_alice-with-a-flamingo.png
+  - src: illustration_alice-with-a-flamingo.png
     alt: Alice trying to play croquet with a Flamingo
-  - src: /content/books/placeholder/illustration_cheshire-cat.png
+  - src: illustration_cheshire-cat.png
     alt: The Cheshire Cat
-  - src: /content/books/placeholder/illustration_white-rabbit.png
+  - src: illustration_white-rabbit.png
     alt: The White Rabbit
 
 colors:
