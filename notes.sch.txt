@@ -76,6 +76,12 @@
     ? Use events to trigger title settings
       ? trigger events from components that want to conditionally set titles
       ? handle event at app
+    ? Process yaml
+      ! Generate schemata
+      ? Define linting for YAML/JSON
+      ? Generate JSON
+      ? Process image sources for blurhash, aspect ration, etc
+      ? Process image sources for responsive scaling
 
     ? Debug
       ? Fix scroll-snap issues
