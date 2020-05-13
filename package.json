@@ -32,7 +32,7 @@
     "style:lint": "npx stylelint 'dist/**/*.pcss'",
     "style:watch": "npx postcss 'src/**/*.pcss' --base src --dir dist --ext css --watch",
     "style:build": "npx postcss 'src/**/*.pcss' --base src --dir dist --ext css",
-    "content:build": "npx cpx 'content/**/*.{json,svg,png,jpg}' dist/content",
+    "content:build": "node script/content_build.js",
     "postinstall": "npx snowpack --dest src/web_modules/"
   },
   "devDependencies": {
