@@ -9,7 +9,7 @@ const marked = require('marked')
 const BLURHASHSCALE = 9
 
 const markdownSpanToMarkupSpan = markdown => !markdown ? undefined : marked(
-  markdown,
+  markdown.replace(/(\n)+/, '\n'),
   {
     gfm: true,
     smartypants: true,
