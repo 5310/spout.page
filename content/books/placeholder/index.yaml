@@ -39,6 +39,6 @@ colors:
   ink: "#41414d"
   tint: "#2b2b3166"
   dark:
-    paper: 2b2b31
+    paper: "#2b2b31"
     ink: "#e0d5c0"
     tint: "#0009"
