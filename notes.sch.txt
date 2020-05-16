@@ -84,6 +84,7 @@
       ! Generate JSON
       ! Process image sources for blurhash, aspect ratio, etc
       ? Process image sources for responsive scaling
+      ? Refactor colors to palette and add in an explicit object for the light colors
       ~@ https://www.npmjs.com/package/pajv
         Absolutely broken
       @ https://github.com/ajv-validator/ajv-cli
