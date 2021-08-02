@@ -99,7 +99,7 @@ export default class SpoutImage extends LitElement {
 
       $canvas.width = blurhash.width
       $canvas.height = blurhash.height
-      $canvas.style.aspectRatio = this.data.aspectRatio
+      ;($canvas.style as any).aspectRatio = this.data.aspectRatio
 
       this.#blurhash = this.#blurhash.length ? this.#blurhash : decode(blurhash.hash, blurhash.width, blurhash.height)
 
