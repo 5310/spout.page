@@ -27,6 +27,12 @@
       ! Stylelint
         ! Configuration
         ~? Fix linting on Vercel
+    ? Upgrade to Snowpack 2.0
+      ? Get dependencies to build
+        ? Define them manually if they can't get detected
+      ? Move all scripts into it
+      ? Use PostCSS @Imports for components
+        @ https://github.com/postcss/postcss-import
 
   ? Research
     ! Learn how to do SPA routing for components
@@ -102,6 +108,8 @@
         - On Firefox setting type to proximity often breaks mouse scroll
         - On Chrome setting type to mandatory creates weird harsh snapping glitches
         For now, the "fix" is just to disable it
+      ? Fix the scroll persistence issue
+        Right now, moving to a book from a collection persists the scroll position, and that just won't do!
       ? Why the module isn't good enough to import components on /index.html
       ? Initial load failing somehow and spinning the resize handlers infinitely
       ? Why aren't @font-faces loading on the Chromebook?
