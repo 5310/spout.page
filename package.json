@@ -43,7 +43,7 @@
     "cpx2": "^2.0.0",
     "jest": "^25.4.0",
     "localtunnel": "^2.0.0",
-    "marked": "^1.0.0",
+    "marked": "^4.0.10",
     "metalsmith": "^2.3.0",
     "multimatch": "^4.0.0",
     "now": "^18.0.0",
